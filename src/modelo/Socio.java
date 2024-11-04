@@ -9,6 +9,5 @@ package modelo;
  * @author sergi
  */
 public class Socio {
-    private String nombre;
-    private String apellido;
+    
 }
