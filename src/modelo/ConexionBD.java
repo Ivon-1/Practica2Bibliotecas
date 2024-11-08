@@ -21,15 +21,21 @@ public class ConexionBD {
     private static Connection connection = null;// creamos la conexion
 
     // establecer conexion
-    public static Connection conectar() {
-        
+    public static Connection conectar(){
         try {
             // establecer conexion 
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Conexion exitosa");
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.err.println("Error, conexion fallida");
         }
         return connection;
     }
+    
+    
+    
 }
+
+
+
+

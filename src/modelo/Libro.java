@@ -12,12 +12,12 @@ public class Libro {
     private String ISBN;
     private String titulo;
     private int numSerie;
-    private int precio;
+    private float precio;
     private String estado;
     private String editorial;
 
     // constructor
-    public Libro(String ISBN, String titulo, int numSerie, int precio, String estado, String editorial) {
+    public Libro(String ISBN, String titulo, int numSerie, float precio, String estado, String editorial) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.numSerie = numSerie;
@@ -52,11 +52,11 @@ public class Libro {
         this.numSerie = numSerie;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
@@ -74,8 +74,5 @@ public class Libro {
 
     public void setEditorial(String editorial) {
         this.editorial = editorial;
-    }
-    
-    
-    
+    } 
 }
