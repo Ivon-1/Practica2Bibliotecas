@@ -4,42 +4,27 @@
  */
 package modelo;
 
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
-import com.sun.jdi.connect.spi.Connection;
-import modelo.Libro;
-import modelo.ConexionBD;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 /**
  *
  * @author IvanA
  */
 public class ModeloLibro {
+    
+    // almacenamos libros
+    private ArrayList<Libro> libros;
 
-    private ConexionBD conexion;
-    private Libro libro_modelo;
-
-    public ModeloLibro(ConexionBD conexion, Libro modeloLibro) {
-        this.conexion = this.conexion;
-        this.libro_modelo = libro_modelo;
+    public ModeloLibro(ArrayList<Libro> libros) {
+        this.libros = libros;
     }
-
-    // funcion para insertar libro nombre
-    public static void insertarLibro(String isbn, String titulo, int numSerie, float precio,String estado, String editorial) {
-        // metemos consulta en una variable
-        String sql = "insert into libros(isbn,titulo,numSerie,precio,estado,idAutor,editorial) VALUES (?,?,?,?,?,?,?)";
-        // try catch 
-         
-             
-    }
-        
-        
-       
-        // asignacion de valores stmt
-        
-        
-        
-        // ejecucion consulta --> 
+    
+    // insertar libros
+    
+    
+    
+    
+    
+    
 }
-    
-    
-
