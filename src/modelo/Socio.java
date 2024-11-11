@@ -11,42 +11,42 @@ package modelo;
 public class Socio {
 
     private int id;
-    private String socio;
     private String nombre;
     private String apellido;
     private String correo;
     private String dni;
     private String telefono;
+    private String direccion;
     private boolean pago;
-    
 
-    // constructor
-    public Socio(int id, String socio, String nombre, String apellido, String correo, String dni, String telefono, boolean pago) {
+    /**
+     * CONSTRUCTORES
+     * @param id
+     * @param nombre
+     * @param apellido
+     * @param correo
+     * @param dni
+     * @param telefono
+     * @param direccion
+     * @param pago 
+     */
+    public Socio(int id, String nombre, String apellido, String correo, String dni, String telefono, String direccion, boolean pago) {
         this.id = id;
-        this.socio = socio;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.dni = dni;
         this.telefono = telefono;
+        this.direccion = direccion;
         this.pago = pago;
-    }
+    } 
 
-    // getters y setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getSocio() {
-        return socio;
-    }
-
-    public void setSocio(String socio) {
-        this.socio = socio;
     }
 
     public String getNombre() {
@@ -89,6 +89,14 @@ public class Socio {
         this.telefono = telefono;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public boolean isPago() {
         return pago;
     }
@@ -96,5 +104,10 @@ public class Socio {
     public void setPago(boolean pago) {
         this.pago = pago;
     }
-
+    
+    /**
+     * GETTERS Y SETTERS
+     */
+    
+    
 }
