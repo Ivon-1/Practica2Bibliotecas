@@ -9,44 +9,20 @@ package modelo;
  * @author sergi
  */
 public class Socio {
-
-    private int id;
     private String nombre;
     private String apellido;
     private String correo;
     private String dni;
     private String telefono;
     private String direccion;
-    private boolean pago;
 
-    /**
-     * CONSTRUCTORES
-     * @param id
-     * @param nombre
-     * @param apellido
-     * @param correo
-     * @param dni
-     * @param telefono
-     * @param direccion
-     * @param pago 
-     */
-    public Socio(int id, String nombre, String apellido, String correo, String dni, String telefono, String direccion, boolean pago) {
-        this.id = id;
+    public Socio(String nombre, String apellido, String correo, String dni, String telefono, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.dni = dni;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.pago = pago;
-    } 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -96,18 +72,4 @@ public class Socio {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    public boolean isPago() {
-        return pago;
-    }
-
-    public void setPago(boolean pago) {
-        this.pago = pago;
-    }
-    
-    /**
-     * GETTERS Y SETTERS
-     */
-    
-    
 }
