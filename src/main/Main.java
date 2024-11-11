@@ -15,7 +15,7 @@ import vista.LoginView;
 public class Main {
 
     public static void main(String[] args) {
-        ConexionBD.conectar(); // conexion bbdd
+        ConexionBD.conectar();
         // instancias usuario - login 
         UsuarioModelo modeloUsuario = new UsuarioModelo();
         LoginView loginVista = new LoginView();

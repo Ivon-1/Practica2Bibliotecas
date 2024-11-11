@@ -17,5 +17,6 @@ public class LibroController {
         String sql = "insert into libros(isbn,titulo,numSerie,precio,estado,idAutor,editorial) VALUES (?,?,?,?,?,?,?)";
         return null;
         
+        
     }
 }
