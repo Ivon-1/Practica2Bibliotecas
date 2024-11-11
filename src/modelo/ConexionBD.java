@@ -28,12 +28,10 @@ public class ConexionBD {
             System.out.println("Conexion exitosa");
         } catch (SQLException ex) {
             System.err.println("Error, conexion fallida");
+            ex.printStackTrace();
         }
         return connection;
     }
-    
-    
-    
 }
 
 

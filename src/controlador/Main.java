@@ -5,6 +5,7 @@
 package controlador;
 
 import controlador.LoginController;
+import modelo.ConexionBD;
 import modelo.UsuarioModelo;
 import vista.LoginView;
 
@@ -14,6 +15,7 @@ import vista.LoginView;
  */
 public class Main {
     public static void main(String[] args) {
+        ConexionBD.conectar();
         UsuarioModelo modeloUsuario = new UsuarioModelo();
         LoginView loginVista = new LoginView();
         new LoginController(loginVista, modeloUsuario);

@@ -6,10 +6,8 @@ package modelo;
 
 /**
  *
- * @author IvanA
+ * @author jguti
  */
-public class Main {
-    public static void main(String[] args) {
-        ConexionBD.conectar(); // llamada a la conexion BBDD
-    }
+public class ModeloSocio {
+    
 }
