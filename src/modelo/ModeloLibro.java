@@ -28,11 +28,9 @@ public class ModeloLibro {
         // metemos consulta en una variable
         String sql = "insert into libros(isbn,titulo,numSerie,precio,estado,idAutor,editorial) VALUES (?,?,?,?,?,?,?)";
         // try catch 
-         try(){
+         
              
-         }catch(){
-             
-         }
+    }
         
         
        
@@ -41,7 +39,7 @@ public class ModeloLibro {
         
         
         // ejecucion consulta --> 
-    }
-    
-    
 }
+    
+    
+
