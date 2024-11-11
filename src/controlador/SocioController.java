@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Socio;
+import modelo.SocioModelo;
 import vista.AgregarSocioView;
 
 /**
@@ -16,11 +17,11 @@ import vista.AgregarSocioView;
  */
 public class SocioController implements ActionListener{
     
-    private Socio modelo_socio;
+    private SocioModelo modelo_socio;
     private AgregarSocioView vista_agregar_socio;
     
     
-    public SocioController(Socio modelo_socio , AgregarSocioView vista_agregar_socio){
+    public SocioController(SocioModelo modelo_socio , AgregarSocioView vista_agregar_socio){
         this.modelo_socio = modelo_socio;
         this.vista_agregar_socio = vista_agregar_socio;
         
@@ -41,7 +42,10 @@ public class SocioController implements ActionListener{
      */
     
     public void agregarSocios(){
-        if (validarDatos()) {
+        if (validarDatos()){
+            if (this.modelo_socio.agregar_socio(0, nombre, apellido, correo, dni, telefono, direccion, true)) {
+                
+            }
         }
     }
     
@@ -55,11 +59,6 @@ public class SocioController implements ActionListener{
     public boolean validarDatos(){
         boolean resultado = true;
         String mensaje = "";
-        
-        if (this.vista_agregar_socio.getTxt_id().getText().trim().length() == 0) {
-            mensaje = mensaje + "Introduzca un id. \n";
-            return false;
-        }
         
         if (this.vista_agregar_socio.getTxt_nombre().getText().trim().length() == 0) {
             mensaje = mensaje + "Introduzca un nombre. \n";
