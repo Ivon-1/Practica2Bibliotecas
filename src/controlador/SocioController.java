@@ -43,8 +43,16 @@ public class SocioController implements ActionListener{
     
     public void agregarSocios(){
         if (validarDatos()){
-            if (this.modelo_socio.agregar_socio(0, nombre, apellido, correo, dni, telefono, direccion, true)) {
-                
+            if(this.modelo_socio.agregar_socio(this.vista_agregar_socio.getTxt_nombre().getText(), 
+                                                this.vista_agregar_socio.getTxt_apellido().getText(),
+                                                this.vista_agregar_socio.getTxt_correo().getText(),
+                                                this.vista_agregar_socio.getTxt_dni().getText(),
+                                                this.vista_agregar_socio.getTxt_telefono().getText(),
+                                                this.vista_agregar_socio.getTxt_direccion().getText())) {
+                JOptionPane.showMessageDialog(vista_agregar_socio, "Socio " + this.vista_agregar_socio.getTxt_nombre().getText(), "REGISTRO USUARIO",0);
+                this.vista_agregar_socio.dispose();
+            }else{
+                JOptionPane.showMessageDialog(vista_agregar_socio, "No se pudo registrar el socio" , "ERROR REGISTRO" , JOptionPane.ERROR_MESSAGE);
             }
         }
     }
