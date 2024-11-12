@@ -5,26 +5,30 @@
 package modelo;
 
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author IvanA
  */
 public class ModeloLibro {
-    
-    // almacenamos libros
-    private ArrayList<Libro> libros;
 
-    public ModeloLibro(ArrayList<Libro> libros) {
+    // almacenamos libros
+    private HashMap<String, Libro> libros;
+
+    public ModeloLibro(HashMap<String, Libro> libros) {
         this.libros = libros;
     }
     
-    // insertar libros
+    
+
+    // insertar libros -- aaron
     
     
     
     
+    
+    // consultar
     
     
 }

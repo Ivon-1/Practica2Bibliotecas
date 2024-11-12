@@ -7,16 +7,16 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.UsuarioModelo;
+// import modelo.UsuarioModelo;
 import vista.LoginView;
 
 /**
  *
  * @author sergi
  */
-public class LoginController implements ActionListener{
+/*public class LoginController implements ActionListener{
     private LoginView loginVista;
-    private UsuarioModelo modeloUsuario;
+   // private UsuarioModelo modeloUsuario;
 
     public LoginController(LoginView loginVista, UsuarioModelo modeloUsuario) {
         this.loginVista = loginVista;
@@ -44,6 +44,8 @@ public class LoginController implements ActionListener{
             JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas", "Login", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
     
     
-}
+}*/

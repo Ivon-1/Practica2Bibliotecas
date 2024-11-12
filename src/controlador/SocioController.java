@@ -15,6 +15,7 @@ import vista.AgregarSocioView;
  *
  * @author jguti
  */
+/*
 public class SocioController implements ActionListener{
     
     private SocioModelo modelo_socio;
@@ -28,19 +29,19 @@ public class SocioController implements ActionListener{
         /**
          * IMPLEMENTACION DE LOS BOTONES.
          */
-    }
-    
+    //}
+    /*
     @Override
     public void actionPerformed(ActionEvent e) {
         agregarSocios();
-    }
+    }*/
     
     
     
     /**
      * Funcion para agregar socios.
      */
-    
+    /*
     public void agregarSocios(){
         if (validarDatos()){
             if(this.modelo_socio.agregar_socio(this.vista_agregar_socio.getTxt_nombre().getText(), 
@@ -62,7 +63,7 @@ public class SocioController implements ActionListener{
     
     /**
      * Funcion para la validacion de datos.
-     */
+ 
     
     public boolean validarDatos(){
         boolean resultado = true;
@@ -106,4 +107,4 @@ public class SocioController implements ActionListener{
         }
         return resultado;
     }
-}
+}    */
