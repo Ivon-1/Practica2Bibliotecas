@@ -4,9 +4,9 @@
  */
 package main;
 
-import controlador.LoginController;
+//import controlador.LoginController;
 import modelo.ConexionBD;
-import modelo.UsuarioModelo;
+//import modelo.UsuarioModelo;
 import vista.LoginView;
 
 /**
@@ -18,11 +18,11 @@ public class Main {
     public static void main(String[] args) {
         ConexionBD.conectar(); // conexion bbdd
         // instancias usuario - login 
-        UsuarioModelo modeloUsuario = new UsuarioModelo();
+        // UsuarioModelo modeloUsuario = new UsuarioModelo();
         LoginView loginVista = new LoginView();
         // instancias libro y controlador
         
-        // new LoginController(loginVista, modeloUsuario);
+        //new LoginController(loginVista, modeloUsuario);
 
     }
 }
