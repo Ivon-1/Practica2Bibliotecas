@@ -59,7 +59,7 @@ public class LoginView extends javax.swing.JFrame {
 
         btn_login.setText("Iniciar sesion");
 
-        cmb_login.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "administrador", "usuario" }));
+        cmb_login.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione una opcion", "usuario", "administrador" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

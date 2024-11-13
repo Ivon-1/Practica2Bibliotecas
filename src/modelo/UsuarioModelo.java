@@ -10,10 +10,10 @@ import java.sql.ResultSet;
 public class UsuarioModelo {
 
     public boolean validarUsuario(String idSofa, String descSofa, String tipo) {
-        String query = "SELECT * FROM mobiliario WHERE id_sofa = ? AND desc_sofa = ?";
+        String query = "SELECT * FROM mobiliario WHERE id_sofa = ? AND desc_sofa = ? AND tipo = ?";
         
         try (Connection con = ConexionBD.conectar(); // Usar la conexión de ConexionBD
-             PreparedStatement ps = con.prepareStatement(query)) {
+            PreparedStatement ps = con.prepareStatement(query)) {
              
             ps.setString(1, idSofa);
             ps.setString(2, descSofa);

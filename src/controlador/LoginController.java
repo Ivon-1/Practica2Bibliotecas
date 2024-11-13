@@ -32,7 +32,7 @@ public class LoginController implements ActionListener{
     }
     
     private void manejoLogin() {
-        String userType = loginVista.getCmb_login().getSelectedItem().toString();
+        String userType = loginVista.getCmb_login().getSelectedItem().toString().toLowerCase();
         String password = new String(loginVista.getTxt_pass().getPassword());
         String tipo = (String) loginVista.getCmb_login().getSelectedItem().toString();
 
