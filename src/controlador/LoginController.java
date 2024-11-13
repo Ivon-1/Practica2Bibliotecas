@@ -7,16 +7,16 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-// import modelo.UsuarioModelo;
+import modelo.UsuarioModelo;
 import vista.LoginView;
 
 /**
  *
  * @author sergi
  */
-/*public class LoginController implements ActionListener{
+public class LoginController implements ActionListener{
     private LoginView loginVista;
-   // private UsuarioModelo modeloUsuario;
+    private UsuarioModelo modeloUsuario;
 
     public LoginController(LoginView loginVista, UsuarioModelo modeloUsuario) {
         this.loginVista = loginVista;
@@ -28,14 +28,15 @@ import vista.LoginView;
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        handleLogin();
+        manejoLogin();
     }
     
-    private void handleLogin() {
+    private void manejoLogin() {
         String userType = loginVista.getCmb_login().getSelectedItem().toString();
         String password = new String(loginVista.getTxt_pass().getPassword());
+        String tipo = (String) loginVista.getCmb_login().getSelectedItem().toString();
 
-        boolean isValid = modeloUsuario.validateUser(userType, password);
+        boolean isValid = modeloUsuario.validarUsuario(userType, password, tipo);
         
         if (isValid) {
             JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -48,4 +49,4 @@ import vista.LoginView;
 
     
     
-}*/
+}
