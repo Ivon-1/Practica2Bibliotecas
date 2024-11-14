@@ -14,39 +14,45 @@ import java.sql.PreparedStatement;
  * @author jguti
  */
 public class SocioModelo {
-    //private ConexionBD bd_conexion;
+    // private ConexionBD bd_conexion;
     private Connection conexion;
     private PreparedStatement preparar;
-    
+
     public SocioModelo() {
-        //this.bd_conexion =  new ConexionBD();
+        // this.bd_conexion = new ConexionBD();
+        this.conexion = ConexionBD.conectar();
         this.conexion = (Connection) ConexionBD.conectar();
-       
     }
-    
-    public void insertarSocio(Socio socio){
-        String consulta = "INSERT INTO socio (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
+
+    public void insertarSocio(Socio socio) {
+        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
         try {
-            
-            preparar = conexion.prepareStatement(consulta);          
+
+            preparar = conexion.prepareStatement(consulta);
             preparar.setString(1, socio.getNombre());
             preparar.setString(2, socio.getApellido());
             preparar.setString(3, socio.getCorreo());
             preparar.setString(4, socio.getDni());
-            preparar.setString(5, socio.getTelefono());
+            preparar.setInt(5, socio.getTelefono());
             preparar.setString(6, socio.getDireccion());
-            
+
             preparar.execute();
-            
+
             System.out.println("Socio agregado con exito");
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
-    
-    
-    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, String telefono, String direccion){
+
+    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono,
+            String direccion) {
         Socio agregarSocio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
-        return false;
+        try {
+            insertarSocio(agregarSocio);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

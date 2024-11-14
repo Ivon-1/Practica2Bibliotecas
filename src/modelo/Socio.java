@@ -15,10 +15,10 @@ public class Socio implements Serializable{
     private String apellido;
     private String correo;
     private String dni;
-    private String telefono;
+    private int telefono;
     private String direccion;
 
-    public Socio(String nombre, String apellido, String correo, String dni, String telefono, String direccion) {
+    public Socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -59,11 +59,11 @@ public class Socio implements Serializable{
         this.dni = dni;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 

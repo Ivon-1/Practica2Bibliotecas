@@ -4,6 +4,9 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author sergi
@@ -27,73 +30,71 @@ public class MenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btn_agregar_principal = new javax.swing.JButton();
+        btn_ConsultarSocio = new javax.swing.JButton();
+        btn_consultarBibilioteca = new javax.swing.JButton();
+        btn_Administracion = new javax.swing.JButton();
+        btn_cerrarSesion = new javax.swing.JButton();
+        btn_GestionPrincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Gestion de bibliotecas");
 
-        jButton1.setText("Agregar");
+        btn_agregar_principal.setText("Agregar");
 
-        jButton2.setText("Consultas socios");
+        btn_ConsultarSocio.setText("Consultas socios");
 
-        jButton3.setText("Consultar biblioteca");
+        btn_consultarBibilioteca.setText("Consultar biblioteca");
 
-        jButton4.setText("Administracion");
+        btn_Administracion.setText("Administracion");
 
-        jButton5.setText("Cerrar sesión");
+        btn_cerrarSesion.setText("Cerrar sesión");
 
-        jButton6.setText("Gestion");
+        btn_GestionPrincipal.setText("Gestion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 123, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jButton1)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jButton4)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6))
-                    .addComponent(jButton5))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(120, 120, 120))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_agregar_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Administracion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(154, 154, 154))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_cerrarSesion)
+                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6))
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_agregar_principal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_consultarBibilioteca)
+                .addGap(18, 18, 18)
+                .addComponent(btn_ConsultarSocio)
+                .addGap(18, 18, 18)
+                .addComponent(btn_Administracion)
+                .addGap(18, 18, 18)
+                .addComponent(btn_GestionPrincipal)
+                .addGap(18, 18, 18)
+                .addComponent(btn_cerrarSesion)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,13 +135,43 @@ public class MenuView extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtn_Administracion() {
+        return btn_Administracion;
+    }
+
+    public JButton getBtn_ConsultarSocio() {
+        return btn_ConsultarSocio;
+    }
+
+    public JButton getBtn_GestionPrincipal() {
+        return btn_GestionPrincipal;
+    }
+
+    public JButton getBtn_agregar_principal() {
+        return btn_agregar_principal;
+    }
+
+    public JButton getBtn_cerrarSesion() {
+        return btn_cerrarSesion;
+    }
+
+    public JButton getBtn_consultarBibilioteca() {
+        return btn_consultarBibilioteca;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btn_Administracion;
+    private javax.swing.JButton btn_ConsultarSocio;
+    private javax.swing.JButton btn_GestionPrincipal;
+    private javax.swing.JButton btn_agregar_principal;
+    private javax.swing.JButton btn_cerrarSesion;
+    private javax.swing.JButton btn_consultarBibilioteca;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
