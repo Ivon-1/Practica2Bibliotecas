@@ -44,8 +44,7 @@ public class SocioModelo {
         }
     }
 
-    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono,
-            String direccion) {
+    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion){
         Socio agregarSocio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
         try {
             insertarSocio(agregarSocio);

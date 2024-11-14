@@ -6,6 +6,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import modelo.ConexionBD;
 import modelo.ModeloLibro;
 import modelo.SocioModelo;
@@ -73,7 +74,7 @@ public class MainController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
        Object button = e.getSource();
-        if (button == this.vista_menu.getBtn_agregar_principal()) { // agregar???
+        if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) {
             
         }
     }

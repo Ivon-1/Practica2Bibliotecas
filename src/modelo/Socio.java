@@ -74,6 +74,4 @@ public class Socio implements Serializable{
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    
 }

@@ -42,10 +42,10 @@ public class Main {
         // instancias libro y controlador
 
         // mostrar datos libros
-        // ModeloLibro modelo_libros = new ModeloLibro();
-        // LibrosView vista_libros = new LibrosView();
-        // MostrarLibroController controlador = new
-        // MostrarLibroController(modelo_libros, vista_libros);
+         //ModeloLibro modelo_libros = new ModeloLibro();
+         //LibrosView vista_libros = new LibrosView();
+         //MostrarLibroController controlador = new
+         //MostrarLibroController(modelo_libros, vista_libros);
 
         // new LoginController(loginVista, modeloUsuario);
 
