@@ -27,6 +27,25 @@ public class MostrarLibroController implements ActionListener {
     private LibrosView vista_libros;
     private DefaultTableModel datos_tabla;
 
+    // funcion para mostrar
+    public MostrarLibroController(ModeloLibro modelo_libro, LibrosView vista_libro) {
+        this.modelo_libro = modelo_libro;
+        this.vista_libros = vista_libro;
+        // casteo tabla
+        datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
+        // boton
+        this.vista_libros.getBtn_agregarLibro();
+        this.vista_libros.getBtn_buscar();
+        this.vista_libros.getBtn_eliminarLibro();
+        this.vista_libros.getBtn_modificar_libro();
+        this.vista_libros.getCmb_filtro_libros();
+        this.vista_libros.getTxt_espbusquedaLibro();
+        // funcion para mostrar los libros
+        mostrarPublicaciones();
+        //----------
+        this.vista_libros.setVisible(true);
+    }
+
     // funcion para cargar datos bbdd
     public ArrayList<Libro> cargarLibrosBBDD() {
         ArrayList<Libro> array_libros = new ArrayList<>();
@@ -58,11 +77,11 @@ public class MostrarLibroController implements ActionListener {
                 System.out.println("idAutor" + idAutor);
                 System.out.println("Editorial" + editorial);
                 System.out.println("IdBliblioteca" + idBiblioteca);
+                Libro libros = new Libro(isbn, titulo, numSerie, precio, estado, editorial);
+                array_libros.add(libros);
             }
 
             // error por aqui proseguir despues
-            
-
         } catch (Exception e) {
             System.err.println("Error al realizar la consulta");
             e.printStackTrace();
@@ -72,25 +91,6 @@ public class MostrarLibroController implements ActionListener {
         return array_libros;
     }
 
-    // funcion para mostrar
-    public MostrarLibroController(ModeloLibro modelo_libro, LibrosView vista_libro) {
-        this.modelo_libro = modelo_libro;
-        this.vista_libros = vista_libro;
-        // casteo tabla
-        datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
-        // boton
-        this.vista_libros.getBtn_agregarLibro();
-        this.vista_libros.getBtn_buscar();
-        this.vista_libros.getBtn_eliminarLibro();
-        this.vista_libros.getBtn_modificar_libro();
-        this.vista_libros.getCmb_filtro_libros();
-        this.vista_libros.getTxt_espbusquedaLibro();
-        // funcion para mostrar los libros
-
-        //----------
-        this.vista_libros.setVisible(true);
-    }
-
     // funcion para pintar libro
     public void pintarLibro(Libro pintar_libro) {
         if (pintar_libro != null) {
@@ -98,18 +98,8 @@ public class MostrarLibroController implements ActionListener {
                 pintar_libro.getTitulo(),
                 pintar_libro.getNumSerie(),
                 pintar_libro.getPrecio(),
-                pintar_libro.getEstado()}); // faltaria campos de las otras tablas....
-        }
-    }
-
-    // funcion para mostrar libro
-    public void mostrarPublicacion(Libro pintarLibro) {
-        if (pintarLibro != null) {
-            datos_tabla.addRow(new Object[]{pintarLibro.getISBN(),
-                pintarLibro.getTitulo(),
-                pintarLibro.getNumSerie(),
-                pintarLibro.getPrecio(),
-                pintarLibro.getEstado()}); // faltaria campos de las otras tablas....
+                pintar_libro.getEstado(),
+                pintar_libro.getEditorial()}); // faltaria campos de las otras tablas....
         }
     }
 
@@ -117,13 +107,13 @@ public class MostrarLibroController implements ActionListener {
         ArrayList<Libro> libros = cargarLibrosBBDD();
         datos_tabla.setRowCount(0);
         for (Libro libro_actual : libros) {
-            mostrarPublicacion(libro_actual);
+            pintarLibro(libro_actual);
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        mostrarPublicaciones();
     }
 
 }
