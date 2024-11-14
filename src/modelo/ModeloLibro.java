@@ -7,7 +7,6 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 /**
  *
  * @author IvanA
@@ -36,8 +35,6 @@ public class ModeloLibro {
         return busqueda_libro;
     }
    
-
-  
     // funcion para buscar por id
     public Libro buscarPorId(int id) {
         return this.lista_libros.get(id);
@@ -47,10 +44,7 @@ public class ModeloLibro {
     public Libro eliminarPorId(int id) {
         return this.lista_libros.remove(id);
     }
-    
-    
-    
-
+   
     // insertar libros -- aaron
     // consultar
 }

@@ -32,6 +32,8 @@ public class Main {
         SocioModelo modelo = new SocioModelo();
         SocioController controlador = new SocioController(modelo, vista);
         vista.setVisible(true);
+        //SocioView socioVista = new SocioView();
+        //socioVista.setVisible(true);
 
         // instancias libro y controlador
 
