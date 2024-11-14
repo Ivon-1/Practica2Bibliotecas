@@ -2,10 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+
+
         <group>
-            <file>file:/C:/Users/IvanA/Downloads/Practica2Bibliotecas/Practica2Bibliotecas/src/modelo/ModeloLibro.java</file>
-            <file>file:/C:/Users/IvanA/Downloads/Practica2Bibliotecas/Practica2Bibliotecas/src/controlador/LibroController.java</file>
-            <file>file:/C:/Users/IvanA/Downloads/Practica2Bibliotecas/Practica2Bibliotecas/src/vista/LibrosView.java</file>
-        </group>
+
+            <file>file:/C:/Users/sergi/Documents/GitHub/Practica2Bibliotecas/src/vista/LoginView.java</file>
+            <file>file:/C:/Users/sergi/Documents/GitHub/Practica2Bibliotecas/src/controlador/LoginController.java</file>
+            <file>file:/C:/Users/sergi/Documents/GitHub/Practica2Bibliotecas/src/main/Main.java</file>
+            <file>file:/C:/Users/sergi/Documents/GitHub/Practica2Bibliotecas/src/modelo/ConexionBD.java</file>
+            <file>file:/C:/Users/sergi/Documents/GitHub/Practica2Bibliotecas/src/modelo/UsuarioModelo.java</file>
+        </group>        <group/>
+
+            <file>file:/C:/Users/jguti/Documents/GitHub/Practica2Bibliotecas/src/vista/SocioView.java</file>
+            <file>file:/C:/Users/jguti/Documents/GitHub/Practica2Bibliotecas/src/controlador/SocioController.java</file>
+        </group>906748541876a4c4ae75db98eaf9eb15a1050607
+
+
     </open-files>
 </project-private>
