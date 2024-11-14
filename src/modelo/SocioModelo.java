@@ -21,11 +21,10 @@ public class SocioModelo {
     public SocioModelo() {
         //this.bd_conexion =  new ConexionBD();
         this.conexion = (Connection) ConexionBD.conectar();
-       
     }
     
     public void insertarSocio(Socio socio){
-        String consulta = "INSERT INTO socio (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
+        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
         try {
             
             preparar = conexion.prepareStatement(consulta);          
@@ -33,7 +32,7 @@ public class SocioModelo {
             preparar.setString(2, socio.getApellido());
             preparar.setString(3, socio.getCorreo());
             preparar.setString(4, socio.getDni());
-            preparar.setString(5, socio.getTelefono());
+            preparar.setInt(5, socio.getTelefono());
             preparar.setString(6, socio.getDireccion());
             
             preparar.execute();
@@ -45,8 +44,14 @@ public class SocioModelo {
     }
     
     
-    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, String telefono, String direccion){
+    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion){
         Socio agregarSocio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
-        return false;
+        try {
+            insertarSocio(agregarSocio);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
