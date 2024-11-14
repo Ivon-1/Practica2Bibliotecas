@@ -27,8 +27,8 @@ public class Main {
         //instancias usuario - login 
         //UsuarioModelo modeloUsuario = new UsuarioModelo();
         //LoginView loginVista = new LoginView();
-        SocioView socioVista = new SocioView();
-        socioVista.setVisible(true);
+        //SocioView socioVista = new SocioView();
+        //socioVista.setVisible(true);
 
         // instancias libro y controlador
 
