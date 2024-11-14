@@ -20,7 +20,7 @@ public class SocioModelo {
     
     public SocioModelo() {
         //this.bd_conexion =  new ConexionBD();
-        this.conexion = (Connection) ConexionBD.conectar();
+        this.conexion = ConexionBD.conectar();
        
     }
     

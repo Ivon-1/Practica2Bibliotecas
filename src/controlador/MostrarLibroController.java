@@ -40,7 +40,7 @@ public class MostrarLibroController implements ActionListener {
         this.vista_libros.getBtn_modificar_libro();
         this.vista_libros.getCmb_filtro_libros();
         this.vista_libros.getTxt_espbusquedaLibro();
-        // funcion para mostrar los libros
+        // funcion para mostrar los libros . RECORDARRRRRR
         mostrarPublicaciones();
         //----------
         this.vista_libros.setVisible(true);
