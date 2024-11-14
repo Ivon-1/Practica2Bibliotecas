@@ -7,6 +7,7 @@ package main;
 import controlador.LoginController;
 import controlador.MainController;
 import controlador.MostrarLibroController;
+import controlador.SocioController;
 import modelo.ConexionBD;
 
 import modelo.ModeloLibro;
@@ -24,6 +25,29 @@ import vista.SocioView;
 public class Main {
 
     public static void main(String[] args) {
-     new MainController();
+
+        new MainController();
+
+        ConexionBD.conectar(); // conexion bbdd
+        // instancias usuario - login
+        // UsuarioModelo modeloUsuario = new UsuarioModelo();
+        // LoginView loginVista = new LoginView();
+        SocioView vista = new SocioView();
+        SocioModelo modelo = new SocioModelo();
+        SocioController controlador = new SocioController(modelo, vista);
+        vista.setVisible(true);
+        // SocioView socioVista = new SocioView();
+        // socioVista.setVisible(true);
+
+        // instancias libro y controlador
+
+        // mostrar datos libros
+        // ModeloLibro modelo_libros = new ModeloLibro();
+        // LibrosView vista_libros = new LibrosView();
+        // MostrarLibroController controlador = new
+        // MostrarLibroController(modelo_libros, vista_libros);
+
+        // new LoginController(loginVista, modeloUsuario);
+
     }
 }
