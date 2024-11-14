@@ -5,8 +5,11 @@
 package main;
 
 import controlador.LoginController;
+import controlador.MostrarLibroController;
 import modelo.ConexionBD;
+import modelo.ModeloLibro;
 import modelo.UsuarioModelo;
+import vista.LibrosView;
 import vista.LoginView;
 
 /**
@@ -22,7 +25,12 @@ public class Main {
         LoginView loginVista = new LoginView();
         // instancias libro y controlador
         
-        new LoginController(loginVista, modeloUsuario);
+        // mostrar datos libros
+        ModeloLibro modelo_libros = new ModeloLibro();
+        LibrosView vista_libros = new LibrosView();
+        MostrarLibroController controlador = new MostrarLibroController(modelo_libros, vista_libros);
+        
+        //new LoginController(loginVista, modeloUsuario);
 
     }
 }

@@ -7,6 +7,8 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,20 @@ public class ConexionBD {
         }
         return connection;
     }
+    
+    // cerrar conexion
+    public static void cerrarConexion(){
+        if (connection != null) {
+            try{
+                connection.close();
+                System.err.println("Conexion cerrada");
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar conexion");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
 }
 
 
