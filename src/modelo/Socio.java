@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class Socio {
+public class Socio implements Serializable{
     private String nombre;
     private String apellido;
     private String correo;
@@ -72,4 +74,6 @@ public class Socio {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    
 }
