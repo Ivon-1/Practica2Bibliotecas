@@ -9,9 +9,7 @@ import controlador.MainController;
 import controlador.MostrarLibroController;
 import controlador.SocioController;
 import modelo.ConexionBD;
-
 import modelo.ModeloLibro;
-
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
 import vista.LibrosView;
@@ -27,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
 
         new MainController();
-
+/*
         ConexionBD.conectar(); // conexion bbdd
         // instancias usuario - login
         // UsuarioModelo modeloUsuario = new UsuarioModelo();
@@ -48,6 +46,6 @@ public class Main {
          //MostrarLibroController(modelo_libros, vista_libros);
 
         // new LoginController(loginVista, modeloUsuario);
-
+*/
     }
 }

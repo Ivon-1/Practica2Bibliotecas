@@ -49,13 +49,10 @@ public class MainController implements ActionListener{
         this.socioVista = new SocioView();
         this.vista_libros = new LibrosView();
         this.vista_menu = new MenuView();
-        // controladores
-        /* añadir posteriormente en el action performed
+        // controladores añadir posteriormente en el action performed
         this.controladorLibros = new MostrarLibroController(modelo_libros, vista_libros);
         this.controladorLogin = new LoginController(loginVista, modeloUsuario);
-        this.controladorPrincipal = new MainController();
-        this.controladorSocio = new SocioController(modelo_socio, socioVista);*/
-        
+        this.controladorSocio = new SocioController(modelo_socio, socioVista);
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
@@ -76,6 +73,8 @@ public class MainController implements ActionListener{
        Object button = e.getSource();
         if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) {
             
+        }else if(button == this.vista_menu.getBtn_consultarBibilioteca()){ // mostrar libros
+            new MostrarLibroController(modelo_libros, vista_libros);
         }
     }
 
