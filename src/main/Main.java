@@ -5,9 +5,14 @@
 package main;
 
 import controlador.LoginController;
+import controlador.MostrarLibroController;
 import modelo.ConexionBD;
+
+import modelo.ModeloLibro;
+
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
+import vista.LibrosView;
 import vista.LoginView;
 import vista.SocioView;
 
@@ -26,6 +31,13 @@ public class Main {
         socioVista.setVisible(true);
 
         // instancias libro y controlador
+
+        
+        // mostrar datos libros
+        ModeloLibro modelo_libros = new ModeloLibro();
+        LibrosView vista_libros = new LibrosView();
+        MostrarLibroController controlador = new MostrarLibroController(modelo_libros, vista_libros);
+    
         //new LoginController(loginVista, modeloUsuario);
 
     }
