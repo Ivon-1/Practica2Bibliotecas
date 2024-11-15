@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.Libro;
+import vista.AgregarLibroView;
 
 /**
  *
@@ -107,5 +108,4 @@ public class MostrarLibroController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         mostrarPublicaciones();
     }
-
 }

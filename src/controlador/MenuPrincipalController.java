@@ -76,10 +76,7 @@ public class MenuPrincipalController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object button = e.getSource();
-        if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) {
-            
-        }
+        Object button = e.getSource(); 
         if(button == this.vista_menu.getBtn_consultarBibilioteca()){ // mostrar libros
             new MostrarLibroController(modelo_libros, vista_libros);
         }
@@ -87,6 +84,7 @@ public class MenuPrincipalController implements ActionListener{
         if(e.getSource() == this.vista_menu.getBtn_agregar_principal()){
             new SocioController(modelo_socio, socioVista);
         }
+        
         if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
             new MostrarSocioController(modelo_socio, vista_principalSocios);
         }

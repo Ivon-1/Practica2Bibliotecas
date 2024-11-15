@@ -35,7 +35,7 @@ public class ConexionBD {
     }
     
     // cerrar conexion
-    public static void cerrarConexion(){
+    /*public static void cerrarConexion(){
         if (connection != null) {
             try{
                 connection.close();
@@ -45,7 +45,7 @@ public class ConexionBD {
                 ex.printStackTrace();
             }
         }
-    }
+    }*/
 }
 
 

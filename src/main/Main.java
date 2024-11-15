@@ -26,7 +26,7 @@ public class Main {
 
         public static void main(String[] args) {
 
-        new MainController();
+        new MenuPrincipalController();
 
         ConexionBD.conectar(); // conexion bbdd
         // instancias usuario - login
