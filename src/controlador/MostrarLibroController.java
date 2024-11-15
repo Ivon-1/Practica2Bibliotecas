@@ -68,16 +68,8 @@ public class MostrarLibroController implements ActionListener {
                 int idAutor = resultado.getInt("idAutor");
                 String editorial = resultado.getString("editorial");
                 int idBiblioteca = resultado.getInt("idBiblioteca");
-
-                System.out.println("ISBN: " + isbn);
-                System.out.println("Titulo: " + titulo);
-                System.out.println("Numero de serie" + numSerie);
-                System.out.println("Precio" + precio);
-                System.out.println("Estado" + estado);
-                System.out.println("idAutor" + idAutor);
-                System.out.println("Editorial" + editorial);
-                System.out.println("IdBliblioteca" + idBiblioteca);
-                Libro libros = new Libro(isbn, titulo, numSerie, precio, estado, editorial);
+                    
+                Libro libros = new Libro(isbn, titulo, numSerie, precio, estado, editorial); // PENDIENTE DE AÑADIR COSAS?
                 array_libros.add(libros);
             }
 
@@ -86,7 +78,7 @@ public class MostrarLibroController implements ActionListener {
             System.err.println("Error al realizar la consulta");
             e.printStackTrace();
         } finally {
-            ConexionBD.cerrarConexion();
+            //ConexionBD.cerrarConexion();
         }
         return array_libros;
     }

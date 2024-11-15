@@ -6,7 +6,7 @@ package main;
 
 import controlador.LibroController;
 import controlador.LoginController;
-import controlador.MainController;
+import controlador.MenuPrincipalController;
 import controlador.MostrarLibroController;
 import controlador.SocioController;
 import modelo.ConexionBD;
@@ -16,7 +16,7 @@ import modelo.UsuarioModelo;
 import vista.AgregarLibroView;
 import vista.LibrosView;
 import vista.LoginView;
-import vista.SocioView;
+import vista.SocioAgregarView;
 
 /**
  *
@@ -24,7 +24,7 @@ import vista.SocioView;
  */
 public class Main {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
         new MainController();
 
@@ -43,14 +43,13 @@ public class Main {
 
         // mostrar datos libros
          //ModeloLibro modelo_libros = new ModeloLibro();
-         LibroModelo modelo = new LibroModelo();
-         AgregarLibroView agregar = new AgregarLibroView();
-         LibrosView libros = new LibrosView();
-         LibroController controlador =  new LibroController(modelo, agregar, libros);
+        LibroModelo modelo = new LibroModelo();
+        AgregarLibroView agregar = new AgregarLibroView();
+        LibrosView libros = new LibrosView();
+        LibroController controlador =  new LibroController(modelo, agregar, libros);
          //MostrarLibroController controlador = new
          //MostrarLibroController(modelo_libros, vista_libros);
 
         // new LoginController(loginVista, modeloUsuario);
-
-    }
+}
 }
