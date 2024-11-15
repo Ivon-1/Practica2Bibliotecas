@@ -5,11 +5,15 @@
 package vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
  *
- * @author jguti
+ * @author IvanA
  */
 public class SocioView extends javax.swing.JFrame {
 
@@ -18,39 +22,7 @@ public class SocioView extends javax.swing.JFrame {
      */
     public SocioView() {
         initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("SOCIO");
     }
-
-    public JButton getBtn_agregar() {
-        return btn_agregar;
-    }
-
-    public JTextField getTxt_apellido() {
-        return txt_apellido;
-    }
-
-    public JTextField getTxt_correo() {
-        return txt_correo;
-    }
-
-    public JTextField getTxt_direccion() {
-        return txt_direccion;
-    }
-
-    public JTextField getTxt_dni() {
-        return txt_dni;
-    }
-
-    public JTextField getTxt_nombre() {
-        return txt_nombre;
-    }
-
-    public JTextField getTxt_telefono() {
-        return txt_telefono;
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,105 +33,127 @@ public class SocioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_modificar_Socio = new javax.swing.JButton();
+        txt_espbusquedaLibro = new javax.swing.JTextField();
+        btn_buscar_socio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_apellido = new javax.swing.JTextField();
-        txt_correo = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
-        txt_dni = new javax.swing.JTextField();
-        btn_agregar = new javax.swing.JButton();
+        btn_agregarSocio = new javax.swing.JButton();
+        btn_eliminarSocio = new javax.swing.JButton();
+        cmb_filtro_socio = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_socios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nombre:");
+        btn_modificar_Socio.setText("Modificar");
+        btn_modificar_Socio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificar_SocioActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Apellido:");
+        txt_espbusquedaLibro.setText("Introducir dni socio");
 
-        jLabel3.setText("Correo:");
+        btn_buscar_socio.setText("Buscar");
 
-        jLabel4.setText("Telefono:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Socios");
 
-        jLabel5.setText("Direccion:");
+        btn_agregarSocio.setText("Agregar");
+        btn_agregarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarSocioActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setText("Dni:");
+        btn_eliminarSocio.setText("Eliminar");
+        btn_eliminarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarSocioActionPerformed(evt);
+            }
+        });
 
-        btn_agregar.setText("AGREGAR");
+        cmb_filtro_socio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "id_incidencia", "dni" }));
+        cmb_filtro_socio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_filtro_socioActionPerformed(evt);
+            }
+        });
+
+        table_socios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "idSocio", "nombre", "apellido", "telefono", "direccion", "id_incidencia", "dni"
+            }
+        ));
+        jScrollPane2.setViewportView(table_socios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_agregar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_apellido))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_correo))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_telefono))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_direccion))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_dni))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addGap(33, 33, 33)
+                .addComponent(txt_espbusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(cmb_filtro_socio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btn_buscar_socio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addComponent(btn_agregarSocio)
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminarSocio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_modificar_Socio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cmb_filtro_socio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_espbusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscar_socio))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(btn_agregar)
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(btn_agregarSocio)
+                    .addComponent(btn_eliminarSocio)
+                    .addComponent(btn_modificar_Socio))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_modificar_SocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_SocioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_modificar_SocioActionPerformed
+
+    private void btn_agregarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarSocioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregarSocioActionPerformed
+
+    private void btn_eliminarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarSocioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_eliminarSocioActionPerformed
+
+    private void cmb_filtro_socioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_socioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_filtro_socioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,19 +190,53 @@ public class SocioView extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtn_agregarSocio() {
+        return btn_agregarSocio;
+    }
+
+    public JButton getBtn_buscar_socio() {
+        return btn_buscar_socio;
+    }
+
+    public JButton getBtn_eliminarSocio() {
+        return btn_eliminarSocio;
+    }
+
+    public JButton getBtn_modificar_Socio() {
+        return btn_modificar_Socio;
+    }
+
+    public JComboBox<String> getCmb_filtro_socio() {
+        return cmb_filtro_socio;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JTable getTable_socios() {
+        return table_socios;
+    }
+
+   
+
+    public JTextField getTxt_espbusquedaLibro() {
+        return txt_espbusquedaLibro;
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_agregarSocio;
+    private javax.swing.JButton btn_buscar_socio;
+    private javax.swing.JButton btn_eliminarSocio;
+    private javax.swing.JButton btn_modificar_Socio;
+    private javax.swing.JComboBox<String> cmb_filtro_socio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txt_apellido;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_direccion;
-    private javax.swing.JTextField txt_dni;
-    private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable table_socios;
+    private javax.swing.JTextField txt_espbusquedaLibro;
     // End of variables declaration//GEN-END:variables
 }

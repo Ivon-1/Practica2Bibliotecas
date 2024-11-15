@@ -50,7 +50,7 @@
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="txt_espbusquedaLibro" min="-2" pref="306" max="-2" attributes="0"/>
+              <Component id="txt_espbusquedaSocio" min="-2" pref="306" max="-2" attributes="0"/>
               <EmptySpace pref="49" max="32767" attributes="0"/>
               <Component id="cmb_filtro_libros" min="-2" pref="151" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -76,7 +76,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmb_filtro_libros" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt_espbusquedaLibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_espbusquedaSocio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -144,18 +144,18 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="table_libros">
+        <Component class="javax.swing.JTable" name="table_socios">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="8" rowCount="4">
-                <Column editable="true" title="isbn" type="java.lang.Object"/>
-                <Column editable="true" title="titulo" type="java.lang.Object"/>
-                <Column editable="true" title="numSerie" type="java.lang.Object"/>
-                <Column editable="true" title="precio" type="java.lang.Object"/>
-                <Column editable="true" title="estado" type="java.lang.Object"/>
-                <Column editable="true" title="editorial" type="java.lang.Object"/>
-                <Column editable="true" title="autor" type="java.lang.Object"/>
-                <Column editable="true" title="prestamo" type="java.lang.Object"/>
+                <Column editable="true" title="idSocio" type="java.lang.Object"/>
+                <Column editable="true" title="nombre" type="java.lang.Object"/>
+                <Column editable="true" title="apellido" type="java.lang.Object"/>
+                <Column editable="true" title="correo" type="java.lang.Object"/>
+                <Column editable="true" title="telefono" type="java.lang.Object"/>
+                <Column editable="true" title="direccion" type="java.lang.Object"/>
+                <Column editable="true" title="id_incidencia" type="java.lang.Object"/>
+                <Column editable="true" title="dni" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -207,7 +207,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificar_libroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_espbusquedaLibro">
+    <Component class="javax.swing.JTextField" name="txt_espbusquedaSocio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Introducir libro"/>
       </Properties>
