@@ -9,7 +9,7 @@ package modelo;
  * @author sergi
  */
 public class Libro {
-    private String ISBN;
+    private String isbn;
     private String titulo;
     private int numSerie;
     private float precio;
@@ -18,7 +18,7 @@ public class Libro {
 
     // constructor
     public Libro(String ISBN, String titulo, int numSerie, float precio, String estado, String editorial) {
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.titulo = titulo;
         this.numSerie = numSerie;
         this.precio = precio;
@@ -29,11 +29,11 @@ public class Libro {
     // getter y setter 
 
     public String getISBN() {
-        return ISBN;
+        return isbn;
     }
 
     public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+        this.isbn = ISBN;
     }
 
     public String getTitulo() {

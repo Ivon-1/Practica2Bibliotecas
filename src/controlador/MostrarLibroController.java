@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import modelo.ConexionBD;
-import modelo.ModeloLibro;
+import modelo.LibroModelo;
 import vista.LibrosView;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,12 +23,12 @@ import modelo.Libro;
 public class MostrarLibroController implements ActionListener {
 
     // instancias de modelo y vista
-    private ModeloLibro modelo_libro;
+    private LibroModelo modelo_libro;
     private LibrosView vista_libros;
     private DefaultTableModel datos_tabla;
 
     // funcion para mostrar
-    public MostrarLibroController(ModeloLibro modelo_libro, LibrosView vista_libro) {
+    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro) {
         this.modelo_libro = modelo_libro;
         this.vista_libros = vista_libro;
         // casteo tabla

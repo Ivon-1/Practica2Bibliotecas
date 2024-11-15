@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.ConexionBD;
-import modelo.ModeloLibro;
+import modelo.LibroModelo;
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
 import vista.LibrosView;
@@ -26,7 +26,7 @@ public class MenuPrincipalController implements ActionListener{
     // Instancias necesarias para conectar todo
     private ConexionBD conexionBD;
     private UsuarioModelo modeloUsuario;
-    private ModeloLibro modelo_libros;
+    private LibroModelo modelo_libros;
     private SocioModelo modelo_socio;
     // vistas
     private LoginView loginVista;
@@ -46,7 +46,7 @@ public class MenuPrincipalController implements ActionListener{
         // modelos
         this.conexionBD = new ConexionBD();
         this.modeloUsuario = new UsuarioModelo();
-        this.modelo_libros = new ModeloLibro();
+        this.modelo_libros = new LibroModelo();
         this.modelo_socio = new SocioModelo();
         // vistas
         this.loginVista = new LoginView();
@@ -76,12 +76,16 @@ public class MenuPrincipalController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       Object button = e.getSource();
+        Object button = e.getSource();
         if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) {
             
         }
         if(button == this.vista_menu.getBtn_consultarBibilioteca()){ // mostrar libros
             new MostrarLibroController(modelo_libros, vista_libros);
+        }
+        
+        if(e.getSource() == this.vista_menu.getBtn_agregar_principal()){
+            new SocioController(modelo_socio, socioVista);
         }
         if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
             new MostrarSocioController(modelo_socio, vista_principalSocios);
