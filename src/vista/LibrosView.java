@@ -40,9 +40,9 @@ public class LibrosView extends javax.swing.JFrame {
         btn_eliminarLibro = new javax.swing.JButton();
         cmb_filtro_libros = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_libros = new javax.swing.JTable();
+        table_socios = new javax.swing.JTable();
         btn_modificar_libro = new javax.swing.JButton();
-        txt_espbusquedaLibro = new javax.swing.JTextField();
+        txt_espbusquedaSocio = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -84,7 +84,7 @@ public class LibrosView extends javax.swing.JFrame {
             }
         });
 
-        table_libros.setModel(new javax.swing.table.DefaultTableModel(
+        table_socios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -92,10 +92,10 @@ public class LibrosView extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "isbn", "titulo", "numSerie", "precio", "estado", "editorial", "autor", "prestamo"
+                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "id_incidencia", "dni"
             }
         ));
-        jScrollPane2.setViewportView(table_libros);
+        jScrollPane2.setViewportView(table_socios);
 
         btn_modificar_libro.setText("Modificar");
         btn_modificar_libro.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class LibrosView extends javax.swing.JFrame {
             }
         });
 
-        txt_espbusquedaLibro.setText("Introducir libro");
+        txt_espbusquedaSocio.setText("Introducir libro");
 
         btn_buscar.setText("Buscar");
 
@@ -116,7 +116,7 @@ public class LibrosView extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
-                .addComponent(txt_espbusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(cmb_filtro_libros, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
@@ -139,7 +139,7 @@ public class LibrosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmb_filtro_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_espbusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscar))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,11 +241,11 @@ public class LibrosView extends javax.swing.JFrame {
     }
 
     public JTable getTable_libros() {
-        return table_libros;
+        return table_socios;
     }
 
     public JTextField getTxt_espbusquedaLibro() {
-        return txt_espbusquedaLibro;
+        return txt_espbusquedaSocio;
     }
 
     public JButton getBtn_buscar() {
@@ -269,7 +269,7 @@ public class LibrosView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable table_libros;
-    private javax.swing.JTextField txt_espbusquedaLibro;
+    private javax.swing.JTable table_socios;
+    private javax.swing.JTextField txt_espbusquedaSocio;
     // End of variables declaration//GEN-END:variables
 }

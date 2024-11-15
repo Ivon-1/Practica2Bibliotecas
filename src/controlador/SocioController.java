@@ -8,18 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.SocioModelo;
-import vista.SocioView;
+import vista.SocioAgregarView;
 
 /**
  *
  * @author jguti
  */
 public class SocioController implements ActionListener {
-
+    
     private SocioModelo modelo;
-    private SocioView vista;
+    private SocioAgregarView vista;
 
-    public SocioController(SocioModelo modelo, SocioView vista) {
+    public SocioController(SocioModelo modelo, SocioAgregarView vista) {
         this.modelo = modelo;
         this.vista = vista;
 

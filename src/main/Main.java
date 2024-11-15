@@ -5,7 +5,7 @@
 package main;
 
 import controlador.LoginController;
-import controlador.MainController;
+import controlador.MenuPrincipalController;
 import controlador.MostrarLibroController;
 import controlador.SocioController;
 import modelo.ConexionBD;
@@ -14,7 +14,7 @@ import modelo.SocioModelo;
 import modelo.UsuarioModelo;
 import vista.LibrosView;
 import vista.LoginView;
-import vista.SocioView;
+import vista.SocioAgregarView;
 
 /**
  *
@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new MainController();
+        new MenuPrincipalController();
 /*
         ConexionBD.conectar(); // conexion bbdd
         // instancias usuario - login
