@@ -15,7 +15,7 @@ import vista.LibrosView;
 import vista.LoginView;
 import vista.MenuView;
 import vista.SocioAgregarView;
-import vista.SocioView;
+import vista.SociosView;
 
 /**
  *
@@ -30,7 +30,7 @@ public class MenuPrincipalController implements ActionListener{
     private SocioModelo modelo_socio;
     // vistas
     private LoginView loginVista;
-    private SocioView vista_principalSocios;
+    private SociosView vista_principalSocios;
     private SocioAgregarView socioVista;
     private LibrosView vista_libros;
     private MenuView vista_menu;
@@ -53,7 +53,7 @@ public class MenuPrincipalController implements ActionListener{
         this.socioVista = new SocioAgregarView();
         this.vista_libros = new LibrosView();
         this.vista_menu = new MenuView();
-        this.vista_principalSocios = new SocioView();
+        this.vista_principalSocios = new SociosView();
         // controladores añadir posteriormente en el action performed
         this.controladorLibros = new MostrarLibroController(modelo_libros, vista_libros);
         this.controladorLogin = new LoginController(loginVista, modeloUsuario);
