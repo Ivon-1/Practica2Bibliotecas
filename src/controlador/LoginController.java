@@ -49,6 +49,5 @@ public class LoginController implements ActionListener{
         } else {
             JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas.", "Login", JOptionPane.ERROR_MESSAGE);
         }
-    
     }   
 }

@@ -38,7 +38,7 @@ public class SocioModelo {
 
             preparar.execute();
 
-            System.out.println("Socio agregado con exito");
+            System.out.println("Socio agregado con exito.");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
