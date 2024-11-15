@@ -34,19 +34,21 @@ public class LoginController implements ActionListener{
     private void manejoLogin() {
         String userType = loginVista.getCmb_login().getSelectedItem().toString().toLowerCase();
         String password = new String(loginVista.getTxt_pass().getPassword());
-        String tipo = (String) loginVista.getCmb_login().getSelectedItem().toString();
 
-        boolean isValid = modeloUsuario.validarUsuario(userType, password, tipo);
-        
-        if (isValid) {
-            JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso", "Login", JOptionPane.INFORMATION_MESSAGE);
-            // Aquí podrías redirigir al usuario a otra vista o pantalla.
-        } else {
-            JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas", "Login", JOptionPane.ERROR_MESSAGE);
+        if (userType.equals("seleccione una opcion")) {
+            JOptionPane.showMessageDialog(loginVista, "Por favor, selecciona un tipo de usuario.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-    }
 
+        int tipo = userType.equals("usuario") ? 1 : 2;
+        boolean isValid = modeloUsuario.validarUsuario(userType, password, tipo);
 
+        if (isValid) {
+            JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso.", "Login", JOptionPane.INFORMATION_MESSAGE);
+            // Redirigir a otra pantalla si es necesario
+        } else {
+            JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas.", "Login", JOptionPane.ERROR_MESSAGE);
+        }
     
-    
+    }   
 }

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
  */
 public class UsuarioModelo {
 
-    public boolean validarUsuario(String idSofa, String descSofa, String tipo) {
+    public boolean validarUsuario(String idSofa, String descSofa, int tipo) {
         String query = "SELECT * FROM mobiliario WHERE id_sofa = ? AND desc_sofa = ? AND tipo = ?";
         
         try (Connection con = ConexionBD.conectar(); // Usar la conexión de ConexionBD
@@ -17,7 +17,7 @@ public class UsuarioModelo {
              
             ps.setString(1, idSofa);
             ps.setString(2, descSofa);
-            ps.setString(3, tipo);
+            ps.setInt(3, tipo);
             ResultSet rs = ps.executeQuery();
             
             return rs.next(); // devuelve true si encuentra un registro que coincide
