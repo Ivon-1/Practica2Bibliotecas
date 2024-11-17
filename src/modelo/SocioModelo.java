@@ -22,9 +22,9 @@ public class SocioModelo {
     private PreparedStatement preparar;
 
     // almacenamos libros
-    private HashMap<String, Socio> lista_socios;
+    private HashMap<Integer, Socio> lista_socios;
 
-    public HashMap<String, Socio> getListaSocios() {
+    public HashMap<Integer, Socio> getListaSocios() {
         return this.lista_socios;
     }
 
@@ -35,7 +35,7 @@ public class SocioModelo {
         this.lista_socios = new HashMap<>();
     }
 
-    // funcion para buscar por dni
+    /* funcion para buscar por dni
     public ArrayList<Socio> buscarPorTitulo(String dni) {
         ArrayList<Socio> busqueda_socio = new ArrayList<>();
         for (String dni_actual : this.lista_socios.keySet()) {
@@ -44,19 +44,19 @@ public class SocioModelo {
             }
         }
         return busqueda_socio;
-    }
-
+    }*/
+    //Consulta para agregar un socio.
     public void insertarSocio(Socio socio) {
-        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
+        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?,?)";
         try {
 
             preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1, socio.getNombre());
-            preparar.setString(2, socio.getApellido());
-            preparar.setString(3, socio.getCorreo());
-            preparar.setString(4, socio.getDni());
-            preparar.setInt(5, socio.getTelefono());
-            preparar.setString(6, socio.getDireccion());
+            preparar.setString(2, socio.getNombre());
+            preparar.setString(3, socio.getApellido());
+            preparar.setString(4, socio.getCorreo());
+            preparar.setString(5, socio.getDni());
+            preparar.setInt(6, socio.getTelefono());
+            preparar.setString(7, socio.getDireccion());
 
             preparar.execute();
 
@@ -66,8 +66,28 @@ public class SocioModelo {
         }
     }
 
-    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
-        Socio agregarSocio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
+    //Consulta  para eliminar por id
+    public boolean eliminarPorId(int idSocio) {
+        String consulta = "DELETE FROM socios WHERE idSocio = ?";
+        try {
+            preparar = conexion.prepareStatement(consulta);
+            preparar.setInt(1, idSocio);
+            preparar.execute();
+
+            System.out.println("Socio eliminado con exito");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // funcion para buscar por id
+    public Socio buscarPorId(int idSocio) {
+        return this.lista_socios.get(idSocio);
+    }
+
+    public boolean agregar_socio( int idSocio, String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
+        Socio agregarSocio = new Socio(idSocio, nombre, apellido, correo, dni, telefono, direccion);
         try {
             insertarSocio(agregarSocio);
             return true;
@@ -76,15 +96,4 @@ public class SocioModelo {
             return false;
         }
     }
-
-    // funcion para buscar por id
-    public Socio buscarPorId(int id) {
-        return this.lista_socios.get(id);
-    }
-
-    // funcion para eliminar por id
-    public Socio eliminarPorId(int id) {
-        return this.lista_socios.remove(id);
-    }
-
 }

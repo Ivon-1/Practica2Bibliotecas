@@ -7,6 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import modelo.Socio;
 import modelo.SocioModelo;
 import vista.SocioAgregarView;
 
@@ -15,7 +16,7 @@ import vista.SocioAgregarView;
  * @author jguti
  */
 public class SocioController implements ActionListener {
-    
+
     private SocioModelo modelo;
     private SocioAgregarView vista;
 
@@ -24,6 +25,7 @@ public class SocioController implements ActionListener {
         this.vista = vista;
 
         this.vista.getBtn_agregar().addActionListener(this);
+        this.vista.getBtn_eliminar().addActionListener(this);
         this.vista.setVisible(true);
 
     }
@@ -36,9 +38,11 @@ public class SocioController implements ActionListener {
         }
     }
 
+    //FUNCION PARA AGREGAR SOCIOS.
     public void agregarSocios() {
         if (validarDatos()) {
-            if (this.modelo.agregar_socio(this.vista.getTxt_nombre().getText(),
+            if (this.modelo.agregar_socio(Integer.parseInt(this.vista.getTxt_idSocio().getText()),
+                    this.vista.getTxt_nombre().getText(),
                     this.vista.getTxt_apellido().getText(),
                     this.vista.getTxt_correo().getText(),
                     this.vista.getTxt_dni().getText(),
@@ -53,10 +57,43 @@ public class SocioController implements ActionListener {
         }
     }
 
+    //FUNCION PARA ELIMINAR EL SOCIO.
+    /*public void eliminarSocio() {
+        String id = JOptionPane.showInputDialog(vista,
+                "Introduzca una id que desea eliminar ",
+                "Eliminar",
+                JOptionPane.ERROR_MESSAGE);
+
+        if (id != null) {
+            int idSocio = Integer.parseInt(id);
+            if (this.modelo.buscarPorId(idSocio) != null) {
+                int resultado = JOptionPane.showConfirmDialog(vista,
+                        "Estas seguro de eliminar esta id : " + id,
+                        "Eliminar",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (resultado == JOptionPane.YES_NO_OPTION) {
+                    this.modelo.eliminarPorId(idSocio);
+                    JOptionPane.showMessageDialog(vista,
+                            "El socio con id " + id,
+                            " eliminado con exito ",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(vista,
+                        "No existe la id" + id,
+                        "No se puede borrar",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }*/
+
+    //FUNCION PARA VALIDAR LOS DATOS.
     public boolean validarDatos() {
         boolean resultado = true;
         String mensaje = "";
-
+        
         if (this.vista.getTxt_nombre().getText().trim().length() == 0) {
             mensaje += "Introduzca un nombre.\n";
             resultado = false;
