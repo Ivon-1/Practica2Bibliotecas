@@ -48,8 +48,8 @@ public class LibroModelo {
     }
 
     // funcion para eliminar por id
-    public Libro eliminarPorId(int id) {
-        return this.lista_libros.remove(id);
+    public void eliminarPorId(int id) {
+        String consulta = "DELETE FROM libros WHERE ";
     }
 
     // insertar libros -- aaron

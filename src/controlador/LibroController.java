@@ -28,14 +28,14 @@ public class LibroController implements ActionListener {
 
         this.libros.getBtn_agregarLibro().addActionListener(this);
         this.vista.getBtn_agregar().addActionListener(this);
-        this.vista.setVisible(false);
+        this.vista.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {   
         if(e.getSource() == this.libros.getBtn_agregarLibro()){
-            this.vista.setVisible(true);
-        }
+            this.vista.setVisible(false);
+        }  
         if(e.getSource() == this.vista.getBtn_agregar()){
             agregar_libros();
         }
