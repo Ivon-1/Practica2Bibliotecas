@@ -21,8 +21,6 @@ public class SocioAgregarView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("SOCIO");
-        //El campo no se edita.
-        txt_idSocio.setEnabled(false);
     }
 
     public JButton getBtn_agregar() {

@@ -57,8 +57,7 @@ public class MostrarSocioController implements ActionListener {
         try {
             PreparedStatement stmt = con.prepareStatement(sql); // consulta preparada
             ResultSet resultado = stmt.executeQuery(); // resultado consulta
-            while (resultado.next()) {
-                int idSocio = resultado.getInt("idSocio");
+            while (resultado.next()){
                 String nombre = resultado.getString("nombre");
                 String apellido = resultado.getString("apellido");
                 String correo = resultado.getString("correo");
@@ -67,7 +66,7 @@ public class MostrarSocioController implements ActionListener {
                 String id_incidencia = resultado.getString("id_incidencia");
                 String dni = resultado.getString("dni");
 
-                Socio socios = new Socio(idSocio, nombre, apellido, correo, dni, telefono, direccion); // PENDIENTE DE AÑADIR COSAS?
+                Socio socios = new Socio(nombre, apellido, correo, dni, telefono, direccion); // PENDIENTE DE AÑADIR COSAS?
                 array_socios.add(socios);
             }
             // error por aqui proseguir despues
@@ -84,7 +83,6 @@ public class MostrarSocioController implements ActionListener {
     public void pintarSocio(Socio pintar_socio) {
         if (pintar_socio != null) {
             datos_tabla_socio.addRow(new Object[]{
-                pintar_socio.getIdSocio(),
                 pintar_socio.getNombre(),
                 pintar_socio.getApellido(),
                 pintar_socio.getCorreo(),

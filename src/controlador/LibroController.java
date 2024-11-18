@@ -30,35 +30,39 @@ public class LibroController implements ActionListener {
         this.vista = vista;
         this.libros = libros;
 
-        
         this.libros.getBtn_agregarLibro().addActionListener(this);
         this.vista.getBtn_agregar().addActionListener(this);
         this.libros.getBtn_buscar().addActionListener(this);
+        this.libros.getBtn_eliminarLibro().addActionListener(this);
         this.vista.setVisible(true);
         this.libros.setVisible(true);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {   
-        if(e.getSource() == this.libros.getBtn_agregarLibro()){
-            this.vista.setVisible(false);
-        }  
-        if(e.getSource() == this.vista.getBtn_agregar()){
-           agregar_libros();
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == this.libros.getBtn_agregarLibro()) {
+            agregar_libros();
         }
-        if(e.getSource() == this.libros.getBtn_buscar()){
+        if (e.getSource() == this.vista.getBtn_agregar()) {
+            agregar_libros();
+        }
+        if (e.getSource() == this.libros.getBtn_buscar()) {
             buscarLibros();
         }
+        
+        if(e.getSource() == this.libros.getBtn_eliminarLibro()){
+            eliminar_libros();
+        }
     }
-    
-    public void agregar_libros(){
+
+    public void agregar_libros() {
         if (validarDatos()) {
             if (this.modelo.agregar_libro(this.vista.getTxt_isbn().getText(),
-                                          this.vista.getTxt_titulo().getText(),
-                                          Integer.parseInt(this.vista.getTxt_Nserie().getText()),
-                                          Float.parseFloat(this.vista.getTxt_precio().getText()),
-                                          this.vista.getTxt_estado().getText(),
-                                          this.vista.getTxt_editorial().getText())) {
+                    this.vista.getTxt_titulo().getText(),
+                    Integer.parseInt(this.vista.getTxt_Nserie().getText()),
+                    Float.parseFloat(this.vista.getTxt_precio().getText()),
+                    this.vista.getTxt_estado().getText(),
+                    this.vista.getTxt_editorial().getText())) {
                 JOptionPane.showMessageDialog(vista, "Agregado correctamente.");
                 this.vista.dispose();
             } else {
@@ -66,8 +70,37 @@ public class LibroController implements ActionListener {
             }
         }
     }
-    
-    
+
+    public void eliminar_libros() {
+        String isbn = JOptionPane.showInputDialog(vista,
+                "Introduzca la isbn  que desea eliminar ",
+                "Eliminar",
+                JOptionPane.ERROR_MESSAGE);
+
+        if (isbn != null) {
+            if (this.modelo.buscarPorISBN(isbn) != null) {
+                int resultado = JOptionPane.showConfirmDialog(vista,
+                        "Estas seguro de eliminar esta isbn : " + isbn,
+                        "Eliminar",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (resultado == JOptionPane.YES_NO_OPTION) {
+                    this.modelo.eliminarPorIsbn(isbn);
+                    JOptionPane.showMessageDialog(vista,
+                            "El libro con isbn " + isbn,
+                            " eliminado con exito.",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(vista,
+                        "No existe la isbn" + isbn,
+                        "No se puede borrar",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+
     public void buscarLibros() {
         String combo = this.libros.getCmb_filtro_libros().getSelectedItem().toString();
         String busqueda = this.libros.getTxt_espbusquedaLibro().getText().trim();
@@ -83,7 +116,7 @@ public class LibroController implements ActionListener {
         switch (combo.toLowerCase()) {
             case "isbn":
                 Libro libro = this.modelo.buscarPorISBN(busqueda);
-                if (libro != null) {   
+                if (libro != null) {
                     if (!buscarPorDisponible || libro.getEstado().equals("disponible")) {
                         resultados.add(libro);
                     }
@@ -99,17 +132,17 @@ public class LibroController implements ActionListener {
             case "editorial":
                 resultados = this.modelo.buscarPorEditorial(busqueda);
                 break;
-                
+
             case "todos":
-            // Si el combo es "Todos"
-            if (buscarPorDisponible) {
-                // Si está marcado el checkbox, solo buscamos los libros disponibles
-                resultados = this.modelo.buscarPorEstado("disponible");
-            } else {
-                // Si no está marcado el checkbox, buscamos todos los libros
-                resultados = this.modelo.mostrarResultados();
-            }
-            break;
+                // Si el combo es "Todos"
+                if (buscarPorDisponible) {
+                    // Si está marcado el checkbox, solo buscamos los libros disponibles
+                    resultados = this.modelo.buscarPorEstado("disponible");
+                } else {
+                    // Si no está marcado el checkbox, buscamos todos los libros
+                    resultados = this.modelo.mostrarResultados();
+                }
+                break;
 
             default:
                 JOptionPane.showMessageDialog(libros, "Filtro no válido.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -119,7 +152,7 @@ public class LibroController implements ActionListener {
         if (buscarPorDisponible) {
             resultados.removeIf(libro -> !libro.getEstado().equals("disponible"));
         }
-        
+
         // Si no se encuentran resultados, muestra un mensaje y retorna
         if (resultados.isEmpty()) {
             JOptionPane.showMessageDialog(libros, "No se encontraron resultados.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -129,21 +162,19 @@ public class LibroController implements ActionListener {
 
             for (Libro libro : resultados) {
                 model.addRow(new Object[]{
-                    libro.getIsbn(), 
-                    libro.getTitulo(), 
-                    libro.getNumSerie(), 
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getNumSerie(),
                     libro.getPrecio(),
-                    libro.getEstado(), 
-                    libro.getIdAutor(), 
-                    libro.getEditorial(), 
+                    libro.getEstado(),
+                    libro.getIdAutor(),
+                    libro.getEditorial(),
                     libro.getIdBiblioteca()
                 });
             }
         }
     }
-    
-    
-    
+
     public boolean validarDatos() {
         boolean resultado = true;
         String mensaje = "";
@@ -180,4 +211,3 @@ public class LibroController implements ActionListener {
         return resultado;
     }
 }
-

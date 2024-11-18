@@ -19,7 +19,7 @@ import vista.LibrosView;
  */
 public class LibroModelo {
 
-    // almacenamos libros
+    //Almacenamos libros
     private HashMap<String, Libro> lista_libros;
     //Conexion BD INSERTAR.
     private Connection conexion;
@@ -153,15 +153,41 @@ public class LibroModelo {
 
     
 
-    // funcion para eliminar por id
-    public void eliminarPorId(int id) {
-        String consulta = "DELETE FROM libros WHERE isbn = ?";
+    // funcion para eliminar por isbn.
+    public void eliminarPorIsbn(String isbn){
+        String consulta = "DELETE FROM libros WHERE isbn= ?";
+        try {
+            preparar = conexion.prepareStatement(consulta);
+            preparar.setString(1, isbn);
+            preparar.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
+   
+    /*
+    Verifica si el isbn ya existe.
+    */
+    public boolean existeEnPrestamos(String isbn){
+        String consulta = "SELECT 1 FROM prestamos WHERE isbn = ?";
+        try {
+            preparar = conexion.prepareStatement(consulta);
+            preparar.setString(1,isbn);
+            preparar.execute();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     // insertar libros -- aaron
     public void insertarLibro(Libro libro) {
         String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial) values (?,?,?,?,?,?)";
         try {
+            if (!existeEnPrestamos(libro.getIsbn())) {
+                System.out.println("El isbn no existe en la tabla de prestamos. No se puede insertar.");
+            }
             preparar = conexion.prepareStatement(consulta);
             preparar.setString(1, libro.getIsbn());
             preparar.setString(2, libro.getTitulo());
