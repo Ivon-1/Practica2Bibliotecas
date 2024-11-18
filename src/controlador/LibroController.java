@@ -6,7 +6,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Libro;
 import modelo.LibroModelo;
 import vista.AgregarLibroView;
 import vista.LibrosView;
@@ -20,15 +23,19 @@ public class LibroController implements ActionListener {
     private LibroModelo modelo;
     private AgregarLibroView vista;
     private LibrosView libros;
+    private Libro libro;
 
     public LibroController(LibroModelo modelo, AgregarLibroView vista, LibrosView libros) {
         this.modelo = modelo;
         this.vista = vista;
         this.libros = libros;
 
+        
         this.libros.getBtn_agregarLibro().addActionListener(this);
         this.vista.getBtn_agregar().addActionListener(this);
+        this.libros.getBtn_buscar().addActionListener(this);
         this.vista.setVisible(true);
+        this.libros.setVisible(true);
     }
 
     @Override
@@ -37,7 +44,10 @@ public class LibroController implements ActionListener {
             this.vista.setVisible(false);
         }  
         if(e.getSource() == this.vista.getBtn_agregar()){
-            agregar_libros();
+           agregar_libros();
+        }
+        if(e.getSource() == this.libros.getBtn_buscar()){
+            buscarLibros();
         }
     }
     
@@ -56,7 +66,84 @@ public class LibroController implements ActionListener {
             }
         }
     }
+    
+    
+    public void buscarLibros() {
+        String combo = this.libros.getCmb_filtro_libros().getSelectedItem().toString();
+        String busqueda = this.libros.getTxt_espbusquedaLibro().getText().trim();
+        ArrayList<Libro> resultados = new ArrayList<>();
 
+        boolean buscarPorDisponible = this.libros.getCheck_disponible().isSelected();
+
+        if (buscarPorDisponible && busqueda.isEmpty() && !combo.equals("Todos")) {
+            JOptionPane.showMessageDialog(libros, "Por favor, ingrese un valor para buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        switch (combo.toLowerCase()) {
+            case "isbn":
+                Libro libro = this.modelo.buscarPorISBN(busqueda);
+                if (libro != null) {   
+                    if (!buscarPorDisponible || libro.getEstado().equals("disponible")) {
+                        resultados.add(libro);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(libros, "No se encontraron resultados para el ISBN proporcionado.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+                break;
+
+            case "titulo":
+                resultados = this.modelo.buscarPorTitulo(busqueda);
+                break;
+
+            case "editorial":
+                resultados = this.modelo.buscarPorEditorial(busqueda);
+                break;
+                
+            case "todos":
+            // Si el combo es "Todos"
+            if (buscarPorDisponible) {
+                // Si está marcado el checkbox, solo buscamos los libros disponibles
+                resultados = this.modelo.buscarPorEstado("disponible");
+            } else {
+                // Si no está marcado el checkbox, buscamos todos los libros
+                resultados = this.modelo.mostrarResultados();
+            }
+            break;
+
+            default:
+                JOptionPane.showMessageDialog(libros, "Filtro no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+
+        if (buscarPorDisponible) {
+            resultados.removeIf(libro -> !libro.getEstado().equals("disponible"));
+        }
+        
+        // Si no se encuentran resultados, muestra un mensaje y retorna
+        if (resultados.isEmpty()) {
+            JOptionPane.showMessageDialog(libros, "No se encontraron resultados.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) this.libros.getTable_libros().getModel();
+            model.setRowCount(0);
+
+            for (Libro libro : resultados) {
+                model.addRow(new Object[]{
+                    libro.getIsbn(), 
+                    libro.getTitulo(), 
+                    libro.getNumSerie(), 
+                    libro.getPrecio(),
+                    libro.getEstado(), 
+                    libro.getIdAutor(), 
+                    libro.getEditorial(), 
+                    libro.getIdBiblioteca()
+                });
+            }
+        }
+    }
+    
+    
+    
     public boolean validarDatos() {
         boolean resultado = true;
         String mensaje = "";
@@ -93,3 +180,4 @@ public class LibroController implements ActionListener {
         return resultado;
     }
 }
+

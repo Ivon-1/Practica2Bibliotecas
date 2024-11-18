@@ -14,26 +14,30 @@ public class Libro {
     private int numSerie;
     private float precio;
     private String estado;
+    private int idAutor;
     private String editorial;
+    private int idBiblioteca;
 
     // constructor
-    public Libro(String ISBN, String titulo, int numSerie, float precio, String estado, String editorial) {
+    public Libro(String isbn, String titulo, int numSerie, float precio, String estado, String editorial) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.numSerie = numSerie;
         this.precio = precio;
         this.estado = estado;
+        this.idAutor = idAutor;
         this.editorial = editorial;
+        this.idBiblioteca = idBiblioteca;
     }
     
     // getter y setter 
 
-    public String getISBN() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.isbn = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getTitulo() {
@@ -75,4 +79,22 @@ public class Libro {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     } 
+    
+    public int getIdAutor() {
+        return idAutor;
+    }
+
+    public void setIdAutor(int idAutor) {
+        this.idAutor = idAutor;
+    }
+
+    public int getIdBiblioteca() {
+        return idBiblioteca;
+    }
+
+    public void setIdBiblioteca(int idBiblioteca) {
+        this.idBiblioteca = idBiblioteca;
+    }
+    
+    
 }

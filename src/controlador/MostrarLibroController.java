@@ -44,7 +44,7 @@ public class MostrarLibroController implements ActionListener {
         // funcion para mostrar los libros . RECORDARRRRRR
         mostrarPublicaciones();
         //----------
-        this.vista_libros.setVisible(true);
+        //this.vista_libros.setVisible(true);
     }
 
     // funcion para cargar datos bbdd
@@ -87,7 +87,7 @@ public class MostrarLibroController implements ActionListener {
     // funcion para pintar libro
     public void pintarLibro(Libro pintar_libro) {
         if (pintar_libro != null) {
-            datos_tabla.addRow(new Object[]{pintar_libro.getISBN(),
+            datos_tabla.addRow(new Object[]{pintar_libro.getIsbn(),
                 pintar_libro.getTitulo(),
                 pintar_libro.getNumSerie(),
                 pintar_libro.getPrecio(),
