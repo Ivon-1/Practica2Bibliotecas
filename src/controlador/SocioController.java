@@ -25,7 +25,7 @@ public class SocioController implements ActionListener {
         this.vista = vista;
 
         this.vista.getBtn_agregar().addActionListener(this);
-        this.vista.getBtn_eliminar().addActionListener(this);
+        //this.vista.getBtn_eliminar().addActionListener(this);
         this.vista.setVisible(true);
 
     }

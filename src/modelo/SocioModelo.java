@@ -51,6 +51,7 @@ public class SocioModelo {
         String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
         try {
 
+            preparar = conexion.prepareStatement(consulta);
             preparar = conexion.prepareStatement(consulta, PreparedStatement.RETURN_GENERATED_KEYS); // añadir retorno keys
             preparar.setString(1, socio.getNombre());
             preparar.setString(2, socio.getApellido());
@@ -95,7 +96,7 @@ public class SocioModelo {
     }
 
     public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
-        Socio agregarSocio = new Socio( nombre, apellido, correo, dni, telefono, direccion);
+        Socio agregarSocio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
         try {
             insertarSocio(agregarSocio);
             return true;
