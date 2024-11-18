@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author sergi
  */
-public class Socio implements Serializable{
+public class Socio implements Serializable {
+
     private int idSocio;
     private String nombre;
     private String apellido;
@@ -19,8 +20,7 @@ public class Socio implements Serializable{
     private int telefono;
     private String direccion;
 
-    public Socio(int idSocio, String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
-        this.idSocio = idSocio;
+    public Socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -36,6 +36,8 @@ public class Socio implements Serializable{
     public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -85,5 +87,4 @@ public class Socio implements Serializable{
         this.direccion = direccion;
     }
 
-    
 }

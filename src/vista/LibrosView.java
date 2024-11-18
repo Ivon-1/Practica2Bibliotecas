@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -23,6 +24,8 @@ public class LibrosView extends javax.swing.JFrame {
     public LibrosView() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,10 +43,11 @@ public class LibrosView extends javax.swing.JFrame {
         btn_eliminarLibro = new javax.swing.JButton();
         cmb_filtro_libros = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_socios = new javax.swing.JTable();
+        table_libros = new javax.swing.JTable();
         btn_modificar_libro = new javax.swing.JButton();
         txt_espbusquedaSocio = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
+        check_disponible = new javax.swing.JCheckBox();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,14 +81,14 @@ public class LibrosView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtro_libros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "precio", "idAutor", "editorial" }));
+        cmb_filtro_libros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "editorial" }));
         cmb_filtro_libros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_filtro_librosActionPerformed(evt);
             }
         });
 
-        table_socios.setModel(new javax.swing.table.DefaultTableModel(
+        table_libros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -92,10 +96,18 @@ public class LibrosView extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "id_incidencia", "dni"
+                "ISBN", "Titulo", "Nº Serie", "Precio", "Estado", "Autor ID", "Editorial", "Biblioteca ID"
             }
-        ));
-        jScrollPane2.setViewportView(table_socios);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table_libros);
 
         btn_modificar_libro.setText("Modificar");
         btn_modificar_libro.addActionListener(new java.awt.event.ActionListener() {
@@ -104,24 +116,14 @@ public class LibrosView extends javax.swing.JFrame {
             }
         });
 
-        txt_espbusquedaSocio.setText("Introducir libro");
-
         btn_buscar.setText("Buscar");
+
+        check_disponible.setText("Disponible");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(cmb_filtro_libros, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(280, 280, 280)
@@ -131,6 +133,18 @@ public class LibrosView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar_libro)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addGap(33, 33, 33)
+                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(check_disponible)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(cmb_filtro_libros, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +154,8 @@ public class LibrosView extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cmb_filtro_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar))
+                    .addComponent(btn_buscar)
+                    .addComponent(check_disponible))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -241,7 +256,7 @@ public class LibrosView extends javax.swing.JFrame {
     }
 
     public JTable getTable_libros() {
-        return table_socios;
+        return table_libros;
     }
 
     public JTextField getTxt_espbusquedaLibro() {
@@ -251,6 +266,12 @@ public class LibrosView extends javax.swing.JFrame {
     public JButton getBtn_buscar() {
         return btn_buscar;
     }
+
+    public JCheckBox getCheck_disponible() {
+        return check_disponible;
+    }
+    
+    
     
     
     
@@ -264,12 +285,13 @@ public class LibrosView extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminarLibro;
     private javax.swing.JButton btn_modificar_libro;
+    private javax.swing.JCheckBox check_disponible;
     private javax.swing.JComboBox<String> cmb_filtro_libros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable table_socios;
+    private javax.swing.JTable table_libros;
     private javax.swing.JTextField txt_espbusquedaSocio;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,7 @@ public class SocioController implements ActionListener {
     //FUNCION PARA AGREGAR SOCIOS.
     public void agregarSocios() {
         if (validarDatos()) {
-            if (this.modelo.agregar_socio(Integer.parseInt(this.vista.getTxt_idSocio().getText()),
+            if (this.modelo.agregar_socio(
                     this.vista.getTxt_nombre().getText(),
                     this.vista.getTxt_apellido().getText(),
                     this.vista.getTxt_correo().getText(),
