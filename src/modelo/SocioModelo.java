@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.ResultSet; // Importar ResultSet
 
 /**
  *
@@ -47,18 +48,25 @@ public class SocioModelo {
     }*/
     //Consulta para agregar un socio.
     public void insertarSocio(Socio socio) {
-        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?,?)";
+        String consulta = "INSERT INTO socios (nombre , apellido , correo , dni , telefono , direccion) VALUES (?,?,?,?,?,?)";
         try {
 
-            preparar = conexion.prepareStatement(consulta);
-            preparar.setString(2, socio.getNombre());
-            preparar.setString(3, socio.getApellido());
-            preparar.setString(4, socio.getCorreo());
-            preparar.setString(5, socio.getDni());
-            preparar.setInt(6, socio.getTelefono());
-            preparar.setString(7, socio.getDireccion());
+            preparar = conexion.prepareStatement(consulta, PreparedStatement.RETURN_GENERATED_KEYS); // añadir retorno keys
+            preparar.setString(1, socio.getNombre());
+            preparar.setString(2, socio.getApellido());
+            preparar.setString(3, socio.getCorreo());
+            preparar.setString(4, socio.getDni());
+            preparar.setInt(5, socio.getTelefono());
+            preparar.setString(6, socio.getDireccion());
 
-            preparar.execute();
+            int filasAfectadas = preparar.executeUpdate();
+            if (filasAfectadas > 0) {
+                ResultSet generatedKeys = preparar.getGeneratedKeys();// obtencion id autoincremental
+                if (generatedKeys.next()) {
+                    int id_generado = generatedKeys.getInt(1);
+                    socio.setIdSocio(id_generado);
+                }
+            }
 
             System.out.println("Socio agregado con exito.");
         } catch (SQLException ex) {
@@ -86,8 +94,8 @@ public class SocioModelo {
         return this.lista_socios.get(idSocio);
     }
 
-    public boolean agregar_socio( int idSocio, String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
-        Socio agregarSocio = new Socio(idSocio, nombre, apellido, correo, dni, telefono, direccion);
+    public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
+        Socio agregarSocio = new Socio( nombre, apellido, correo, dni, telefono, direccion);
         try {
             insertarSocio(agregarSocio);
             return true;

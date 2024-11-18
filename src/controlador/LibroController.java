@@ -30,7 +30,7 @@ public class LibroController implements ActionListener {
         this.vista = vista;
         this.libros = libros;
 
-        
+        this.modelo.mostrarResultados();
         this.libros.getBtn_agregarLibro().addActionListener(this);
         this.vista.getBtn_agregar().addActionListener(this);
         this.libros.getBtn_buscar().addActionListener(this);
@@ -66,8 +66,7 @@ public class LibroController implements ActionListener {
             }
         }
     }
-    
-    
+
     public void buscarLibros() {
         String combo = this.libros.getCmb_filtro_libros().getSelectedItem().toString();
         String busqueda = this.libros.getTxt_espbusquedaLibro().getText().trim();
