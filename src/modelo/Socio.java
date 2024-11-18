@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author sergi
  */
 public class Socio implements Serializable{
-public class Socio implements Serializable {
 
     private int idSocio;
     private String nombre;
@@ -87,5 +86,4 @@ public class Socio implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-}
 }

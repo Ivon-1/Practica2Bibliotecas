@@ -87,6 +87,7 @@ public class MostrarSocioController implements ActionListener {
     public void pintarSocio(Socio pintar_socio) {
         if (pintar_socio != null) {
             datos_tabla_socio.addRow(new Object[]{
+                pintar_socio.getIdSocio(),
                 pintar_socio.getNombre(),
                 pintar_socio.getApellido(),
                 pintar_socio.getCorreo(),
