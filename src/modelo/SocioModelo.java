@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.ResultSet; // Importar ResultSet
 
 /**
  *
@@ -51,6 +52,7 @@ public class SocioModelo {
         try {
 
             preparar = conexion.prepareStatement(consulta);
+            preparar = conexion.prepareStatement(consulta, PreparedStatement.RETURN_GENERATED_KEYS); // añadir retorno keys
             preparar.setString(1, socio.getNombre());
             preparar.setString(2, socio.getApellido());
             preparar.setString(3, socio.getCorreo());
@@ -58,7 +60,14 @@ public class SocioModelo {
             preparar.setInt(5, socio.getTelefono());
             preparar.setString(6, socio.getDireccion());
 
-            preparar.execute();
+            int filasAfectadas = preparar.executeUpdate();
+            if (filasAfectadas > 0) {
+                ResultSet generatedKeys = preparar.getGeneratedKeys();// obtencion id autoincremental
+                if (generatedKeys.next()) {
+                    int id_generado = generatedKeys.getInt(1);
+                    socio.setIdSocio(id_generado);
+                }
+            }
 
             System.out.println("Socio agregado con exito.");
         } catch (SQLException ex) {

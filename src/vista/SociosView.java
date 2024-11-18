@@ -43,7 +43,7 @@ public class SociosView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         table_socios = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btn_modificarSocio.setText("Modificar");
         btn_modificarSocio.addActionListener(new java.awt.event.ActionListener() {
