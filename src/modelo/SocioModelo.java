@@ -36,6 +36,33 @@ public class SocioModelo {
         this.lista_socios = new HashMap<>();
     }
 
+    /**
+     * funcion para buscar por nombre
+     * @param titulo
+     * @return 
+     */
+    /* SEGUIR POR AQUI !!!!!!!!!
+    public ArrayList<Socio> buscarPorNombre(String nombre) {
+        String consulta = "SELECT * FROM socios WHERE nombre LIKE ?";
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            PreparedStatement preparar = conexion.prepareStatement(consulta);
+            preparar.setString(1, "%" + nombre + "%");
+            ResultSet rs = preparar.executeQuery();
+
+            while (rs.next()) {
+                socios.add(new Socio(rs.getString("idSocio"), rs.getString("nombre"),
+                     rs.getString("apellido"), rs.getString("correo"),
+                     rs.getString("dni"), rs.getString("telefono"),
+                     rs.getString("direccion")));
+            }
+        }catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+        return socios;
+    }*/
+    
+    
     /* funcion para buscar por dni
     public ArrayList<Socio> buscarPorTitulo(String dni) {
         ArrayList<Socio> busqueda_socio = new ArrayList<>();

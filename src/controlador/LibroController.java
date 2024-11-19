@@ -49,7 +49,6 @@ public class LibroController implements ActionListener {
         if (e.getSource() == this.libros.getBtn_buscar()) {
             buscarLibros();
         }
-        
         if(e.getSource() == this.libros.getBtn_eliminarLibro()){
             eliminar_libros();
         }
