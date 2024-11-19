@@ -87,13 +87,13 @@ public class SociosView extends javax.swing.JFrame {
 
         table_socios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "id_incidencia", "dni"
+                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion"
             }
         ));
         jScrollPane2.setViewportView(table_socios);

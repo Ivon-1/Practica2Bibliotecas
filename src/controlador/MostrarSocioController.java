@@ -65,7 +65,6 @@ public class MostrarSocioController implements ActionListener {
                 String correo = resultado.getString("correo");
                 int telefono = resultado.getInt("telefono");
                 String direccion = resultado.getString("direccion");
-                String id_incidencia = resultado.getString("id_incidencia");
                 String dni = resultado.getString("dni");
 
                 Socio socios = new Socio(nombre, apellido, correo, dni, telefono, direccion); // PENDIENTE DE AÑADIR COSAS?
