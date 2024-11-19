@@ -14,6 +14,7 @@ import vista.LibrosView;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Libro;
 import vista.AgregarLibroView;
 
@@ -27,24 +28,130 @@ public class MostrarLibroController implements ActionListener {
     private LibroModelo modelo_libro;
     private LibrosView vista_libros;
     private DefaultTableModel datos_tabla;
+    private AgregarLibroView libro_view;
 
     // funcion para mostrar
-    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro) {
+    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro , AgregarLibroView libro_view) {
         this.modelo_libro = modelo_libro;
         this.vista_libros = vista_libro;
+        this.libro_view = libro_view;
         // casteo tabla
         datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
         // boton
-        this.vista_libros.getBtn_agregarLibro();
-        this.vista_libros.getBtn_buscar();
-        this.vista_libros.getBtn_eliminarLibro();
-        this.vista_libros.getBtn_modificar_libro();
-        this.vista_libros.getCmb_filtro_libros();
-        this.vista_libros.getTxt_espbusquedaLibro();
+        this.vista_libros.getBtn_agregarLibro().addActionListener(this);
+        this.vista_libros.getBtn_buscar().addActionListener(this);
+        this.vista_libros.getBtn_eliminarLibro().addActionListener(this);
+        this.vista_libros.getBtn_modificar_libro().addActionListener(this);
+        this.vista_libros.getCmb_filtro_libros().addActionListener(this);
+        this.vista_libros.getTxt_espbusquedaLibro().addActionListener(this);
         // funcion para mostrar los libros . RECORDARRRRRR
+
+        this.libro_view.getBtn_agregar().addActionListener(this);
+
         mostrarLibros();
         //----------
         //this.vista_libros.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        mostrarLibros();
+
+        if (e.getSource() == this.vista_libros.getBtn_agregarLibro()) {
+            this.libro_view.setVisible(true);
+        }
+
+        if (e.getSource() == this.libro_view.getBtn_agregar()) {
+            agregar_libros();
+        }
+
+        if (e.getSource() == this.vista_libros.getBtn_eliminarLibro()) {
+            eliminar_libros();
+        }
+    }
+
+    //Funcion para agregar libros.
+    public void agregar_libros() {
+        if (validarDatos()) {
+            if (this.modelo_libro.agregar_libro(this.libro_view.getTxt_isbn().getText(),
+                    this.libro_view.getTxt_titulo().getText(),
+                    Integer.parseInt(this.libro_view.getTxt_Nserie().getText()),
+                    Float.parseFloat(this.libro_view.getTxt_precio().getText()),
+                    this.libro_view.getTxt_estado().getText(),
+                    this.libro_view.getTxt_editorial().getText())) {
+                JOptionPane.showMessageDialog(libro_view, "Agregado correctamente.");
+                this.libro_view.dispose();
+            } else {
+                JOptionPane.showMessageDialog(libro_view, "Error al agregar.");
+            }
+        }
+    }
+    
+    //Funcion para eliminar libros.
+    public void eliminar_libros() {
+        String isbn = JOptionPane.showInputDialog(libro_view,
+                "Introduzca la isbn  que desea eliminar ",
+                "Eliminar",
+                JOptionPane.ERROR_MESSAGE);
+
+        if (isbn != null) {
+            if (this.modelo_libro.buscarPorISBN(isbn) != null) {
+                int resultado = JOptionPane.showConfirmDialog(libro_view,
+                        "Estas seguro de eliminar esta isbn : " + isbn,
+                        "Eliminar",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (resultado == JOptionPane.YES_NO_OPTION) {
+                    this.modelo_libro.eliminarPorIsbn(isbn);
+                    JOptionPane.showMessageDialog(libro_view,
+                            "El libro con isbn " + isbn,
+                            " eliminado con exito.",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(libro_view,
+                        "No existe la isbn" + isbn,
+                        "No se puede borrar",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+    
+        public boolean validarDatos() {
+        boolean resultado = true;
+        String mensaje = "";
+
+        if (this.libro_view.getTxt_isbn().getText().trim().length() == 0) {
+            mensaje += "Introduzca un isbn.\n";
+            resultado = false;
+        }
+        if (this.libro_view.getTxt_titulo().getText().trim().length() == 0) {
+            mensaje += "Introduzca un apellido.\n";
+            resultado = false;
+        }
+        if (this.libro_view.getTxt_Nserie().getText().trim().length() == 0) {
+            mensaje += "Introduzca un DNI.\n";
+            resultado = false;
+        }
+        if (this.libro_view.getTxt_precio().getText().trim().length() == 0) {
+            mensaje += "Introduzca un precio.\n";
+            resultado = false;
+        }
+        if (this.libro_view.getTxt_estado().getText().trim().length() == 0) {
+            mensaje += "Introduzca un estado.\n";
+            resultado = false;
+        }
+        if (this.libro_view.getTxt_editorial().getText().trim().length() == 0) {
+            mensaje += "Introduzca una editorial.\n";
+            resultado = false;
+        }
+
+        if (!resultado) {
+            JOptionPane.showMessageDialog(libro_view, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return resultado;
     }
 
     // funcion para cargar datos bbdd
@@ -110,8 +217,7 @@ public class MostrarLibroController implements ActionListener {
                 pintar_libro.getEstado(),
                 pintar_libro.getIdAutor(),
                 pintar_libro.getEditorial(),
-                pintar_libro.getIdBiblioteca(),
-                }); // faltaria campos de las otras tablas....
+                pintar_libro.getIdBiblioteca(),}); // faltaria campos de las otras tablas....
         }
     }
 
@@ -124,10 +230,5 @@ public class MostrarLibroController implements ActionListener {
         for (Libro libro_actual : libros) {
             pintarLibro(libro_actual);
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        mostrarLibros();
     }
 }
