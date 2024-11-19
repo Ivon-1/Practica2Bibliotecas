@@ -33,9 +33,6 @@ public class SocioController implements ActionListener {
     //Controlador donde se encontraran los metodos(funcionalidades).
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.vista.getBtn_agregar()) {
-            agregarSocios();  // Llamamos al método que procesa el formulario
-        }
     }
 
     //FUNCION PARA AGREGAR SOCIOS.
@@ -57,37 +54,36 @@ public class SocioController implements ActionListener {
         }
     }
 
-    //FUNCION PARA ELIMINAR EL SOCIO.
-    /*public void eliminarSocio() {
-        String id = JOptionPane.showInputDialog(vista,
-                "Introduzca una id que desea eliminar ",
+    //Funcion para eliminar socios.
+    
+        public void eliminar_socios() {
+        String idSocio = JOptionPane.showInputDialog(vista,
+                "Introduzca la id  que desea eliminar ",
                 "Eliminar",
                 JOptionPane.ERROR_MESSAGE);
 
-        if (id != null) {
-            int idSocio = Integer.parseInt(id);
-            if (this.modelo.buscarPorId(idSocio) != null) {
+        if (idSocio != null) {
+            if (this.modelo.buscarPorId(Integer.parseInt(idSocio)) != null) {
                 int resultado = JOptionPane.showConfirmDialog(vista,
-                        "Estas seguro de eliminar esta id : " + id,
+                        "Estas seguro de eliminar esta id : " + idSocio,
                         "Eliminar",
                         JOptionPane.YES_NO_OPTION);
 
-                if (resultado == JOptionPane.YES_NO_OPTION) {
-                    this.modelo.eliminarPorId(idSocio);
+                if (resultado == JOptionPane.YES_OPTION) {
+                    this.modelo.eliminarPorId(Integer.parseInt(idSocio));
                     JOptionPane.showMessageDialog(vista,
-                            "El socio con id " + id,
-                            " eliminado con exito ",
+                            "El socio con id " + idSocio,
+                            " eliminado con exito.",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(vista,
-                        "No existe la id" + id,
+                        "No existe la id" + idSocio,
                         "No se puede borrar",
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-
-    }*/
+    }
 
     //FUNCION PARA VALIDAR LOS DATOS.
     public boolean validarDatos() {

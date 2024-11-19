@@ -52,7 +52,6 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
 
-        txt_espBusquedaSocio.setText("Introducir dni");
         txt_espBusquedaSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_espBusquedaSocioActionPerformed(evt);
@@ -78,7 +77,7 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtroSocios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "precio", "idAutor", "editorial" }));
+        cmb_filtroSocios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Apellidos", "DNI" }));
         cmb_filtroSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_filtroSociosActionPerformed(evt);
@@ -87,13 +86,13 @@ public class SociosView extends javax.swing.JFrame {
 
         table_socios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "id_incidencia", "dni"
+                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion"
             }
         ));
         jScrollPane2.setViewportView(table_socios);
@@ -107,11 +106,11 @@ public class SociosView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addComponent(txt_espBusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cmb_filtroSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(18, 18, 18)
                 .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGap(20, 20, 20))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(325, 325, 325)
@@ -120,7 +119,7 @@ public class SociosView extends javax.swing.JFrame {
                 .addComponent(btn_eliminarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificarSocio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -36,6 +36,33 @@ public class SocioModelo {
         this.lista_socios = new HashMap<>();
     }
 
+    /**
+     * funcion para buscar por nombre
+     * @param titulo
+     * @return 
+     */
+    /* SEGUIR POR AQUI !!!!!!!!!
+    public ArrayList<Socio> buscarPorNombre(String nombre) {
+        String consulta = "SELECT * FROM socios WHERE nombre LIKE ?";
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            PreparedStatement preparar = conexion.prepareStatement(consulta);
+            preparar.setString(1, "%" + nombre + "%");
+            ResultSet rs = preparar.executeQuery();
+
+            while (rs.next()) {
+                socios.add(new Socio(rs.getString("idSocio"), rs.getString("nombre"),
+                     rs.getString("apellido"), rs.getString("correo"),
+                     rs.getString("dni"), rs.getString("telefono"),
+                     rs.getString("direccion")));
+            }
+        }catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+        return socios;
+    }*/
+    
+    
     /* funcion para buscar por dni
     public ArrayList<Socio> buscarPorTitulo(String dni) {
         ArrayList<Socio> busqueda_socio = new ArrayList<>();
@@ -76,7 +103,7 @@ public class SocioModelo {
     }
 
     //Consulta  para eliminar por id
-    public boolean eliminarPorId(int idSocio) {
+    public void eliminarPorId(int idSocio) {
         String consulta = "DELETE FROM socios WHERE idSocio = ?";
         try {
             preparar = conexion.prepareStatement(consulta);
@@ -87,12 +114,34 @@ public class SocioModelo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     // funcion para buscar por id
     public Socio buscarPorId(int idSocio) {
-        return this.lista_socios.get(idSocio);
+        String consulta = "SELECT * FROM socios WHERE idSocio = ?";
+        try {
+            preparar = conexion.prepareStatement(consulta);
+            preparar.setInt(1, idSocio);
+            ResultSet rs = preparar.executeQuery();  // Usar executeQuery() para obtener los resultados
+
+            if (rs.next()) {  // Si hay resultados
+                // Recuperar los datos del ResultSet y crear un objeto Socio
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String correo = rs.getString("correo");
+                String dni = rs.getString("dni");
+                int telefono = rs.getInt("telefono");
+                String direccion = rs.getString("direccion");
+
+                // Crear un objeto Socio con los datos obtenidos
+                Socio socio = new Socio(nombre, apellido, correo, dni, telefono, direccion);
+                socio.setIdSocio(idSocio); // Asegúrate de establecer el ID
+                return socio;  // Devuelve el socio encontrado
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;  // Si no se encontró el socio, devuelve null
     }
 
     public boolean agregar_socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {

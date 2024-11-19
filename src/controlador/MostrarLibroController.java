@@ -42,7 +42,7 @@ public class MostrarLibroController implements ActionListener {
         this.vista_libros.getCmb_filtro_libros();
         this.vista_libros.getTxt_espbusquedaLibro();
         // funcion para mostrar los libros . RECORDARRRRRR
-        mostrarPublicaciones();
+        mostrarLibros();
         //----------
         //this.vista_libros.setVisible(true);
     }
@@ -56,7 +56,23 @@ public class MostrarLibroController implements ActionListener {
         }
 
         // consulta
-        String sql = "Select * from libros";
+        String sql = "SELECT \n"
+                + "    libros.isbn,\n"
+                + "    libros.titulo,\n"
+                + "    libros.numSerie,\n"
+                + "    libros.precio,\n"
+                + "    libros.estado,\n"
+                + "    libros.idAutor,\n"
+                + "    autores.nombre AS autor,\n"
+                + "    libros.idBiblioteca,\n"
+                + "    biblioteca.nombre AS biblioteca,\n"
+                + "    libros.editorial\n"
+                + "FROM \n"
+                + "    libros\n"
+                + "JOIN \n"
+                + "    autores ON libros.idAutor = autores.idAutor\n"
+                + "JOIN \n"
+                + "    biblioteca ON libros.idBiblioteca = biblioteca.idBiblioteca;";
         try {
             PreparedStatement stmt = con.prepareStatement(sql); // consulta preparada
             ResultSet resultado = stmt.executeQuery(); // resultado consulta
@@ -69,8 +85,8 @@ public class MostrarLibroController implements ActionListener {
                 int idAutor = resultado.getInt("idAutor");
                 String editorial = resultado.getString("editorial");
                 int idBiblioteca = resultado.getInt("idBiblioteca");
-                    
-                Libro libros = new Libro(isbn, titulo, numSerie, precio, estado, editorial); // PENDIENTE DE AÑADIR COSAS?
+
+                Libro libros = new Libro(isbn, titulo, numSerie, precio, estado, idAutor, editorial, idBiblioteca);
                 array_libros.add(libros);
             }
 
@@ -92,11 +108,17 @@ public class MostrarLibroController implements ActionListener {
                 pintar_libro.getNumSerie(),
                 pintar_libro.getPrecio(),
                 pintar_libro.getEstado(),
-                pintar_libro.getEditorial()}); // faltaria campos de las otras tablas....
+                pintar_libro.getIdAutor(),
+                pintar_libro.getEditorial(),
+                pintar_libro.getIdBiblioteca(),
+                }); // faltaria campos de las otras tablas....
         }
     }
 
-    public void mostrarPublicaciones() {
+    /**
+     * funcion para mostrar libros
+     */
+    public void mostrarLibros() {
         ArrayList<Libro> libros = cargarLibrosBBDD();
         datos_tabla.setRowCount(0);
         for (Libro libro_actual : libros) {
@@ -106,6 +128,6 @@ public class MostrarLibroController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        mostrarPublicaciones();
+        mostrarLibros();
     }
 }
