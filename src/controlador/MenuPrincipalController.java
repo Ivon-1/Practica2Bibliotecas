@@ -11,6 +11,7 @@ import modelo.ConexionBD;
 import modelo.LibroModelo;
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
+import vista.AgregarLibroView;
 import vista.LibrosView;
 import vista.LoginView;
 import vista.MenuView;
@@ -102,9 +103,9 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios);
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios , socioVista);
             }
-            new MostrarSocioController(modelo_socio, vista_principalSocios);
+            new MostrarSocioController(modelo_socio, vista_principalSocios,socioVista);
         } else {
             this.vista_menu.setVisible(true);
         }
