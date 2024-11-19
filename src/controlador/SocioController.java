@@ -6,10 +6,13 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Socio;
 import modelo.SocioModelo;
 import vista.SocioAgregarView;
+import vista.SociosView;
 
 /**
  *
@@ -19,10 +22,12 @@ public class SocioController implements ActionListener {
 
     private SocioModelo modelo;
     private SocioAgregarView vista;
+    private SociosView socio_view;
 
     public SocioController(SocioModelo modelo, SocioAgregarView vista) {
         this.modelo = modelo;
         this.vista = vista;
+        this.socio_view = socio_view;
 
         this.vista.getBtn_agregar().addActionListener(this);
         this.vista.getBtn_eliminar().addActionListener(this);
@@ -37,7 +42,6 @@ public class SocioController implements ActionListener {
         if (e.getSource() == this.vista.getBtn_agregar()) {
             agregarSocios();  // Llamamos al método que procesa el formulario
         }
-        
         if(e.getSource() == this.vista.getBtn_eliminar()){
             eliminar_socios();
         }
@@ -128,5 +132,46 @@ public class SocioController implements ActionListener {
         }
 
         return resultado;
+    }
+    
+    public void buscarSocios(){
+        String combo = this.socio_view.getCmb_filtroSocios().getSelectedItem().toString();
+        String busqueda = this.socio_view.getTxt_espBusquedaSocio().getText().trim();
+        ArrayList<Socio> resultados = new ArrayList<>();
+        
+        switch (combo.toLowerCase()){
+            case "Todos":
+                resultados = modelo.mostrarTodos();
+                break;
+            case "DNI":
+                resultados = modelo.buscarPorDNI(busqueda);
+                break;
+            case "Nombre":
+                resultados = modelo.buscarPorNombre(busqueda);
+                break;
+            case "Apellidos":
+                resultados = modelo.buscarPorApellido(busqueda);
+                break;
+            default:
+                break;
+        }
+        actualizarTabla(resultados);
+        
+    }
+    
+    public void actualizarTabla(ArrayList<Socio> socios) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.socio_view.getTable_socios().getModel();
+        modeloTabla.setRowCount(0);
+
+        // llena la tabla con los socios
+        for (Socio socio : socios) {
+            Object[] row = {
+                socio.getIdSocio(), socio.getNombre(),
+                socio.getApellido(), socio.getCorreo(),
+                socio.getTelefono(), socio.getDireccion(),
+                socio.getDni()
+            };
+            modeloTabla.addRow(row);
+        }
     }
 }
