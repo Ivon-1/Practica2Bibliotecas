@@ -42,6 +42,9 @@ public class MenuPrincipalController implements ActionListener {
     private SocioController controladorSocio;
     private MostrarSocioController controladorPrincipalSocios;
 
+    /*
+    controlador del menu principal
+     */
     public MenuPrincipalController() {
         // modelos
         this.conexionBD = new ConexionBD();
@@ -59,14 +62,15 @@ public class MenuPrincipalController implements ActionListener {
         this.controladorLogin = null;
         this.controladorSocio = null;
         this.controladorPrincipalSocios = null;
-
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
         this.vista_menu.setVisible(true);
     }
 
-    // funcion en la que activar los botones de la pagina principal
+    /*
+    funcion para activar los botones
+     */
     public void addButtones() {
         this.vista_menu.getBtn_agregar_principal().addActionListener(this);
         this.vista_menu.getBtn_consultarBibilioteca().addActionListener(this);
@@ -77,31 +81,44 @@ public class MenuPrincipalController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         Object button = e.getSource();
+        //funcion para ocultar vistas
+        ocultarVistas();
+        
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
             if (controladorLibros == null) {
                 controladorLibros = new MostrarLibroController(modelo_libros, vista_libros);
             }
-        }
-
-        if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) { // agregar socio
+        } else if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) { // agregar socio
             this.vista_menu.setVisible(false);
             this.socioVista.setVisible(true);
             if (controladorSocio == null) {
                 controladorSocio = new SocioController(modelo_socio, socioVista);
             }
-        }
-
-        if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
+        } else if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
                 controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios);
             }
             new MostrarSocioController(modelo_socio, vista_principalSocios);
+        } else {
+            this.vista_menu.setVisible(true);
         }
+    }
+
+    /*
+    funcion para ocultar vistas
+     */
+    public void ocultarVistas() {
+        this.loginVista.setVisible(false);
+        this.socioVista.setVisible(false);
+        this.vista_libros.setVisible(false);
+        this.vista_principalSocios.setVisible(false);
+        this.vista_menu.setVisible(true);
     }
 
 }

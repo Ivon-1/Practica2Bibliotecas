@@ -37,7 +37,7 @@ public class MenuView extends javax.swing.JFrame {
         btn_cerrarSesion = new javax.swing.JButton();
         btn_GestionPrincipal = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Gestion de bibliotecas");
@@ -45,6 +45,11 @@ public class MenuView extends javax.swing.JFrame {
         btn_agregar_principal.setText("Agregar");
 
         btn_ConsultarSocio.setText("Consultas socios");
+        btn_ConsultarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ConsultarSocioActionPerformed(evt);
+            }
+        });
 
         btn_consultarBibilioteca.setText("Consultar biblioteca");
 
@@ -99,6 +104,10 @@ public class MenuView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ConsultarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultarSocioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ConsultarSocioActionPerformed
 
     /**
      * @param args the command line arguments

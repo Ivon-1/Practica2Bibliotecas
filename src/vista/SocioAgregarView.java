@@ -27,10 +27,6 @@ public class SocioAgregarView extends javax.swing.JFrame {
         return btn_agregar;
     }
 
-    public JButton getBtn_eliminar() {
-        return btn_eliminar;
-    }
-
     public JTextField getTxt_apellido() {
         return txt_apellido;
     }
@@ -86,7 +82,6 @@ public class SocioAgregarView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_idSocio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        btn_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -108,8 +103,6 @@ public class SocioAgregarView extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("AGREGAR SOCIO");
-
-        btn_eliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,10 +133,7 @@ public class SocioAgregarView extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_apellido))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_eliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_agregar))
+                            .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,9 +181,7 @@ public class SocioAgregarView extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_agregar)
-                    .addComponent(btn_eliminar))
+                .addComponent(btn_agregar)
                 .addGap(35, 35, 35))
         );
 
@@ -238,7 +226,6 @@ public class SocioAgregarView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

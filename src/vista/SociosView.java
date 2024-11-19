@@ -93,6 +93,13 @@ public class SociosView extends javax.swing.JFrame {
             },
             new String [] {
                 "idSocio", "nombre", "apellido", "correo", "telefono", "direccion", "dni"
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion"
             }
         ));
         jScrollPane2.setViewportView(table_socios);
