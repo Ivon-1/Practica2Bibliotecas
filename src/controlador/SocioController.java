@@ -25,7 +25,6 @@ public class SocioController implements ActionListener {
         this.vista = vista;
 
         this.vista.getBtn_agregar().addActionListener(this);
-        this.vista.getBtn_eliminar().addActionListener(this);
         //this.vista.getBtn_eliminar().addActionListener(this);
         this.vista.setVisible(true);
 
@@ -34,13 +33,6 @@ public class SocioController implements ActionListener {
     //Controlador donde se encontraran los metodos(funcionalidades).
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.vista.getBtn_agregar()) {
-            agregarSocios();  // Llamamos al método que procesa el formulario
-        }
-        
-        if(e.getSource() == this.vista.getBtn_eliminar()){
-            eliminar_socios();
-        }
     }
 
     //FUNCION PARA AGREGAR SOCIOS.
