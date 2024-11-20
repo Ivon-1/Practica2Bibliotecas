@@ -154,12 +154,9 @@ public class MostrarLibroController implements ActionListener {
                 break;
 
             case "todos":
-                // Si el combo es "Todos"
                 if (buscarPorDisponible) {
-                    // Si está marcado el checkbox, solo buscamos los libros disponibles
                     resultados = this.modelo_libro.buscarPorEstado("disponible");
                 } else {
-                    // Si no está marcado el checkbox, buscamos todos los libros
                     resultados = this.modelo_libro.mostrarResultados();
                 }
                 break;

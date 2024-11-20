@@ -122,11 +122,10 @@ public class SocioModelo {
      * @return 
      */
     public Socio buscarPorDNI(String dni) {
-        String consulta = "SELECT * FROM socios WHERE dni LIKE ?";
-        ArrayList<Socio> socios = new ArrayList<>();
+        String consulta = "SELECT * FROM socios WHERE dni = ?";
         try {
             PreparedStatement preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1, "%" + dni + "%");
+            preparar.setString(1, dni);
             ResultSet rs = preparar.executeQuery();
 
             if (rs.next()) {
