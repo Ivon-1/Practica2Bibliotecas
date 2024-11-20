@@ -47,10 +47,16 @@ public class SociosView extends javax.swing.JFrame {
     }
 
     public JButton getBtn_modificar_socio() {
-        return btn_modificar_socio;
+        return btn_volver_socio;
     }
-    
-    
+
+    public JButton getBtn_modificar_socio1() {
+        return btn_modificar_socio1;
+    }
+
+    public JButton getBtn_volver_socio() {
+        return btn_volver_socio;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,9 +73,10 @@ public class SociosView extends javax.swing.JFrame {
         cmb_filtro_socios = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_socios = new javax.swing.JTable();
-        btn_modificar_socio = new javax.swing.JButton();
+        btn_volver_socio = new javax.swing.JButton();
         txt_espbusquedaSocio = new javax.swing.JTextField();
         btn_buscarSocios = new javax.swing.JButton();
+        btn_modificar_socio1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,14 +125,21 @@ public class SociosView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table_socios);
 
-        btn_modificar_socio.setText("Modificar");
-        btn_modificar_socio.addActionListener(new java.awt.event.ActionListener() {
+        btn_volver_socio.setText("Volver");
+        btn_volver_socio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificar_socioActionPerformed(evt);
+                btn_volver_socioActionPerformed(evt);
             }
         });
 
         btn_buscarSocios.setText("Buscar");
+
+        btn_modificar_socio1.setText("Modificar");
+        btn_modificar_socio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificar_socio1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,9 +151,9 @@ public class SociosView extends javax.swing.JFrame {
                 .addComponent(btn_agregarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_eliminarSocio)
-                .addGap(18, 18, 18)
-                .addComponent(btn_modificar_socio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_volver_socio)
+                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
@@ -150,6 +164,11 @@ public class SociosView extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(471, Short.MAX_VALUE)
+                    .addComponent(btn_modificar_socio1)
+                    .addGap(324, 324, 324)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +185,13 @@ public class SociosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregarSocio)
                     .addComponent(btn_eliminarSocio)
-                    .addComponent(btn_modificar_socio))
+                    .addComponent(btn_volver_socio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(577, Short.MAX_VALUE)
+                    .addComponent(btn_modificar_socio1)
+                    .addContainerGap()))
         );
 
         pack();
@@ -185,9 +209,13 @@ public class SociosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_filtro_sociosActionPerformed
 
-    private void btn_modificar_socioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_socioActionPerformed
+    private void btn_volver_socioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volver_socioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_modificar_socioActionPerformed
+    }//GEN-LAST:event_btn_volver_socioActionPerformed
+
+    private void btn_modificar_socio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_socio1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_modificar_socio1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,14 +251,14 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarSocio;
     private javax.swing.JButton btn_buscarSocios;
     private javax.swing.JButton btn_eliminarSocio;
-    private javax.swing.JButton btn_modificar_socio;
+    private javax.swing.JButton btn_modificar_socio1;
+    private javax.swing.JButton btn_volver_socio;
     private javax.swing.JComboBox<String> cmb_filtro_socios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
