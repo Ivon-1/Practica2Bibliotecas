@@ -76,7 +76,7 @@ public class AgregarLibroView extends javax.swing.JFrame {
         txt_editorial = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("         AGREGAR LIBRO");
 

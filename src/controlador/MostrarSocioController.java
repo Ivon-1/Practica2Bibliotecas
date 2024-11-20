@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import vista.AgregarLibroView;
+import vista.MenuView;
 import vista.SocioAgregarView;
 import vista.SociosView;
 
@@ -30,12 +31,14 @@ public class MostrarSocioController implements ActionListener {
     private SociosView vista_socio;
     private DefaultTableModel datos_tabla_socio;
     private SocioAgregarView socio_view;
+    private MenuView vista_menu;
 
     // funcion para mostrar
-    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view) {
+    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view, MenuView vista_menu) {
         this.modelo_socio = modelo_socio;
         this.vista_socio = vista_socio;
         this.socio_view = socio_view;
+        this.vista_menu = vista_menu;
         datos_tabla_socio = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
         // botones
         this.vista_socio.getBtn_agregarSocio().addActionListener(this);
@@ -47,8 +50,6 @@ public class MostrarSocioController implements ActionListener {
         this.vista_socio.getBtn_volver_socio().addActionListener(this);
         // funcion para mostrar libros
         mostrarSocios();
-        //---------
-        this.vista_socio.setVisible(true);
     }
 
     @Override
@@ -72,10 +73,12 @@ public class MostrarSocioController implements ActionListener {
         if (e.getSource() == this.vista_socio.getBtn_buscarSocios()) {
             buscarSocios();
         }
-        
-        if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {// volver menu principal
-            
+
+        if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {
+            this.vista_socio.setVisible(false);
+            this.vista_menu.setVisible(true);
         }
+
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
 
@@ -258,11 +261,10 @@ public class MostrarSocioController implements ActionListener {
                     socio.getApellido(), socio.getCorreo(),
                     socio.getTelefono(), socio.getDireccion(),
                     socio.getDni()
-                    });       
+                });
             }
-        }   
-            actualizarTabla(resultados);
         }
+        actualizarTabla(resultados);
     }
 
     public void actualizarTabla(ArrayList<Socio> socios) {
@@ -278,12 +280,5 @@ public class MostrarSocioController implements ActionListener {
             };
             modeloTabla.addRow(row);
         }
-    }
-
-    /**
-     * funcion para volver al menuPrincipal
-     */
-    public void volverPrincipal() {
-
     }
 }
