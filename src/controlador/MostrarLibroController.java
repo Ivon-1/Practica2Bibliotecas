@@ -44,6 +44,7 @@ public class MostrarLibroController implements ActionListener {
         this.vista_libros.getBtn_modificar_libro().addActionListener(this);
         this.vista_libros.getCmb_filtro_libros().addActionListener(this);
         this.vista_libros.getTxt_espbusquedaLibro().addActionListener(this);
+        this.vista_libros.getBtn_volver_libro().addActionListener(this);
         // boton agregar
         this.libro_agregar.getBtn_agregar().addActionListener(this);
         // funcion para mostrar los libros . RECORDARRRRRR
@@ -66,6 +67,10 @@ public class MostrarLibroController implements ActionListener {
 
         if (e.getSource() == this.vista_libros.getBtn_eliminarLibro()) {
             eliminar_libros();
+        }
+        
+        if (e.getSource() == this.vista_libros.getBtn_buscar()){
+            buscarLibros();
         }
     }
 

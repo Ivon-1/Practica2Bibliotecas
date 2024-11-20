@@ -64,7 +64,7 @@ public class SocioModelo {
 
     /**
      * funcion para buscar por nombre
-     * @param titulo
+     * @param nombre
      * @return 
      */
     public ArrayList<Socio> buscarPorNombre(String nombre) {
@@ -91,7 +91,7 @@ public class SocioModelo {
     
     /**
      * funcion para buscar por apellido
-     * @param titulo
+     * @param apellido
      * @return 
      */
     public ArrayList<Socio> buscarPorApellido(String apellido) {
@@ -118,10 +118,10 @@ public class SocioModelo {
     
     /**
      * funcion para buscar por DNI
-     * @param titulo
+     * @param dni
      * @return 
      */
-    public ArrayList<Socio> buscarPorDNI(String dni) {
+    public Socio buscarPorDNI(String dni) {
         String consulta = "SELECT * FROM socios WHERE dni LIKE ?";
         ArrayList<Socio> socios = new ArrayList<>();
         try {
@@ -129,18 +129,17 @@ public class SocioModelo {
             preparar.setString(1, "%" + dni + "%");
             ResultSet rs = preparar.executeQuery();
 
-            while (rs.next()) {
-                Socio socio = new Socio(
+            if (rs.next()) {
+                return new Socio(
                 rs.getString("nombre"), rs.getString("apellido"),
                 rs.getString("correo"), rs.getString("dni"),
                 rs.getInt("telefono"), rs.getString("direccion")
             );
-            socios.add(socio);
             }
         }catch(SQLException ex) {
             ex.printStackTrace();
         }
-        return socios;
+        return null;
     }
     
     //Consulta para agregar un socio.

@@ -133,44 +133,7 @@ public class SocioController implements ActionListener {
         return resultado;
     }
     
-    public void buscarSocios(){
-        String combo = this.socio_view.getCmb_filtro_socios().getSelectedItem().toString();
-        String busqueda = this.socio_view.getTxt_espbusquedaSocio().getText().trim();
-        ArrayList<Socio> resultados = new ArrayList<>();
-        
-        switch (combo.toLowerCase()){
-            case "Todos":
-                resultados = modelo.mostrarTodos();
-                break;
-            case "DNI":
-                resultados = modelo.buscarPorDNI(busqueda);
-                break;
-            case "Nombre":
-                resultados = modelo.buscarPorNombre(busqueda);
-                break;
-            case "Apellidos":
-                resultados = modelo.buscarPorApellido(busqueda);
-                break;
-            default:
-                break;
-        }
-        actualizarTabla(resultados);
-        
-    }
     
-    public void actualizarTabla(ArrayList<Socio> socios) {
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.socio_view.getTable_socios().getModel();
-        modeloTabla.setRowCount(0);
-
-        // llena la tabla con los socios
-        for (Socio socio : socios) {
-            Object[] row = {
-                socio.getIdSocio(), socio.getNombre(),
-                socio.getApellido(), socio.getCorreo(),
-                socio.getTelefono(), socio.getDireccion(),
-                socio.getDni()
-            };
-            modeloTabla.addRow(row);
-        }
-    }
+    
+    
 }
