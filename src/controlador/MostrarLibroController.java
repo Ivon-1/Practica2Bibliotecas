@@ -31,10 +31,12 @@ public class MostrarLibroController implements ActionListener {
     private AgregarLibroView libro_agregar;
 
     // funcion para mostrar
-    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro, AgregarLibroView libro_agregar) {
+    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libros, AgregarLibroView libro_agregar) {
         this.modelo_libro = modelo_libro;
-        this.vista_libros = vista_libro;
+        this.vista_libros = vista_libros;
         this.libro_agregar = libro_agregar;
+        
+        this.libro_agregar.setVisible(false);
         // casteo tabla
         datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
         // boton

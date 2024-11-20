@@ -72,9 +72,9 @@ public class MostrarSocioController implements ActionListener {
         if (e.getSource() == this.vista_socio.getBtn_buscarSocios()) {
             buscarSocios();
         }
-        
+
         if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {// volver menu principal
-            
+
         }
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
@@ -258,11 +258,10 @@ public class MostrarSocioController implements ActionListener {
                     socio.getApellido(), socio.getCorreo(),
                     socio.getTelefono(), socio.getDireccion(),
                     socio.getDni()
-                    });       
+                });
             }
-        }   
-            actualizarTabla(resultados);
         }
+        actualizarTabla(resultados);
     }
 
     public void actualizarTabla(ArrayList<Socio> socios) {
@@ -280,10 +279,7 @@ public class MostrarSocioController implements ActionListener {
         }
     }
 
-    /**
-     * funcion para volver al menuPrincipal
-     */
-    public void volverPrincipal() {
-
-    }
 }
+/**
+ * funcion para volver al menuPrincipal
+ */
