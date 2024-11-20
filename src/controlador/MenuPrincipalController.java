@@ -57,15 +57,15 @@ public class MenuPrincipalController implements ActionListener {
         this.loginVista = new LoginView();
         this.vista_principalSocios = new SociosView();
         this.socioVista = new SocioAgregarView();
-        
+
         this.agregar_libro = new AgregarLibroView();
         this.vista_libros = new LibrosView();
-        
+
         this.vista_menu = new MenuView();
 
         this.agregar_libro.setVisible(false);
         this.vista_menu.setVisible(true);
-        
+
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
@@ -82,12 +82,12 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_menu.getBtn_Administracion().addActionListener(this);
         this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         Object button = e.getSource();
-        
+
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
@@ -100,7 +100,7 @@ public class MenuPrincipalController implements ActionListener {
             if (controladorPrincipalSocios == null) {
                 controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu);
             }
-            
+
         }
     }
 }

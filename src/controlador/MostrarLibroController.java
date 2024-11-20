@@ -33,7 +33,7 @@ public class MostrarLibroController implements ActionListener {
     private MenuView vista_menu;
 
     // funcion para mostrar
-    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro, AgregarLibroView libro_agregar, MenuView vista_menu) {
+    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libros, AgregarLibroView libro_agregar, MenuView vista_menu) {
         this.modelo_libro = modelo_libro;
         this.vista_libros = vista_libros;
         this.libro_agregar = libro_agregar;
@@ -53,6 +53,8 @@ public class MostrarLibroController implements ActionListener {
         this.libro_agregar.getBtn_agregar().addActionListener(this);
         // funcion para mostrar los libros . RECORDARRRRRR
         mostrarLibros();
+        //------------
+        this.vista_libros.setVisible(true);
     }
 
     @Override

@@ -50,6 +50,8 @@ public class MostrarSocioController implements ActionListener {
         this.vista_socio.getBtn_volver_socio().addActionListener(this);
         // funcion para mostrar libros
         mostrarSocios();
+        //--------
+        this.vista_socio.setVisible(true);
     }
 
     @Override
