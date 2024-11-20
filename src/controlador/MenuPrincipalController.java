@@ -62,6 +62,10 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_libros = new LibrosView();
         
         this.vista_menu = new MenuView();
+
+        this.agregar_libro.setVisible(false);
+        this.vista_menu.setVisible(true);
+        
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal

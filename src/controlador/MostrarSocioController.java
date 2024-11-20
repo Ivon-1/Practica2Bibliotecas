@@ -282,3 +282,6 @@ public class MostrarSocioController implements ActionListener {
         }
     }
 }
+/**
+ * funcion para volver al menuPrincipal
+ */

@@ -35,7 +35,7 @@ public class MostrarLibroController implements ActionListener {
     // funcion para mostrar
     public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libro, AgregarLibroView libro_agregar, MenuView vista_menu) {
         this.modelo_libro = modelo_libro;
-        this.vista_libros = vista_libro;
+        this.vista_libros = vista_libros;
         this.libro_agregar = libro_agregar;
         this.vista_menu = vista_menu;
 
