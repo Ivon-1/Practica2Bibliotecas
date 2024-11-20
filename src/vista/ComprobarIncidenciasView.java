@@ -13,13 +13,38 @@ import javax.swing.JTextField;
  *
  * @author IvanA
  */
-public class IncidenciasView extends javax.swing.JFrame {
+public class ComprobarIncidenciasView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IncidenciasView
-     */
-    public IncidenciasView() {
-        initComponents();
+    public JButton getBtn_agregarIncidencia() {
+        return btn_agregarIncidencia;
+    }
+
+    public JButton getBtn_buscarSocios() {
+        return btn_buscarSocios;
+    }
+
+    public JButton getBtn_eliminarIncidencia() {
+        return btn_eliminarIncidencia;
+    }
+
+    public JButton getBtn_modificar_incidencia() {
+        return btn_modificar_incidencia;
+    }
+
+    public JButton getBtn_volver_incidencia() {
+        return btn_volver_incidencia;
+    }
+
+    public JComboBox<String> getCmb_filtro_socios() {
+        return cmb_filtro_socios;
+    }
+
+    public JTable getTable_socios_incidencias() {
+        return table_socios_incidencias;
+    }
+
+    public JTextField getTxt_espbusquedaSocio() {
+        return txt_espbusquedaSocio;
     }
 
     /**
@@ -31,25 +56,18 @@ public class IncidenciasView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_volver_incidencia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_agregarIncidencia = new javax.swing.JButton();
         btn_eliminarIncidencia = new javax.swing.JButton();
-        cmb_filtro_incidencias = new javax.swing.JComboBox<>();
+        cmb_filtro_socios = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_incidencias = new javax.swing.JTable();
-        btn_modificar_incidencia = new javax.swing.JButton();
+        table_socios_incidencias = new javax.swing.JTable();
+        btn_volver_incidencia = new javax.swing.JButton();
         txt_espbusquedaSocio = new javax.swing.JTextField();
-        btn_buscar = new javax.swing.JButton();
+        btn_buscarSocios = new javax.swing.JButton();
+        btn_modificar_incidencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btn_volver_incidencia.setText("Volver");
-        btn_volver_incidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_volver_incidenciaActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Incidencias");
@@ -68,33 +86,42 @@ public class IncidenciasView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtro_incidencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "editorial" }));
-        cmb_filtro_incidencias.addActionListener(new java.awt.event.ActionListener() {
+        cmb_filtro_socios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Grave", "Muy grave" }));
+        cmb_filtro_socios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_filtro_incidenciasActionPerformed(evt);
+                cmb_filtro_sociosActionPerformed(evt);
             }
         });
 
-        table_incidencias.setModel(new javax.swing.table.DefaultTableModel(
+        table_socios_incidencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "id_incidencia", "estado_incidencia", "tipo_incidencia", "idSocio"
+                "idSocio", "nombre", "apellidos", "id_incidencia", "estado_incidencia", "tipo_incidencia"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(table_incidencias);
+        jScrollPane2.setViewportView(table_socios_incidencias);
+
+        btn_volver_incidencia.setText("Volver");
+        btn_volver_incidencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volver_incidenciaActionPerformed(evt);
+            }
+        });
+
+        btn_buscarSocios.setText("Buscar");
 
         btn_modificar_incidencia.setText("Modificar");
         btn_modificar_incidencia.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +129,6 @@ public class IncidenciasView extends javax.swing.JFrame {
                 btn_modificar_incidenciaActionPerformed(evt);
             }
         });
-
-        btn_buscar.setText("Buscar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,46 +142,43 @@ public class IncidenciasView extends javax.swing.JFrame {
                 .addComponent(btn_eliminarIncidencia)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar_incidencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
-                .addComponent(btn_volver_incidencia)
-                .addGap(34, 34, 34))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addComponent(btn_volver_incidencia)
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar))
+                    .addComponent(btn_buscarSocios))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_agregarIncidencia)
-                    .addComponent(btn_eliminarIncidencia)
-                    .addComponent(btn_modificar_incidencia)
-                    .addComponent(btn_volver_incidencia))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_modificar_incidencia)
+                        .addComponent(btn_eliminarIncidencia)
+                        .addComponent(btn_volver_incidencia))
+                    .addComponent(btn_agregarIncidencia))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_volver_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volver_incidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_volver_incidenciaActionPerformed
 
     private void btn_agregarIncidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarIncidenciaActionPerformed
         // TODO add your handling code here:
@@ -166,9 +188,13 @@ public class IncidenciasView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarIncidenciaActionPerformed
 
-    private void cmb_filtro_incidenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_incidenciasActionPerformed
+    private void cmb_filtro_sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_sociosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_filtro_incidenciasActionPerformed
+    }//GEN-LAST:event_cmb_filtro_sociosActionPerformed
+
+    private void btn_volver_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volver_incidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_volver_incidenciaActionPerformed
 
     private void btn_modificar_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_incidenciaActionPerformed
         // TODO add your handling code here:
@@ -191,64 +217,36 @@ public class IncidenciasView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComprobarIncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComprobarIncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComprobarIncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComprobarIncidenciasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IncidenciasView().setVisible(true);
+                new ComprobarIncidenciasView().setVisible(true);
             }
         });
     }
 
-    public JButton getBtn_agregarIncidencia() {
-        return btn_agregarIncidencia;
-    }
-
-    public JButton getBtn_buscar() {
-        return btn_buscar;
-    }
-
-    public JButton getBtn_eliminarIncidencia() {
-        return btn_eliminarIncidencia;
-    }
-
-    public JButton getBtn_volver_incidencia() {
-        return btn_volver_incidencia;
-    }
-
-    public JComboBox<String> getCmb_filtro_incidencias() {
-        return cmb_filtro_incidencias;
-    }
-
-    public JTable getTable_incidencias() {
-        return table_incidencias;
-    }
-
-    public JTextField getTxt_espbusquedaSocio() {
-        return txt_espbusquedaSocio;
-    }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarIncidencia;
-    private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_buscarSocios;
     private javax.swing.JButton btn_eliminarIncidencia;
     private javax.swing.JButton btn_modificar_incidencia;
     private javax.swing.JButton btn_volver_incidencia;
-    private javax.swing.JComboBox<String> cmb_filtro_incidencias;
+    private javax.swing.JComboBox<String> cmb_filtro_socios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable table_incidencias;
+    private javax.swing.JTable table_socios_incidencias;
     private javax.swing.JTextField txt_espbusquedaSocio;
     // End of variables declaration//GEN-END:variables
 }

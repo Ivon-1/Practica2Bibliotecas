@@ -12,7 +12,7 @@ import modelo.LibroModelo;
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
 import vista.AgregarLibroView;
-import vista.IncidenciasView;
+import vista.ComprobarIncidenciasView;
 import vista.LibrosView;
 import vista.LoginView;
 import vista.MenuView;
@@ -37,7 +37,7 @@ public class MenuPrincipalController implements ActionListener {
     private SocioAgregarView socioVista;
     private LibrosView vista_libros;
     private MenuView vista_menu;
-    private IncidenciasView vista_incidencias;
+    private ComprobarIncidenciasView vista_incidencias;
 
     // controladores
     private MostrarLibroController controladorLibros;
@@ -59,10 +59,10 @@ public class MenuPrincipalController implements ActionListener {
         this.loginVista = new LoginView();
         this.vista_principalSocios = new SociosView();
         this.socioVista = new SocioAgregarView();
-        this.vista_incidencias = new IncidenciasView();
 
         this.agregar_libro = new AgregarLibroView();
         this.vista_libros = new LibrosView();
+        this.vista_incidencias = new ComprobarIncidenciasView();
 
         this.vista_menu = new MenuView();
 
@@ -83,6 +83,7 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_menu.getBtn_consultarBibilioteca().addActionListener(this);
         this.vista_menu.getBtn_ConsultarSocio().addActionListener(this);
         this.vista_menu.getBtn_Administracion().addActionListener(this);
+        this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
         this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
         this.vista_menu.getBtn_incidencias().addActionListener(this);
     }
@@ -105,13 +106,11 @@ public class MenuPrincipalController implements ActionListener {
                 controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu);
             }
 
-        }
-        if (button == this.vista_menu.getBtn_incidencias()) { // mostrar incidencias
+        } else if (button == this.vista_menu.getBtn_incidencias()) {// mostrar incidencias
             this.vista_menu.setVisible(false);
             this.vista_incidencias.setVisible(true);
-            // FALTA MODIFICAR CUANDO FINALICEIS
-            new IncidenciasView();
-                    
+            new ComprobarIncidenciasView(); // falta incorporar vista REVISO MAÑANA 20/11
         }
+
     }
 }
