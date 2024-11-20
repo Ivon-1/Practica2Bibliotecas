@@ -72,9 +72,9 @@ public class MostrarSocioController implements ActionListener {
         if (e.getSource() == this.vista_socio.getBtn_buscarSocios()) {
             buscarSocios();
         }
-        
+
         if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {// volver menu principal
-            
+
         }
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
@@ -233,7 +233,8 @@ public class MostrarSocioController implements ActionListener {
                 resultados = modelo_socio.mostrarTodos();
                 break;
             case "DNI":
-                //resultados = modelo_socio.buscarPorDNI(busqueda);
+                Socio socio = this.modelo_socio.buscarPorDNI(busqueda);
+                resultados.add(socio);
                 break;
             case "Nombre":
                 resultados = modelo_socio.buscarPorNombre(busqueda);
@@ -248,15 +249,25 @@ public class MostrarSocioController implements ActionListener {
             JOptionPane.showMessageDialog(vista_socio, "No se encontraron resultados.",
                     "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            actualizarTabla(resultados);
+            DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
+            modeloTabla.setRowCount(0);
+
+            for (Socio socio : resultados) {
+                modeloTabla.addRow(new Object[]{
+                    socio.getIdSocio(), socio.getNombre(),
+                    socio.getApellido(), socio.getCorreo(),
+                    socio.getTelefono(), socio.getDireccion(),
+                    socio.getDni()
+                });
+            }
         }
+        actualizarTabla(resultados);
     }
 
     public void actualizarTabla(ArrayList<Socio> socios) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
         modeloTabla.setRowCount(0);
 
-        // llena la tabla con los socios
         for (Socio socio : socios) {
             Object[] row = {
                 socio.getIdSocio(), socio.getNombre(),
@@ -268,10 +279,7 @@ public class MostrarSocioController implements ActionListener {
         }
     }
 
-    /**
-     * funcion para volver al menuPrincipal
-     */
-    public void volverPrincipal() {
-
-    }
 }
+/**
+ * funcion para volver al menuPrincipal
+ */
