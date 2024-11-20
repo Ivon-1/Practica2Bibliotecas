@@ -29,9 +29,9 @@
               <Component id="btn_agregarSocio" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_eliminarSocio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btn_modificar_socio" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="btn_volver_socio" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -43,6 +43,13 @@
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="btn_buscarSocios" min="-2" pref="113" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="471" max="32767" attributes="0"/>
+                  <Component id="btn_modificar_socio1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,9 +69,16 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_agregarSocio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_eliminarSocio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_modificar_socio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_volver_socio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="577" max="32767" attributes="0"/>
+                  <Component id="btn_modificar_socio1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -139,12 +153,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btn_modificar_socio">
+    <Component class="javax.swing.JButton" name="btn_volver_socio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modificar"/>
+        <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificar_socioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_volver_socioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_espbusquedaSocio">
@@ -153,6 +167,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_modificar_socio1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificar_socio1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

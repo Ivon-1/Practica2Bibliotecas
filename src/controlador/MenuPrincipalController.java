@@ -72,7 +72,6 @@ public class MenuPrincipalController implements ActionListener {
     funcion para activar los botones
      */
     public void addButtones() {
-        this.vista_menu.getBtn_agregar_principal().addActionListener(this);
         this.vista_menu.getBtn_consultarBibilioteca().addActionListener(this);
         this.vista_menu.getBtn_ConsultarSocio().addActionListener(this);
         this.vista_menu.getBtn_Administracion().addActionListener(this);
@@ -92,19 +91,13 @@ public class MenuPrincipalController implements ActionListener {
             if (controladorLibros == null) {
                 controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, agregar_libro);
             }
-        } else if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) { // agregar socio
-            this.vista_menu.setVisible(false);
-            this.socioVista.setVisible(true);
-            if (controladorSocio == null) {
-                controladorSocio = new SocioController(modelo_socio, socioVista);
-            }
         } else if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
                 controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista);
             }
-            new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista);
+
         } else {
             this.vista_menu.setVisible(true);
         }

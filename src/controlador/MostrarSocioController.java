@@ -44,6 +44,7 @@ public class MostrarSocioController implements ActionListener {
         this.vista_socio.getBtn_modificar_socio().addActionListener(this);
 
         this.socio_view.getBtn_agregar().addActionListener(this);
+        this.vista_socio.getBtn_volver_socio().addActionListener(this);
         // funcion para mostrar libros
         mostrarSocios();
         //---------
@@ -68,8 +69,12 @@ public class MostrarSocioController implements ActionListener {
             eliminar_socios();
         }
 
-        if(e.getSource() == this.vista_socio.getBtn_buscarSocios()){
+        if (e.getSource() == this.vista_socio.getBtn_buscarSocios()) {
             buscarSocios();
+        }
+        
+        if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {// volver menu principal
+            
         }
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
@@ -195,7 +200,7 @@ public class MostrarSocioController implements ActionListener {
         }
         return array_socios;
     }
-    
+
     // funcion para pintar libro
     public void pintarSocio(Socio pintar_socio) {
         if (pintar_socio != null) {
@@ -205,7 +210,8 @@ public class MostrarSocioController implements ActionListener {
                 pintar_socio.getApellido(),
                 pintar_socio.getCorreo(),
                 pintar_socio.getTelefono(),
-                pintar_socio.getDireccion()}); // faltaria campos de las otras tablas.... PENDIENTE
+                pintar_socio.getDireccion(),
+                pintar_socio.getDni()}); // faltaria campos de las otras tablas.... PENDIENTE
         }
     }
 
@@ -216,13 +222,13 @@ public class MostrarSocioController implements ActionListener {
             pintarSocio(socio_actual);
         }
     }
-    
-    public void buscarSocios(){
+
+    public void buscarSocios() {
         String combo = this.vista_socio.getCmb_filtro_socios().getSelectedItem().toString();
         String busqueda = this.vista_socio.getTxt_espbusquedaSocio().getText().trim();
         ArrayList<Socio> resultados = new ArrayList<>();
-        
-        switch (combo.toLowerCase()){
+
+        switch (combo.toLowerCase()) {
             case "Todos":
                 resultados = modelo_socio.mostrarTodos();
                 break;
@@ -239,13 +245,13 @@ public class MostrarSocioController implements ActionListener {
                 break;
         }
         if (resultados.isEmpty()) {
-        JOptionPane.showMessageDialog(vista_socio, "No se encontraron resultados.",
-                                      "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(vista_socio, "No se encontraron resultados.",
+                    "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
         } else {
             actualizarTabla(resultados);
-        }   
+        }
     }
-    
+
     public void actualizarTabla(ArrayList<Socio> socios) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
         modeloTabla.setRowCount(0);
@@ -260,5 +266,12 @@ public class MostrarSocioController implements ActionListener {
             };
             modeloTabla.addRow(row);
         }
+    }
+
+    /**
+     * funcion para volver al menuPrincipal
+     */
+    public void volverPrincipal() {
+
     }
 }

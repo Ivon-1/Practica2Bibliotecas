@@ -24,8 +24,6 @@ public class LibrosView extends javax.swing.JFrame {
     public LibrosView() {
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +46,7 @@ public class LibrosView extends javax.swing.JFrame {
         txt_espbusquedaSocio = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         check_disponible = new javax.swing.JCheckBox();
+        btn_volver_libro = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,6 +119,13 @@ public class LibrosView extends javax.swing.JFrame {
 
         check_disponible.setText("Disponible");
 
+        btn_volver_libro.setText("Volver");
+        btn_volver_libro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volver_libroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +138,9 @@ public class LibrosView extends javax.swing.JFrame {
                 .addComponent(btn_eliminarLibro)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar_libro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_volver_libro)
+                .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
@@ -162,7 +170,8 @@ public class LibrosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregarLibro)
                     .addComponent(btn_eliminarLibro)
-                    .addComponent(btn_modificar_libro))
+                    .addComponent(btn_modificar_libro)
+                    .addComponent(btn_volver_libro))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -184,6 +193,10 @@ public class LibrosView extends javax.swing.JFrame {
     private void cmb_filtro_librosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_librosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_filtro_librosActionPerformed
+
+    private void btn_volver_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volver_libroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_volver_libroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,10 +232,8 @@ public class LibrosView extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
     // getters
-    
     public JButton getBtn_agregarLibro() {
         return btn_agregarLibro;
     }
@@ -270,21 +281,18 @@ public class LibrosView extends javax.swing.JFrame {
     public JCheckBox getCheck_disponible() {
         return check_disponible;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public JButton getBtn_volver_libro() {
+        return btn_volver_libro;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarLibro;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminarLibro;
     private javax.swing.JButton btn_modificar_libro;
+    private javax.swing.JButton btn_volver_libro;
     private javax.swing.JCheckBox check_disponible;
     private javax.swing.JComboBox<String> cmb_filtro_libros;
     private javax.swing.JLabel jLabel1;

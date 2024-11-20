@@ -33,7 +33,6 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_consultarBibilioteca" min="-2" pref="162" max="-2" attributes="0"/>
-                          <Component id="btn_agregar_principal" min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="btn_ConsultarSocio" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="btn_Administracion" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="btn_GestionPrincipal" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
@@ -54,9 +53,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btn_agregar_principal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="btn_consultarBibilioteca" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_ConsultarSocio" min="-2" max="-2" attributes="0"/>
@@ -78,11 +75,6 @@
           <Font name="Segoe UI" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gestion de bibliotecas"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_agregar_principal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_ConsultarSocio">
