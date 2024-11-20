@@ -38,10 +38,10 @@ public class SocioController implements ActionListener {
     //Controlador donde se encontraran los metodos(funcionalidades).
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.vista.getBtn_agregar()) {
+        if (e.getSource() == this.socio_view.getBtn_agregarSocio()) {
             agregarSocios();  // Llamamos al método que procesa el formulario
         }
-        if(e.getSource() == this.vista.getBtn_eliminar()){
+        if(e.getSource() == this.socio_view.getBtn_eliminarSocio()){
             eliminar_socios();
         }
     }
@@ -134,8 +134,8 @@ public class SocioController implements ActionListener {
     }
     
     public void buscarSocios(){
-        String combo = this.socio_view.getCmb_filtroSocios().getSelectedItem().toString();
-        String busqueda = this.socio_view.getTxt_espBusquedaSocio().getText().trim();
+        String combo = this.socio_view.getCmb_filtro_socios().getSelectedItem().toString();
+        String busqueda = this.socio_view.getTxt_espbusquedaSocio().getText().trim();
         ArrayList<Socio> resultados = new ArrayList<>();
         
         switch (combo.toLowerCase()){
