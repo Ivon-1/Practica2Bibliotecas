@@ -19,8 +19,6 @@ public class Socio implements Serializable{
     private String dni;
     private int telefono;
     private String direccion;
-    private String isbn;
-    private int id_incidencia;
 
     public Socio(String nombre, String apellido, String correo, String dni, int telefono, String direccion) {
         this.nombre = nombre;
@@ -29,8 +27,6 @@ public class Socio implements Serializable{
         this.dni = dni;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.isbn = isbn;
-        this.id_incidencia = id_incidencia;
     }
 
     public int getIdSocio() {
@@ -41,8 +37,6 @@ public class Socio implements Serializable{
         this.idSocio = idSocio;
     }
     
-    
-
     public String getNombre() {
         return nombre;
     }
@@ -90,22 +84,4 @@ public class Socio implements Serializable{
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getId_incidencia() {
-        return id_incidencia;
-    }
-
-    public void setId_incidencia(int id_incidencia) {
-        this.id_incidencia = id_incidencia;
-    }
-    
-    
 }

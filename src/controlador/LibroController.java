@@ -100,7 +100,7 @@ public class LibroController implements ActionListener {
 
     }
 
-public void buscarLibros() {
+    public void buscarLibros() {
         String combo = this.libros.getCmb_filtro_libros().getSelectedItem().toString();
         String busqueda = this.libros.getTxt_espbusquedaLibro().getText().trim();
         ArrayList<Libro> resultados = new ArrayList<>();

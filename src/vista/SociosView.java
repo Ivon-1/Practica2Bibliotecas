@@ -6,8 +6,6 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -24,6 +22,36 @@ public class SociosView extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtn_agregarSocio() {
+        return btn_agregarSocio;
+    }
+
+    public JButton getBtn_buscarSocios() {
+        return btn_buscarSocios;
+    }
+
+    public JButton getBtn_eliminarSocio() {
+        return btn_eliminarSocio;
+    }
+
+    public JComboBox<String> getCmb_filtro_socios() {
+        return cmb_filtro_socios;
+    }
+
+    public JTable getTable_socios() {
+        return table_socios;
+    }
+
+    public JTextField getTxt_espbusquedaSocio() {
+        return txt_espbusquedaSocio;
+    }
+
+    public JButton getBtn_modificar_socio() {
+        return btn_modificar_socio;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,32 +61,17 @@ public class SociosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_modificarSocio = new javax.swing.JButton();
-        txt_espBusquedaSocio = new javax.swing.JTextField();
-        btn_buscarSocios = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_agregarSocio = new javax.swing.JButton();
         btn_eliminarSocio = new javax.swing.JButton();
-        cmb_filtroSocios = new javax.swing.JComboBox<>();
+        cmb_filtro_socios = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_socios = new javax.swing.JTable();
+        btn_modificar_socio = new javax.swing.JButton();
+        txt_espbusquedaSocio = new javax.swing.JTextField();
+        btn_buscarSocios = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        btn_modificarSocio.setText("Modificar");
-        btn_modificarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarSocioActionPerformed(evt);
-            }
-        });
-
-        txt_espBusquedaSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_espBusquedaSocioActionPerformed(evt);
-            }
-        });
-
-        btn_buscarSocios.setText("Buscar");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Socios");
@@ -77,49 +90,66 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtroSocios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Apellidos", "DNI" }));
-        cmb_filtroSocios.addActionListener(new java.awt.event.ActionListener() {
+        cmb_filtro_socios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "editorial" }));
+        cmb_filtro_socios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_filtroSociosActionPerformed(evt);
+                cmb_filtro_sociosActionPerformed(evt);
             }
         });
 
         table_socios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "idSocio", "nombre", "apellido", "correo", "telefono", "direccion"
+                "idSocio", "nombre", "apellidos", "correo", "dni", "telefono", "direccion"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(table_socios);
+
+        btn_modificar_socio.setText("Modificar");
+        btn_modificar_socio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificar_socioActionPerformed(evt);
+            }
+        });
+
+        btn_buscarSocios.setText("Buscar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(txt_espBusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cmb_filtroSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(325, 325, 325)
+                .addGap(280, 280, 280)
                 .addComponent(btn_agregarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_eliminarSocio)
                 .addGap(18, 18, 18)
-                .addComponent(btn_modificarSocio)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addComponent(btn_modificar_socio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addGap(33, 33, 33)
+                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,8 +157,8 @@ public class SociosView extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cmb_filtroSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_espBusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscarSocios))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,16 +166,12 @@ public class SociosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregarSocio)
                     .addComponent(btn_eliminarSocio)
-                    .addComponent(btn_modificarSocio))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(btn_modificar_socio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_modificarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarSocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_modificarSocioActionPerformed
 
     private void btn_agregarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarSocioActionPerformed
         // TODO add your handling code here:
@@ -155,13 +181,13 @@ public class SociosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarSocioActionPerformed
 
-    private void cmb_filtroSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtroSociosActionPerformed
+    private void cmb_filtro_sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_sociosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_filtroSociosActionPerformed
+    }//GEN-LAST:event_cmb_filtro_sociosActionPerformed
 
-    private void txt_espBusquedaSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_espBusquedaSocioActionPerformed
+    private void btn_modificar_socioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_socioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_espBusquedaSocioActionPerformed
+    }//GEN-LAST:event_btn_modificar_socioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,53 +223,18 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
     }
-
-    // getters y setters
-    public JButton getBtn_agregarSocio() {
-        return btn_agregarSocio;
-    }
-
-    public JButton getBtn_buscarSocios() {
-        return btn_buscarSocios;
-    }
-
-    public JButton getBtn_eliminarSocio() {
-        return btn_eliminarSocio;
-    }
-
-    public JButton getBtn_modificarSocio() {
-        return btn_modificarSocio;
-    }
-
-    public JComboBox<String> getCmb_filtroSocios() {
-        return cmb_filtroSocios;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    public JTable getTable_socios() {
-        return table_socios;
-    }
-
-    public JTextField getTxt_espBusquedaSocio() {
-        return txt_espBusquedaSocio;
-    }
     
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarSocio;
     private javax.swing.JButton btn_buscarSocios;
     private javax.swing.JButton btn_eliminarSocio;
-    private javax.swing.JButton btn_modificarSocio;
-    private javax.swing.JComboBox<String> cmb_filtroSocios;
+    private javax.swing.JButton btn_modificar_socio;
+    private javax.swing.JComboBox<String> cmb_filtro_socios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable table_socios;
-    private javax.swing.JTextField txt_espBusquedaSocio;
+    private javax.swing.JTextField txt_espbusquedaSocio;
     // End of variables declaration//GEN-END:variables
 }

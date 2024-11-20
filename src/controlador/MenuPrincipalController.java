@@ -91,7 +91,7 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
             if (controladorLibros == null) {
-                controladorLibros = new MostrarLibroController(modelo_libros, vista_libros);
+                // controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, libro_view);
             }
         } else if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) { // agregar socio
             this.vista_menu.setVisible(false);

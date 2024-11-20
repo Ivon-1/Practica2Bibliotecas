@@ -41,7 +41,7 @@ public class MostrarSocioController implements ActionListener {
         this.vista_socio.getBtn_agregarSocio().addActionListener(this);
         this.vista_socio.getBtn_eliminarSocio().addActionListener(this);
         this.vista_socio.getBtn_buscarSocios().addActionListener(this);
-        this.vista_socio.getBtn_modificarSocio().addActionListener(this);
+        this.vista_socio.getBtn_modificar_socio().addActionListener(this);
 
         this.socio_view.getBtn_agregar().addActionListener(this);
         // funcion para mostrar libros
