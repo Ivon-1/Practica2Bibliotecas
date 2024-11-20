@@ -68,6 +68,9 @@ public class MostrarSocioController implements ActionListener {
             eliminar_socios();
         }
 
+        if(e.getSource() == this.vista_socio.getBtn_buscarSocios()){
+            buscarSocios();
+        }
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
 
@@ -157,7 +160,6 @@ public class MostrarSocioController implements ActionListener {
     }
 
     // funcion para cargar datos BBDD
-    // funcion para cargar datos bbdd
     public ArrayList<Socio> cargarSociosBBDD() {
         ArrayList<Socio> array_socios = new ArrayList<>();
         Connection con = ConexionBD.conectar();
@@ -212,6 +214,51 @@ public class MostrarSocioController implements ActionListener {
         datos_tabla_socio.setRowCount(0);
         for (Socio socio_actual : socios) {
             pintarSocio(socio_actual);
+        }
+    }
+    
+    public void buscarSocios(){
+        String combo = this.vista_socio.getCmb_filtro_socios().getSelectedItem().toString();
+        String busqueda = this.vista_socio.getTxt_espbusquedaSocio().getText().trim();
+        ArrayList<Socio> resultados = new ArrayList<>();
+        
+        switch (combo.toLowerCase()){
+            case "Todos":
+                resultados = modelo_socio.mostrarTodos();
+                break;
+            case "DNI":
+                //resultados = modelo_socio.buscarPorDNI(busqueda);
+                break;
+            case "Nombre":
+                resultados = modelo_socio.buscarPorNombre(busqueda);
+                break;
+            case "Apellidos":
+                resultados = modelo_socio.buscarPorApellido(busqueda);
+                break;
+            default:
+                break;
+        }
+        if (resultados.isEmpty()) {
+        JOptionPane.showMessageDialog(vista_socio, "No se encontraron resultados.",
+                                      "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            actualizarTabla(resultados);
+        }   
+    }
+    
+    public void actualizarTabla(ArrayList<Socio> socios) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
+        modeloTabla.setRowCount(0);
+
+        // llena la tabla con los socios
+        for (Socio socio : socios) {
+            Object[] row = {
+                socio.getIdSocio(), socio.getNombre(),
+                socio.getApellido(), socio.getCorreo(),
+                socio.getTelefono(), socio.getDireccion(),
+                socio.getDni()
+            };
+            modeloTabla.addRow(row);
         }
     }
 }

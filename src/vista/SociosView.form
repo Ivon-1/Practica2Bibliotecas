@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -38,9 +38,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="txt_espbusquedaSocio" min="-2" pref="306" max="-2" attributes="0"/>
-              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
               <Component id="cmb_filtro_socios" min="-2" pref="151" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="btn_buscarSocios" min="-2" pref="113" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
@@ -99,9 +99,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Todos"/>
-            <StringItem index="1" value="isbn"/>
-            <StringItem index="2" value="titulo"/>
-            <StringItem index="3" value="editorial"/>
+            <StringItem index="1" value="DNI"/>
+            <StringItem index="2" value="Nombre"/>
+            <StringItem index="3" value="Apellidos"/>
           </StringArray>
         </Property>
       </Properties>
@@ -127,9 +127,9 @@
                 <Column editable="false" title="nombre" type="java.lang.Object"/>
                 <Column editable="false" title="apellidos" type="java.lang.Object"/>
                 <Column editable="false" title="correo" type="java.lang.Object"/>
-                <Column editable="false" title="dni" type="java.lang.Object"/>
                 <Column editable="false" title="telefono" type="java.lang.Object"/>
                 <Column editable="false" title="direccion" type="java.lang.Object"/>
+                <Column editable="false" title="dni" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

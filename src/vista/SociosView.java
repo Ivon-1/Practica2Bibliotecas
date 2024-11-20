@@ -90,7 +90,7 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtro_socios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "isbn", "titulo", "editorial" }));
+        cmb_filtro_socios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "DNI", "Nombre", "Apellidos" }));
         cmb_filtro_socios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_filtro_sociosActionPerformed(evt);
@@ -105,7 +105,7 @@ public class SociosView extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "idSocio", "nombre", "apellidos", "correo", "dni", "telefono", "direccion"
+                "idSocio", "nombre", "apellidos", "correo", "telefono", "direccion", "dni"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -145,9 +145,9 @@ public class SociosView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
