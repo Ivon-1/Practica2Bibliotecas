@@ -67,6 +67,10 @@ public class MostrarLibroController implements ActionListener {
         if (e.getSource() == this.vista_libros.getBtn_eliminarLibro()) {
             eliminar_libros();
         }
+        
+        if (e.getSource() == this.vista_libros.getBtn_buscar()){
+            buscarLibros();
+        }
     }
 
     //Funcion para agregar libros.

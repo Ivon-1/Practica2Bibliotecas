@@ -64,7 +64,7 @@ public class SocioModelo {
 
     /**
      * funcion para buscar por nombre
-     * @param titulo
+     * @param nombre
      * @return 
      */
     public ArrayList<Socio> buscarPorNombre(String nombre) {
@@ -91,7 +91,7 @@ public class SocioModelo {
     
     /**
      * funcion para buscar por apellido
-     * @param titulo
+     * @param apellido
      * @return 
      */
     public ArrayList<Socio> buscarPorApellido(String apellido) {
@@ -118,7 +118,7 @@ public class SocioModelo {
     
     /**
      * funcion para buscar por DNI
-     * @param titulo
+     * @param dni
      * @return 
      */
     public Socio buscarPorDNI(String dni) {
