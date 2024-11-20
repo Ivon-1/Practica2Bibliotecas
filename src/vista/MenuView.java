@@ -29,12 +29,16 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_consultarBibilioteca1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_ConsultarSocio = new javax.swing.JButton();
-        btn_consultarBibilioteca = new javax.swing.JButton();
         btn_Administracion = new javax.swing.JButton();
         btn_cerrarSesion = new javax.swing.JButton();
         btn_GestionPrincipal = new javax.swing.JButton();
+        btn_consultarBibilioteca = new javax.swing.JButton();
+        btn_incidencias = new javax.swing.JButton();
+
+        btn_consultarBibilioteca1.setText("Consultar biblioteca");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,30 +52,33 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
-        btn_consultarBibilioteca.setText("Consultar biblioteca");
-
         btn_Administracion.setText("Administracion");
 
         btn_cerrarSesion.setText("Cerrar sesión");
 
         btn_GestionPrincipal.setText("Gestion");
 
+        btn_consultarBibilioteca.setText("Consultar biblioteca");
+
+        btn_incidencias.setText("Incidencias");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 123, Short.MAX_VALUE)
+                .addGap(0, 108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(120, 120, 120))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Administracion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_Administracion, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_incidencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(154, 154, 154))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -83,9 +90,11 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(btn_consultarBibilioteca)
                 .addGap(18, 18, 18)
+                .addComponent(btn_incidencias)
+                .addGap(12, 12, 12)
+                .addComponent(btn_consultarBibilioteca)
+                .addGap(12, 12, 12)
                 .addComponent(btn_ConsultarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Administracion)
@@ -93,7 +102,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(btn_GestionPrincipal)
                 .addGap(18, 18, 18)
                 .addComponent(btn_cerrarSesion)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,8 +170,11 @@ public class MenuView extends javax.swing.JFrame {
     public JLabel getjLabel1() {
         return jLabel1;
     }
-    
-    
+
+    public JButton getBtn_incidencias() {
+        return btn_incidencias;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Administracion;
@@ -170,6 +182,8 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btn_GestionPrincipal;
     private javax.swing.JButton btn_cerrarSesion;
     private javax.swing.JButton btn_consultarBibilioteca;
+    private javax.swing.JButton btn_consultarBibilioteca1;
+    private javax.swing.JButton btn_incidencias;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
