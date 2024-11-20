@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Libro;
 import vista.AgregarLibroView;
+import vista.MenuView;
 
 /**
  *
@@ -29,14 +30,15 @@ public class MostrarLibroController implements ActionListener {
     private LibrosView vista_libros;
     private DefaultTableModel datos_tabla;
     private AgregarLibroView libro_agregar;
+    private MenuView vista_menu;
 
     // funcion para mostrar
-    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libros, AgregarLibroView libro_agregar) {
+    public MostrarLibroController(LibroModelo modelo_libro, LibrosView vista_libros, AgregarLibroView libro_agregar, MenuView vista_menu) {
         this.modelo_libro = modelo_libro;
         this.vista_libros = vista_libros;
         this.libro_agregar = libro_agregar;
-        
-        this.libro_agregar.setVisible(false);
+        this.vista_menu = vista_menu;
+
         // casteo tabla
         datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
         // boton
@@ -51,13 +53,12 @@ public class MostrarLibroController implements ActionListener {
         this.libro_agregar.getBtn_agregar().addActionListener(this);
         // funcion para mostrar los libros . RECORDARRRRRR
         mostrarLibros();
-        //----------
+        //------------
         this.vista_libros.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        mostrarLibros();
 
         if (e.getSource() == this.vista_libros.getBtn_agregarLibro()) {
             this.libro_agregar.setVisible(true);
@@ -70,9 +71,15 @@ public class MostrarLibroController implements ActionListener {
         if (e.getSource() == this.vista_libros.getBtn_eliminarLibro()) {
             eliminar_libros();
         }
-        
-        if (e.getSource() == this.vista_libros.getBtn_buscar()){
+
+        if (e.getSource() == this.vista_libros.getBtn_buscar()) {
             buscarLibros();
+        }
+
+        if (e.getSource() == this.vista_libros.getBtn_volver_libro()) { // volver menu
+            this.vista_libros.setVisible(false);
+            this.vista_menu.setVisible(true);
+
         }
     }
 

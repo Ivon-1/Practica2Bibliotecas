@@ -60,14 +60,17 @@ public class MenuPrincipalController implements ActionListener {
 
         this.agregar_libro = new AgregarLibroView();
         this.vista_libros = new LibrosView();
+
         this.vista_menu = new MenuView();
 
         this.agregar_libro.setVisible(false);
         this.vista_menu.setVisible(true);
-        
+
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
+        this.vista_menu.setVisible(true);
+        this.agregar_libro.setVisible(false);
     }
 
     /*
@@ -84,47 +87,20 @@ public class MenuPrincipalController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         Object button = e.getSource();
-        //funcion para ocultar vistas
-        ocultarVistas();
 
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
             if (controladorLibros == null) {
-                controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, agregar_libro);
+                controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, agregar_libro, vista_menu);
             }
         } else if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista);
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu);
             }
 
-        } else {
-            this.vista_menu.setVisible(true);
         }
     }
-
-    /*
-    funcion para ocultar vistas
-     */
-    public void ocultarVistas() {
-        this.loginVista.setVisible(false);
-        this.socioVista.setVisible(false);
-        this.vista_libros.setVisible(false);
-        this.vista_principalSocios.setVisible(false);
-        this.vista_menu.setVisible(false);
-    }
-
-    /**
-     * funcion para mostrar las vistas
-     */
-    public void mostrarVista() {
-        this.loginVista.setVisible(true);
-        this.socioVista.setVisible(true);
-        this.vista_libros.setVisible(true);
-        this.vista_principalSocios.setVisible(true);
-        this.vista_menu.setVisible(true);
-    }
-
 }
