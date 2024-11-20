@@ -32,6 +32,7 @@ public class MenuPrincipalController implements ActionListener {
     // vistas
     private LoginView loginVista;
     private SociosView vista_principalSocios;
+    private AgregarLibroView agregar_libro;
     private SocioAgregarView socioVista;
     private LibrosView vista_libros;
     private MenuView vista_menu;
@@ -54,15 +55,13 @@ public class MenuPrincipalController implements ActionListener {
         this.modelo_socio = new SocioModelo();
         // vistas
         this.loginVista = new LoginView();
-        this.socioVista = new SocioAgregarView();
-        this.vista_libros = new LibrosView();
-        this.vista_menu = new MenuView();
         this.vista_principalSocios = new SociosView();
-        // controladores
-        this.controladorLibros = null;
-        this.controladorLogin = null;
-        this.controladorSocio = null;
-        this.controladorPrincipalSocios = null;
+        this.socioVista = new SocioAgregarView();
+
+        this.agregar_libro = new AgregarLibroView();
+        this.vista_libros = new LibrosView();
+
+        this.vista_menu = new MenuView();
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
@@ -86,12 +85,12 @@ public class MenuPrincipalController implements ActionListener {
         Object button = e.getSource();
         //funcion para ocultar vistas
         ocultarVistas();
-        
+
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
             if (controladorLibros == null) {
-                // controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, libro_view);
+                controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, agregar_libro);
             }
         } else if (e.getSource() == this.vista_menu.getBtn_agregar_principal()) { // agregar socio
             this.vista_menu.setVisible(false);
@@ -103,9 +102,9 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios , socioVista);
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista);
             }
-            new MostrarSocioController(modelo_socio, vista_principalSocios,socioVista);
+            new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista);
         } else {
             this.vista_menu.setVisible(true);
         }
@@ -119,6 +118,17 @@ public class MenuPrincipalController implements ActionListener {
         this.socioVista.setVisible(false);
         this.vista_libros.setVisible(false);
         this.vista_principalSocios.setVisible(false);
+        this.vista_menu.setVisible(false);
+    }
+
+    /**
+     * funcion para mostrar las vistas
+     */
+    public void mostrarVista() {
+        this.loginVista.setVisible(true);
+        this.socioVista.setVisible(true);
+        this.vista_libros.setVisible(true);
+        this.vista_principalSocios.setVisible(true);
         this.vista_menu.setVisible(true);
     }
 

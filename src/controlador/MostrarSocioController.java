@@ -193,7 +193,7 @@ public class MostrarSocioController implements ActionListener {
         }
         return array_socios;
     }
-
+    
     // funcion para pintar libro
     public void pintarSocio(Socio pintar_socio) {
         if (pintar_socio != null) {
