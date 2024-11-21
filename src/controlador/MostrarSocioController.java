@@ -15,6 +15,7 @@ import modelo.Socio;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import modelo.IncidenciasModelo;
 import vista.AgregarLibroView;
 import vista.ComprobarIncidenciasView;
 import vista.MenuView;
@@ -33,15 +34,17 @@ public class MostrarSocioController implements ActionListener {
     private DefaultTableModel datos_tabla_socio;
     private SocioAgregarView socio_view;
     private MenuView vista_menu;
+    private IncidenciasModelo modelo_incidencias;
     private ComprobarIncidenciasView vista_incidencias;
 
     // funcion para mostrar
-    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view, MenuView vista_menu, ComprobarIncidenciasView vista_incidencias) {
+    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view, MenuView vista_menu, ComprobarIncidenciasView vista_incidencias, IncidenciasModelo modelo_incidencias) {
         this.modelo_socio = modelo_socio;
         this.vista_socio = vista_socio;
         this.socio_view = socio_view;
         this.vista_menu = vista_menu;
         this.vista_incidencias = vista_incidencias;
+        this.modelo_incidencias = modelo_incidencias;
         datos_tabla_socio = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
         // funcion activar botones
         addButtons();
@@ -88,12 +91,16 @@ public class MostrarSocioController implements ActionListener {
         
         if (e.getSource() == this.vista_socio.getBtn_incidencias()) {
            this.vista_incidencias.setVisible(true);
+           
+           
         }
 
         if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {
             this.vista_socio.setVisible(false);
             this.vista_menu.setVisible(true);
         }
+        
+       
 
         // Otros botones (modificar, buscar) pueden ser manejados aquí de la misma manera
     }
@@ -270,6 +277,8 @@ public class MostrarSocioController implements ActionListener {
             modeloTabla.addRow(fila);
         }
     }
+    
+    
     
     
 }

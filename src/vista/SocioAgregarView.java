@@ -21,6 +21,8 @@ public class SocioAgregarView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Agregar socio");
+        txt_idSocio.setText(String.format("$%3d",(int)(Math.random() * 999)));
+        txt_idSocio.setEnabled(false);
     }
 
     public JButton getBtn_agregar() {
