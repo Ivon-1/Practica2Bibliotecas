@@ -7,11 +7,13 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.ConexionBD;
 import modelo.IncidenciasModelo;
 import modelo.LibroModelo;
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
+import vista.AgregarIncidenciaView;
 import vista.AgregarLibroView;
 import vista.ComprobarIncidenciasView;
 import vista.LibrosView;
@@ -40,6 +42,8 @@ public class MenuPrincipalController implements ActionListener {
     private MenuView vista_menu;
     private ComprobarIncidenciasView vista_incidencias;
     private IncidenciasModelo modelo_incidencias;
+    private DefaultTableModel tabla_incidencias;
+    private AgregarIncidenciaView agregar_incidencias;
 
     // controladores
     private MostrarLibroController controladorLibros;
@@ -58,14 +62,18 @@ public class MenuPrincipalController implements ActionListener {
         this.modeloUsuario = new UsuarioModelo();
         this.modelo_libros = new LibroModelo();
         this.modelo_socio = new SocioModelo();
+        this.modelo_incidencias = new IncidenciasModelo();
         // vistas
         this.loginVista = new LoginView();
         this.vista_principalSocios = new SociosView();
         this.socioVista = new SocioAgregarView();
+        this.tabla_incidencias = new DefaultTableModel(); // O tu lógica de inicialización
+        this.agregar_incidencias = new AgregarIncidenciaView();
+
+        this.vista_incidencias = new ComprobarIncidenciasView();
 
         this.agregar_libro = new AgregarLibroView();
         this.vista_libros = new LibrosView();
-        this.vista_incidencias = new ComprobarIncidenciasView();
 
         this.vista_menu = new MenuView();
 
@@ -98,16 +106,33 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
             if (controladorLibros == null) {
-                controladorLibros = new MostrarLibroController(modelo_libros, vista_libros, agregar_libro, vista_menu);
+                controladorLibros = new MostrarLibroController(
+                        modelo_libros,
+                        vista_libros,
+                        agregar_libro,
+                        vista_menu);
             }
-        } else if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios
+        } else if (button == this.vista_menu.getBtn_ConsultarSocio()) {// mostrar socios e incidencias
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
-            if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu, vista_incidencias, modelo_incidencias);
 
+            if (controladorIncidencia == null) {
+                controladorIncidencia = new IncidenciaController(modelo_incidencias,
+                        vista_principalSocios, 
+                        vista_incidencias, 
+                        tabla_incidencias,
+                        agregar_incidencias);
             }
 
+            if (controladorPrincipalSocios == null) {
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio,
+                        vista_principalSocios,
+                        socioVista,
+                        vista_menu,
+                        vista_incidencias,
+                        modelo_incidencias,
+                        controladorIncidencia);
+            }
         }
 
     }
