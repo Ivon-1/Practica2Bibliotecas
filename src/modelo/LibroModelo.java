@@ -185,9 +185,6 @@ public class LibroModelo {
     public void insertarLibro(Libro libro) {
         String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial) values (?,?,?,?,?,?)";
         try {
-            if (!existeEnPrestamos(libro.getIsbn())) {
-                System.out.println("El isbn no existe en la tabla de prestamos. No se puede insertar.");
-            }
             preparar = conexion.prepareStatement(consulta);
             preparar.setString(1, libro.getIsbn());
             preparar.setString(2, libro.getTitulo());
