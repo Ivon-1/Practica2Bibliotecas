@@ -15,6 +15,7 @@ import vista.ComprobarIncidenciasView;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 import modelo.ConexionBD;
 import vista.MenuView;
 
@@ -49,25 +50,25 @@ public class IncidenciaController implements ActionListener {
      * funcion para añadir botones
      */
     public void addButtones() {
-        this.vista_incidencias.getBtn_agregarIncidencia();
-        this.vista_incidencias.getBtn_buscarSocios();
-        this.vista_incidencias.getBtn_eliminarIncidencia();
-        this.vista_incidencias.getBtn_modificar_incidencia();
-        this.vista_incidencias.getBtn_volver_incidencia();
+        this.vista_incidencias.getBtn_agregarIncidencia().addActionListener(this);
+        this.vista_incidencias.getBtn_buscarSocios().addActionListener(this);
+        this.vista_incidencias.getBtn_eliminarIncidencia().addActionListener(this);
+        this.vista_incidencias.getBtn_modificar_incidencia().addActionListener(this);
+        this.vista_incidencias.getBtn_volver_incidencia().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.vista_incidencias.getBtn_agregarIncidencia()) {
+        /*if (e.getSource() == this.vista_incidencias.getBtn_agregarIncidencia()) {
             this.vista_agregar_incidencia.setVisible(true);
-        }
+        }*/
 
         if (e.getSource() == this.vista_incidencias.getBtn_agregarIncidencia()) { // agregar incidencia
-
+            agregarIncidencia();
         }
 
         if (e.getSource() == this.vista_incidencias.getBtn_eliminarIncidencia()) { // eliminar incidencia
-
+            eliminarIncidencia();
         }
 
         if (e.getSource() == this.vista_incidencias.getBtn_eliminarIncidencia()) { // buscar incidencia
@@ -79,6 +80,78 @@ public class IncidenciaController implements ActionListener {
             this.vista_incidencias.setVisible(true);
 
         }
+    }
+
+    //Funcion para agregar incidencia.
+    public void agregarIncidencia() {
+        if (validarDatos()) {
+            if (this.modelo_incidencias.agregar_incidencia(0,
+                    this.vista_agregar_incidencia.getCmb_estadoIncidencia().getSelectedItem().toString(),
+                    this.vista_agregar_incidencia.getCmb_tipoIncidencia().getSelectedItem().toString(),
+                    Integer.parseInt(this.vista_agregar_incidencia.getTxt_idIncidencia().getText()))) {
+                JOptionPane.showMessageDialog(vista_agregar_incidencia, "Agregado correctamente.");
+                this.vista_agregar_incidencia.dispose();
+                mostrarIncidencias();
+            } else {
+                JOptionPane.showMessageDialog(vista_agregar_incidencia, "Error al agregar");
+            }
+        }
+    }
+
+    //Funcion para eliminar incidencias.
+    public void eliminarIncidencia() {
+        String idSocio = JOptionPane.showInputDialog(vista_agregar_incidencia,
+                "Introduzca la id  que desea eliminar ",
+                "Eliminar",
+                JOptionPane.ERROR_MESSAGE);
+
+        if (idSocio != null) {
+            if (this.modelo_incidencias.buscarPorIdIncidencias(Integer.parseInt(idSocio)) != null) {
+                int resultado = JOptionPane.showConfirmDialog(vista_agregar_incidencia,
+                        "Estas seguro de eliminar esta id : " + idSocio,
+                        "Eliminar",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (resultado == JOptionPane.YES_OPTION) {
+                    this.modelo_incidencias.eliminarPorIdIncidencia(Integer.parseInt(idSocio));
+                    JOptionPane.showMessageDialog(vista_agregar_incidencia,
+                            "El socio con id " + idSocio,
+                            " eliminado con exito.",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    mostrarIncidencias();
+                }
+            } else {
+                JOptionPane.showMessageDialog(vista_agregar_incidencia,
+                        "No existe la id" + idSocio,
+                        "No se puede borrar",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    //FUNCION PARA VALIDAR LOS DATOS.
+    public boolean validarDatos() {
+        boolean resultado = true;
+        String mensaje = "";
+
+        if (this.vista_agregar_incidencia.getCmb_estadoIncidencia().getSelectedIndex() == 0) {
+            mensaje += "Selecciona un estado de incidencia.\n";
+            resultado = false;
+        }
+        if (this.vista_agregar_incidencia.getCmb_tipoIncidencia().getSelectedIndex() == 0) {
+            mensaje += "Selecciona un tipo de incidencia.\n";
+            resultado = false;
+        }
+        if (this.vista_agregar_incidencia.getTxt_idSocioIncidencia().getText().trim().length() == 0) {
+            mensaje += "Introduzca un id.\n";
+            resultado = false;
+        }
+
+        if (!resultado) {
+            JOptionPane.showMessageDialog(vista_agregar_incidencia, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return resultado;
     }
 
     // funcion para cargar datos bbdd
