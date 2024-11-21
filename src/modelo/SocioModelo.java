@@ -60,85 +60,54 @@ public class SocioModelo {
         return socios;
     }
     
-    
-
     /**
-     * funcion para buscar por nombre
-     * @param nombre
+     * funcion para buscar por filtro
+     * @param filtro
+     * @param valor
      * @return 
      */
-    public ArrayList<Socio> buscarPorNombre(String nombre) {
-        String consulta = "SELECT * FROM socios WHERE nombre LIKE ?";
-        ArrayList<Socio> socios = new ArrayList<>();
-        try {
-            preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1, "%" + nombre + "%");
-            ResultSet rs = preparar.executeQuery();
+    public ArrayList<Socio> buscarSocios(String filtro, String valor) {
+        ArrayList<Socio> listaSocios = new ArrayList<>();
+        String query = "";
+        
+        switch (filtro) {
+            case "Todos":
+                query = "SELECT * FROM socios";
+                break;
+            case "DNI":
+                query = "SELECT * FROM socios WHERE dni LIKE ?";
+                break;
+            case "Nombre":
+                query = "SELECT * FROM socios WHERE nombre LIKE ?";
+                break;
+            case "Apellidos":
+                query = "SELECT * FROM socios WHERE apellido LIKE ?";
+                break;
+        }
 
+        try {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            if (!filtro.equals("Todos")) {
+                ps.setString(1, "%" + valor + "%");
+            }
+
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Socio socio = new Socio(
-                rs.getString("nombre"), rs.getString("apellido"),
-                rs.getString("correo"), rs.getString("dni"),
-                rs.getInt("telefono"), rs.getString("direccion")
-            );
-            socios.add(socio);
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getString("correo"),
+                    rs.getString("dni"),
+                    rs.getInt("telefono"),
+                    rs.getString("direccion")
+                );
+                socio.setIdSocio(rs.getInt("idSocio"));
+                listaSocios.add(socio);
             }
-        }catch(SQLException ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return socios;
-    }
-    
-    /**
-     * funcion para buscar por apellido
-     * @param apellido
-     * @return 
-     */
-    public ArrayList<Socio> buscarPorApellido(String apellido) {
-        String consulta = "SELECT * FROM socios WHERE apellido LIKE ?";
-        ArrayList<Socio> socios = new ArrayList<>();
-        try {
-            PreparedStatement preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1, "%" + apellido + "%");
-            ResultSet rs = preparar.executeQuery();
-
-            while (rs.next()) {
-                Socio socio = new Socio(
-                rs.getString("nombre"), rs.getString("apellido"),
-                rs.getString("correo"), rs.getString("dni"),
-                rs.getInt("telefono"), rs.getString("direccion")
-            );
-            socios.add(socio);
-            }
-        }catch(SQLException ex) {
-            ex.printStackTrace();
-        }
-        return socios;
-    }
-    
-    /**
-     * funcion para buscar por DNI
-     * @param dni
-     * @return 
-     */
-    public Socio buscarPorDNI(String dni) {
-        String consulta = "SELECT * FROM socios WHERE dni = ?";
-        try {
-            PreparedStatement preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1, dni);
-            ResultSet rs = preparar.executeQuery();
-
-            if (rs.next()) {
-                return new Socio(
-                rs.getString("nombre"), rs.getString("apellido"),
-                rs.getString("correo"), rs.getString("dni"),
-                rs.getInt("telefono"), rs.getString("direccion")
-            );
-            }
-        }catch(SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
+        return listaSocios;
     }
     
     //Consulta para agregar un socio.
@@ -222,4 +191,6 @@ public class SocioModelo {
             return false;
         }
     }
+    
+    
 }
