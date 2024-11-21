@@ -9,12 +9,17 @@ package modelo;
  * @author jguti
  */
 public class Incidencias {
+
+    private String nombreSocio;
+    private String apellidosSocio;
     private int id_incidencia;
     private String estado_incidencia;
     private String tipo_incidencia;
     private int idSocio;
 
-    public Incidencias(int id_incidencia, String estado_incidencia, String tipo_incidencia, int idSocio) {
+    public Incidencias(String nombreSocio, String apellidosSocio, int id_incidencia, String estado_incidencia, String tipo_incidencia, int idSocio) {
+        this.nombreSocio = nombreSocio;
+        this.apellidosSocio = apellidosSocio;
         this.id_incidencia = id_incidencia;
         this.estado_incidencia = estado_incidencia;
         this.tipo_incidencia = tipo_incidencia;
@@ -52,4 +57,14 @@ public class Incidencias {
     public void setIdSocio(int idSocio) {
         this.idSocio = idSocio;
     }
+
+    public String getNombreSocio() {
+        return nombreSocio;
+    }
+
+    public String getApellidosSocio() {
+        return apellidosSocio;
+    }
+    
+    
 }

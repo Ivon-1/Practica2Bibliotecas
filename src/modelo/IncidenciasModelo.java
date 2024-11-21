@@ -81,7 +81,7 @@ public class IncidenciasModelo {
                 String tipo_incidencia = rs.getString("tipo_incidencia");
                 int id_incidencia = rs.getInt("id_incidencia");
 
-                Incidencias incidencia = new Incidencias(id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
+                Incidencias incidencia = new Incidencias(consulta, tipo_incidencia, id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
                 return incidencia;
             }
         } catch (SQLException e) {
@@ -91,7 +91,7 @@ public class IncidenciasModelo {
     }
 
     public boolean agregar_incidencia(int id_incidencia, String estado_incidencia, String tipo_incidencia, int idSocio) {
-        Incidencias agregarIncidencia = new Incidencias(id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
+        Incidencias agregarIncidencia = new Incidencias(tipo_incidencia, tipo_incidencia, id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
         try {
             insertarIncidencia(agregarIncidencia);
         } catch (Exception e) {
@@ -113,7 +113,9 @@ public class IncidenciasModelo {
             ResultSet rs = preparar.executeQuery(consulta);
 
             while (rs.next()) {
-                incidencias.add(new Incidencias(rs.getInt("id_incidencia"),
+                incidencias.add(new Incidencias(rs.getString("nombre"),
+                        rs.getString("apellidos"),
+                        rs.getInt("id_incidencia"),
                         rs.getString("estado_incidencia"),
                         rs.getString("tipo_incidencia"),
                         rs.getInt("idSocio"))

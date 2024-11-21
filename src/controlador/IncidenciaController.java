@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import modelo.ConexionBD;
 import vista.MenuView;
+import vista.SociosView;
 
 /**
  *
@@ -26,16 +27,19 @@ import vista.MenuView;
 public class IncidenciaController implements ActionListener {
 
     private IncidenciasModelo modelo_incidencias;
+    private MostrarSocioController controlador_mostrarSocio;
     private ComprobarIncidenciasView vista_incidencias;
+    private SociosView vista_socios;
     private DefaultTableModel datos_tabla;
     private AgregarIncidenciaView vista_agregar_incidencia;
     // instancia vista agregar incidencia
 
-    public IncidenciaController(IncidenciasModelo modelo_incidencias, ComprobarIncidenciasView vista_incidencias, DefaultTableModel tabla_incidencias, AgregarIncidenciaView vista_agregar_incidencia) {
+    public IncidenciaController(IncidenciasModelo modelo_incidencias,SociosView vista_socios, ComprobarIncidenciasView vista_incidencias, DefaultTableModel tabla_incidencias, AgregarIncidenciaView vista_agregar_incidencia) {
         this.modelo_incidencias = modelo_incidencias;
         this.vista_incidencias = vista_incidencias;
         this.datos_tabla = tabla_incidencias;
         this.vista_agregar_incidencia = vista_agregar_incidencia;
+        this.vista_socios = vista_socios;
         // casteo tabla
         this.datos_tabla = (DefaultTableModel) this.vista_incidencias.getTable_socios_incidencias().getModel();
         // escucha botones
@@ -76,8 +80,10 @@ public class IncidenciaController implements ActionListener {
         }
 
         if (e.getSource() == this.vista_incidencias.getBtn_volver_incidencia()) { // volver menu
-            this.vista_agregar_incidencia.setVisible(false);
-            this.vista_incidencias.setVisible(true);
+            this.vista_socios.setVisible(true);
+            this.vista_incidencias.setVisible(false);
+            
+            
 
         }
     }
@@ -169,7 +175,7 @@ public class IncidenciaController implements ActionListener {
                 + "    i.tipo_incidencia, \n"
                 + "    i.idSocio,\n"
                 + "    s.nombre, \n"
-                + "    s.apellidos \n"
+                + "    s.apellido \n"
                 + "FROM \n"
                 + "    incidencias i\n"
                 + "JOIN \n"
@@ -178,12 +184,14 @@ public class IncidenciaController implements ActionListener {
             PreparedStatement stmt = con.prepareStatement(sql); // consulta preparada
             ResultSet resultado = stmt.executeQuery(); // resultado consulta
             while (resultado.next()) {
+                String nombre = resultado.getString("nombre");
+                String apellido = resultado.getString("apellido");
                 int id_incidencia = resultado.getInt("id_incidencia");
                 String estado_incidencia = resultado.getString("estado_incidencia");
                 String tipo_incidencia = resultado.getString("tipo_incidencia");
                 int idSocio = resultado.getInt("idSocio");
 
-                Incidencias incidencias = new Incidencias(id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
+                Incidencias incidencias = new Incidencias(nombre, apellido, id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
                 array_incidencias.add(incidencias);
             }
 
@@ -201,6 +209,9 @@ public class IncidenciaController implements ActionListener {
     public void pintarIncidencias(Incidencias pintar_incidencias) {
         if (pintar_incidencias != null) {
             datos_tabla.addRow(new Object[]{
+                pintar_incidencias.getIdSocio(),
+                pintar_incidencias.getNombreSocio(),
+                pintar_incidencias.getApellidosSocio(),
                 pintar_incidencias.getId_incidencia(),
                 pintar_incidencias.getEstado_incidencia(),
                 pintar_incidencias.getTipo_incidencia(),
