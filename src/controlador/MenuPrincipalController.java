@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.ConexionBD;
+import modelo.IncidenciasModelo;
 import modelo.LibroModelo;
 import modelo.SocioModelo;
 import modelo.UsuarioModelo;
@@ -38,6 +39,7 @@ public class MenuPrincipalController implements ActionListener {
     private LibrosView vista_libros;
     private MenuView vista_menu;
     private ComprobarIncidenciasView vista_incidencias;
+    private IncidenciasModelo modelo_incidencias;
 
     // controladores
     private MostrarLibroController controladorLibros;
@@ -102,10 +104,10 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu,vista_incidencias);
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu, vista_incidencias, modelo_incidencias);
+
             }
-            
-            
+
         }
 
     }

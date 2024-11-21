@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.table.DefaultTableModel;
 import vista.LibrosView;
 
 /**
@@ -47,7 +46,8 @@ public class LibroModelo {
             libros.add(new Libro(
                 rs.getString("isbn"), rs.getString("titulo"),
                 rs.getInt("numSerie"), rs.getFloat("precio"),
-                rs.getString("estado"), rs.getString("editorial")
+                rs.getString("estado"), rs.getInt("idAutor"),
+                rs.getString("editorial"), rs.getInt("idBiblioteca")
             ));
         }
     } catch (SQLException e) {
@@ -71,7 +71,9 @@ public class LibroModelo {
             if (rs.next()) {
                 return new Libro(rs.getString("isbn"), rs.getString("titulo"),
                                  rs.getInt("numSerie"), rs.getFloat("precio"),
-                                 rs.getString("estado"), rs.getString("editorial"));
+                                 rs.getString("estado"), rs.getInt("idAutor"),
+                                 rs.getString("editorial"), rs.getInt("idBiblioteca")
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +97,9 @@ public class LibroModelo {
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
                                      rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getString("editorial")));
+                                     rs.getString("estado"), rs.getInt("idAutor"),
+                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
+                                     ));
             }
         }catch(SQLException ex) {
             ex.printStackTrace();
@@ -119,7 +123,9 @@ public class LibroModelo {
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
                                      rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getString("editorial")));
+                                     rs.getString("estado"), rs.getInt("idAutor"),
+                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
+                                     ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -143,7 +149,9 @@ public class LibroModelo {
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
                                      rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getString("editorial")));
+                                     rs.getString("estado"), rs.getInt("idAutor"),
+                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
+                                     ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

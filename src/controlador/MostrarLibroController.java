@@ -41,6 +41,15 @@ public class MostrarLibroController implements ActionListener {
 
         // casteo tabla
         datos_tabla = (DefaultTableModel) this.vista_libros.getTable_libros().getModel();
+        // funcion botones
+        addButtones();
+        // funcion para mostrar los libros . RECORDARRRRRR
+        mostrarLibros();
+        //------------
+        this.vista_libros.setVisible(true);
+    }
+
+    public void addButtones() {
         // boton
         this.vista_libros.getBtn_agregarLibro().addActionListener(this);
         this.vista_libros.getBtn_buscar().addActionListener(this);
@@ -49,12 +58,8 @@ public class MostrarLibroController implements ActionListener {
         this.vista_libros.getCmb_filtro_libros().addActionListener(this);
         this.vista_libros.getTxt_espbusquedaLibro().addActionListener(this);
         this.vista_libros.getBtn_volver_libro().addActionListener(this);
-        // boton agregar
+         // boton agregar
         this.libro_agregar.getBtn_agregar().addActionListener(this);
-        // funcion para mostrar los libros . RECORDARRRRRR
-        mostrarLibros();
-        //------------
-        this.vista_libros.setVisible(true);
     }
 
     @Override
