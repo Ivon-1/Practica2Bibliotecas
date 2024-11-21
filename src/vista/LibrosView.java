@@ -23,6 +23,8 @@ public class LibrosView extends javax.swing.JFrame {
      */
     public LibrosView() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Libros");
     }
 
     /**

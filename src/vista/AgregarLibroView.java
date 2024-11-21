@@ -20,6 +20,7 @@ public class AgregarLibroView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        setTitle("Agregar libro");
     }
 
     public JButton getBtn_agregar() {

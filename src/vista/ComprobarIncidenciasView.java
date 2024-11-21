@@ -8,12 +8,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.View;
 
 /**
  *
  * @author IvanA
  */
 public class ComprobarIncidenciasView extends javax.swing.JFrame {
+
+    public ComprobarIncidenciasView() {
+        initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Incidencias");
+    }
 
     public JButton getBtn_agregarIncidencia() {
         return btn_agregarIncidencia;

@@ -19,6 +19,8 @@ public class AgregarIncidenciaView extends javax.swing.JFrame {
      */
     public AgregarIncidenciaView() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Agregar incidencia");
     }
 
     public JButton getBtn_agregar() {

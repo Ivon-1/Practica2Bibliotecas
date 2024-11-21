@@ -18,6 +18,8 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Menu principal");
     }
 
     /**
@@ -36,7 +38,6 @@ public class MenuView extends javax.swing.JFrame {
         btn_cerrarSesion = new javax.swing.JButton();
         btn_GestionPrincipal = new javax.swing.JButton();
         btn_consultarBibilioteca = new javax.swing.JButton();
-        btn_incidencias = new javax.swing.JButton();
 
         btn_consultarBibilioteca1.setText("Consultar biblioteca");
 
@@ -60,8 +61,6 @@ public class MenuView extends javax.swing.JFrame {
 
         btn_consultarBibilioteca.setText("Consultar biblioteca");
 
-        btn_incidencias.setText("Incidencias");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,13 +72,11 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(120, 120, 120))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(btn_Administracion, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_Administracion, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                         .addGap(154, 154, 154))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -91,9 +88,7 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(btn_incidencias)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(53, 53, 53)
                 .addComponent(btn_consultarBibilioteca)
                 .addGap(12, 12, 12)
                 .addComponent(btn_ConsultarSocio)
@@ -168,10 +163,6 @@ public class MenuView extends javax.swing.JFrame {
         return btn_consultarBibilioteca;
     }
 
-    public JButton getBtn_incidencias() {
-        return btn_incidencias;
-    }
-
     
 
 
@@ -185,7 +176,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btn_cerrarSesion;
     private javax.swing.JButton btn_consultarBibilioteca;
     private javax.swing.JButton btn_consultarBibilioteca1;
-    private javax.swing.JButton btn_incidencias;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,6 +45,7 @@ public class MenuPrincipalController implements ActionListener {
     private MenuPrincipalController controladorPrincipal;
     private SocioController controladorSocio;
     private MostrarSocioController controladorPrincipalSocios;
+    private IncidenciaController controladorIncidencia;
 
     /*
     controlador del menu principal
@@ -68,7 +69,6 @@ public class MenuPrincipalController implements ActionListener {
 
         this.agregar_libro.setVisible(false);
         this.vista_menu.setVisible(true);
-
         // activacion de botones cuando los haya en la pantalla principal
         addButtones();
         //--------------- poner en true sobre la vista principal
@@ -85,7 +85,6 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_menu.getBtn_Administracion().addActionListener(this);
         this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
         this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
-        this.vista_menu.getBtn_incidencias().addActionListener(this);
     }
 
     @Override
@@ -103,13 +102,10 @@ public class MenuPrincipalController implements ActionListener {
             this.vista_menu.setVisible(false);
             this.vista_principalSocios.setVisible(true);
             if (controladorPrincipalSocios == null) {
-                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu);
+                controladorPrincipalSocios = new MostrarSocioController(modelo_socio, vista_principalSocios, socioVista, vista_menu,vista_incidencias);
             }
-
-        } else if (button == this.vista_menu.getBtn_incidencias()) {// mostrar incidencias
-            this.vista_menu.setVisible(false);
-            this.vista_incidencias.setVisible(true);
-            new ComprobarIncidenciasView(); // falta incorporar vista REVISO MAÑANA 20/11
+            
+            
         }
 
     }
