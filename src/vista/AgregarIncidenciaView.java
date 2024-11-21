@@ -78,9 +78,9 @@ public class AgregarIncidenciaView extends javax.swing.JFrame {
 
         jLabel5.setText("ID Socio:");
 
-        cmb_estadoIncidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_estadoIncidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "True", "False" }));
 
-        cmb_tipoIncidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_tipoIncidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Leve\t", "Grave", "Muy Grave" }));
 
         btn_agregar.setText("AGREGAR");
 

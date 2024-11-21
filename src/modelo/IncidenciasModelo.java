@@ -90,8 +90,8 @@ public class IncidenciasModelo {
         return null;
     }
 
-    public boolean agregar_incidencia(int id_incidencia, String estado_incidencia, String tipo_incidencia, int idSocio) {
-        Incidencias agregarIncidencia = new Incidencias(tipo_incidencia, tipo_incidencia, id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
+    public boolean agregar_incidencia(String estado_incidencia, String tipo_incidencia, int idSocio) {
+        Incidencias agregarIncidencia = new Incidencias(estado_incidencia, tipo_incidencia, idSocio);
         try {
             insertarIncidencia(agregarIncidencia);
         } catch (Exception e) {
