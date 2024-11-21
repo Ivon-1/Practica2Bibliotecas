@@ -20,7 +20,7 @@ public class SocioAgregarView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("SOCIO");
+        setTitle("Agregar socio");
     }
 
     public JButton getBtn_agregar() {

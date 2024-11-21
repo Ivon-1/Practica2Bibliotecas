@@ -20,6 +20,8 @@ public class SociosView extends javax.swing.JFrame {
      */
     public SociosView() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Menu socios");
     }
 
     public JButton getBtn_agregarSocio() {
@@ -58,6 +60,10 @@ public class SociosView extends javax.swing.JFrame {
         return btn_volver_socio;
     }
 
+    public JButton getBtn_incidencias() {
+        return btn_incidencias;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +83,7 @@ public class SociosView extends javax.swing.JFrame {
         txt_espbusquedaSocio = new javax.swing.JTextField();
         btn_buscarSocios = new javax.swing.JButton();
         btn_modificar_socio1 = new javax.swing.JButton();
+        btn_incidencias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,16 +148,27 @@ public class SociosView extends javax.swing.JFrame {
             }
         });
 
+        btn_incidencias.setText("Incidencias");
+        btn_incidencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_incidenciasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addGap(252, 252, 252)
                 .addComponent(btn_agregarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_eliminarSocio)
+                .addGap(18, 18, 18)
+                .addComponent(btn_modificar_socio1)
+                .addGap(18, 18, 18)
+                .addComponent(btn_incidencias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_volver_socio)
                 .addGap(58, 58, 58))
@@ -164,11 +182,6 @@ public class SociosView extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(471, Short.MAX_VALUE)
-                    .addComponent(btn_modificar_socio1)
-                    .addGap(324, 324, 324)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,13 +198,10 @@ public class SociosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregarSocio)
                     .addComponent(btn_eliminarSocio)
-                    .addComponent(btn_volver_socio))
+                    .addComponent(btn_volver_socio)
+                    .addComponent(btn_incidencias)
+                    .addComponent(btn_modificar_socio1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(577, Short.MAX_VALUE)
-                    .addComponent(btn_modificar_socio1)
-                    .addContainerGap()))
         );
 
         pack();
@@ -216,6 +226,10 @@ public class SociosView extends javax.swing.JFrame {
     private void btn_modificar_socio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificar_socio1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_modificar_socio1ActionPerformed
+
+    private void btn_incidenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_incidenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_incidenciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +271,7 @@ public class SociosView extends javax.swing.JFrame {
     private javax.swing.JButton btn_agregarSocio;
     private javax.swing.JButton btn_buscarSocios;
     private javax.swing.JButton btn_eliminarSocio;
+    private javax.swing.JButton btn_incidencias;
     private javax.swing.JButton btn_modificar_socio1;
     private javax.swing.JButton btn_volver_socio;
     private javax.swing.JComboBox<String> cmb_filtro_socios;

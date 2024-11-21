@@ -19,6 +19,8 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Iniciar sesion");
     }
 
     public JButton getBtn_login() {
@@ -32,8 +34,6 @@ public class LoginView extends javax.swing.JFrame {
     public JPasswordField getTxt_pass() {
         return txt_pass;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +100,6 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;

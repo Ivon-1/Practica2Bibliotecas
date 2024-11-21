@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import vista.AgregarLibroView;
+import vista.ComprobarIncidenciasView;
 import vista.MenuView;
 import vista.SocioAgregarView;
 import vista.SociosView;
@@ -32,26 +33,35 @@ public class MostrarSocioController implements ActionListener {
     private DefaultTableModel datos_tabla_socio;
     private SocioAgregarView socio_view;
     private MenuView vista_menu;
+    private ComprobarIncidenciasView vista_incidencias;
 
     // funcion para mostrar
-    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view, MenuView vista_menu) {
+    public MostrarSocioController(SocioModelo modelo_socio, SociosView vista_socio, SocioAgregarView socio_view, MenuView vista_menu, ComprobarIncidenciasView vista_incidencias) {
         this.modelo_socio = modelo_socio;
         this.vista_socio = vista_socio;
         this.socio_view = socio_view;
         this.vista_menu = vista_menu;
+        this.vista_incidencias = vista_incidencias;
         datos_tabla_socio = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
-        // botones
+        // funcion activar botones
+        addButtons();
+        // funcion para mostrar socios
+        mostrarSocios();
+        //--------
+        this.vista_socio.setVisible(true);
+    }
+    
+    /**
+     * funcion para activar botones
+     */
+    public void addButtons(){
         this.vista_socio.getBtn_agregarSocio().addActionListener(this);
         this.vista_socio.getBtn_eliminarSocio().addActionListener(this);
         this.vista_socio.getBtn_buscarSocios().addActionListener(this);
         this.vista_socio.getBtn_modificar_socio().addActionListener(this);
-
+        this.vista_socio.getBtn_incidencias().addActionListener(this);
         this.socio_view.getBtn_agregar().addActionListener(this);
         this.vista_socio.getBtn_volver_socio().addActionListener(this);
-        // funcion para mostrar libros
-        mostrarSocios();
-        //--------
-        this.vista_socio.setVisible(true);
     }
 
     @Override
@@ -74,6 +84,10 @@ public class MostrarSocioController implements ActionListener {
 
         if (e.getSource() == this.vista_socio.getBtn_buscarSocios()) {
             buscarSocios();
+        }
+        
+        if (e.getSource() == this.vista_socio.getBtn_incidencias()) {
+           this.vista_incidencias.setVisible(true);
         }
 
         if (e.getSource() == this.vista_socio.getBtn_volver_socio()) {
@@ -228,61 +242,36 @@ public class MostrarSocioController implements ActionListener {
         }
     }
 
+    /**
+     * funciones busqueda
+     */
     public void buscarSocios() {
-        String combo = this.vista_socio.getCmb_filtro_socios().getSelectedItem().toString();
-        String busqueda = this.vista_socio.getTxt_espbusquedaSocio().getText().trim();
-        ArrayList<Socio> resultados = new ArrayList<>();
+        String filtro = vista_socio.getCmb_filtro_socios().getSelectedItem().toString();
+        String valor = vista_socio.getTxt_espbusquedaSocio().getText();
 
-        switch (combo.toLowerCase()) {
-            case "Todos":
-                resultados = modelo_socio.mostrarTodos();
-                break;
-            case "DNI":
-                Socio socio = this.modelo_socio.buscarPorDNI(busqueda);
-                resultados.add(socio);
-                break;
-            case "Nombre":
-                resultados = modelo_socio.buscarPorNombre(busqueda);
-                break;
-            case "Apellidos":
-                resultados = modelo_socio.buscarPorApellido(busqueda);
-                break;
-            default:
-                break;
-        }
-        if (resultados.isEmpty()) {
-            JOptionPane.showMessageDialog(vista_socio, "No se encontraron resultados.",
-                    "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
-            modeloTabla.setRowCount(0);
-
-            for (Socio socio : resultados) {
-                modeloTabla.addRow(new Object[]{
-                    socio.getIdSocio(), socio.getNombre(),
-                    socio.getApellido(), socio.getCorreo(),
-                    socio.getTelefono(), socio.getDireccion(),
-                    socio.getDni()
-                });
-            }
-        }
-        actualizarTabla(resultados);
+        ArrayList<Socio> listaSocios = modelo_socio.buscarSocios(filtro, valor);
+        llenarTabla(listaSocios);
     }
 
-    public void actualizarTabla(ArrayList<Socio> socios) {
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.vista_socio.getTable_socios().getModel();
+    private void llenarTabla(ArrayList<Socio> listaSocios) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vista_socio.getTable_socios().getModel();
         modeloTabla.setRowCount(0);
 
-        for (Socio socio : socios) {
-            Object[] row = {
-                socio.getIdSocio(), socio.getNombre(),
-                socio.getApellido(), socio.getCorreo(),
-                socio.getTelefono(), socio.getDireccion(),
+        for (Socio socio : listaSocios) {
+            Object[] fila = {
+                socio.getIdSocio(),
+                socio.getNombre(),
+                socio.getApellido(),
+                socio.getCorreo(),
+                socio.getTelefono(),
+                socio.getDireccion(),
                 socio.getDni()
             };
-            modeloTabla.addRow(row);
+            modeloTabla.addRow(fila);
         }
     }
+    
+    
 }
 /**
  * funcion para volver al menuPrincipal
