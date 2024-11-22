@@ -68,25 +68,25 @@ public class SocioModelo {
      */
     public ArrayList<Socio> buscarSocios(String filtro, String valor) {
         ArrayList<Socio> listaSocios = new ArrayList<>();
-        String query = "";
+        String consulta = "";
         
         switch (filtro) {
             case "Todos":
-                query = "SELECT * FROM socios";
+                consulta = "SELECT * FROM socios";
                 break;
             case "DNI":
-                query = "SELECT * FROM socios WHERE dni LIKE ?";
+                consulta = "SELECT * FROM socios WHERE dni LIKE ?";
                 break;
             case "Nombre":
-                query = "SELECT * FROM socios WHERE nombre LIKE ?";
+                consulta = "SELECT * FROM socios WHERE nombre LIKE ?";
                 break;
             case "Apellidos":
-                query = "SELECT * FROM socios WHERE apellido LIKE ?";
+                consulta = "SELECT * FROM socios WHERE apellido LIKE ?";
                 break;
         }
 
         try {
-            PreparedStatement ps = conexion.prepareStatement(query);
+            PreparedStatement ps = conexion.prepareStatement(consulta);
             if (!filtro.equals("Todos")) {
                 ps.setString(1, "%" + valor + "%");
             }
