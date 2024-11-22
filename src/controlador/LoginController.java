@@ -21,9 +21,12 @@ public class LoginController implements ActionListener{
     public LoginController(LoginView loginVista, UsuarioModelo modeloUsuario) {
         this.loginVista = loginVista;
         this.modeloUsuario = modeloUsuario;
+        this.loginVista.setVisible(true);
+        
         
         this.loginVista.getBtn_login().addActionListener(this);
-        this.loginVista.setVisible(true);
+        this.loginVista.setTitle("Hola");
+        
     }
 
     @Override
@@ -57,27 +60,5 @@ public class LoginController implements ActionListener{
         } else {
             JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas.", "Login", JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    
-    
-    
-    private void manejo2(){
-        String id_sofa = (String) loginVista.getCmb_login().getSelectedItem();
-        String desc_sofa = new String(loginVista.getTxt_pass().getPassword());
-        int tipo = loginVista.getCmb_login().getSelectedIndex();  // El tipo depende del combobox
-
-                // Verificar credenciales
-        if (id_sofa.equals("seleccione una opción")) {
-            JOptionPane.showMessageDialog(loginVista, "Por favor, selecciona un tipo de usuario.");
-            return;
-        }
-        
-        if (UsuarioModelo.verificarCredenciales(id_sofa, desc_sofa, tipo)) {
-                    JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso!");
-                    // Aquí se puede abrir la siguiente ventana o cambiar la vista
-                } else {
-                    JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas. Intenta nuevamente.");
-                }
     }
 }

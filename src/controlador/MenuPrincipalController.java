@@ -84,7 +84,10 @@ public class MenuPrincipalController implements ActionListener {
         //--------------- poner en true sobre la vista principal
         this.vista_menu.setVisible(true);
         this.agregar_libro.setVisible(false);
-        this.loginVista.setVisible(true); //QUITAR
+        
+        LoginController longing  = new  LoginController(this.loginVista,this.modeloUsuario);
+        
+       // this.loginVista.setVisible(true); //QUITAR
     }
 
     /*

@@ -21,6 +21,7 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Iniciar sesion");
+        //setVisible(true);
     }
 
     public JButton getBtn_login() {
