@@ -42,17 +42,19 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         return btn_volver_incidencia;
     }
 
-    public JComboBox<String> getCmb_filtro_socios() {
-        return cmb_filtro_socios;
+    public JComboBox<String> getCmb_filtro_incidencias() {
+        return cmb_filtro_incidencias;
     }
 
     public JTable getTable_socios_incidencias() {
         return table_socios_incidencias;
     }
 
-    public JTextField getTxt_espbusquedaSocio() {
-        return txt_espbusquedaSocio;
+    public JTextField getTxt_espbusquedaIncidencia() {
+        return txt_espbusquedaIncidencia;
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,11 +68,11 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_agregarIncidencia = new javax.swing.JButton();
         btn_eliminarIncidencia = new javax.swing.JButton();
-        cmb_filtro_socios = new javax.swing.JComboBox<>();
+        cmb_filtro_incidencias = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_socios_incidencias = new javax.swing.JTable();
         btn_volver_incidencia = new javax.swing.JButton();
-        txt_espbusquedaSocio = new javax.swing.JTextField();
+        txt_espbusquedaIncidencia = new javax.swing.JTextField();
         btn_buscarSocios = new javax.swing.JButton();
         btn_modificar_incidencia = new javax.swing.JButton();
 
@@ -93,10 +95,10 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtro_socios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Grave", "Muy grave" }));
-        cmb_filtro_socios.addActionListener(new java.awt.event.ActionListener() {
+        cmb_filtro_incidencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Grave", "Muy grave" }));
+        cmb_filtro_incidencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_filtro_sociosActionPerformed(evt);
+                cmb_filtro_incidenciasActionPerformed(evt);
             }
         });
 
@@ -156,9 +158,9 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -169,8 +171,8 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cmb_filtro_socios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_espbusquedaSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscarSocios))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,9 +197,9 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarIncidenciaActionPerformed
 
-    private void cmb_filtro_sociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_sociosActionPerformed
+    private void cmb_filtro_incidenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_filtro_incidenciasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_filtro_sociosActionPerformed
+    }//GEN-LAST:event_cmb_filtro_incidenciasActionPerformed
 
     private void btn_volver_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volver_incidenciaActionPerformed
         // TODO add your handling code here:
@@ -250,10 +252,10 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminarIncidencia;
     private javax.swing.JButton btn_modificar_incidencia;
     private javax.swing.JButton btn_volver_incidencia;
-    private javax.swing.JComboBox<String> cmb_filtro_socios;
+    private javax.swing.JComboBox<String> cmb_filtro_incidencias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable table_socios_incidencias;
-    private javax.swing.JTextField txt_espbusquedaSocio;
+    private javax.swing.JTextField txt_espbusquedaIncidencia;
     // End of variables declaration//GEN-END:variables
 }

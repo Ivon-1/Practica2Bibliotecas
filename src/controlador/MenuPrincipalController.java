@@ -101,6 +101,13 @@ public class MenuPrincipalController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         Object button = e.getSource();
+        
+        // login
+        
+        
+        if (button == this.vista_menu.getBtn_Administracion()) {
+            
+        }
 
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos

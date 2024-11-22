@@ -26,7 +26,7 @@ public class Incidencias {
         this.idSocio = idSocio;
     }
     
-    public Incidencias(String estado_incidencia , String tipo_incidencia , int idSocio){
+    public Incidencias(String estado_incidencia , String tipo_incidencia, int idSocio){
         this.estado_incidencia = estado_incidencia;
         this.tipo_incidencia = tipo_incidencia;
         this.idSocio = idSocio;

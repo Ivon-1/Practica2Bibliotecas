@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.sql.SQLException;
+import java.sql.Statement;
 import vista.ComprobarIncidenciasView;
 
 /**
@@ -31,9 +32,9 @@ public class IncidenciasModelo {
 
     //Consulta agregar incidencia.
     public void insertarIncidencia(Incidencias incidencia) {
-        String consulta = "INSERT INTO incidencias (estado_incidencia,tipo_incidencia, idSocio) values (?,?,?)";
+        String consulta = "INSERT INTO incidencias (estado_incidencia, tipo_incidencia, idSocio) values (?,?, ?)";
         try {
-            preparar = conexion.prepareStatement(consulta);
+            preparar = conexion.prepareStatement(consulta,Statement.RETURN_GENERATED_KEYS);
             preparar.setString(1, incidencia.getEstado_incidencia());
             preparar.setString(2, incidencia.getTipo_incidencia());
             preparar.setInt(3, incidencia.getIdSocio());
@@ -46,6 +47,7 @@ public class IncidenciasModelo {
                     incidencia.setId_incidencia(id_generado);
                 }
             }
+            mostrarIncidencias();
 
             System.out.println("Incidencia agregada con exito.");
         } catch (Exception e) {
@@ -94,6 +96,7 @@ public class IncidenciasModelo {
         Incidencias agregarIncidencia = new Incidencias(estado_incidencia, tipo_incidencia, idSocio);
         try {
             insertarIncidencia(agregarIncidencia);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,10 +110,10 @@ public class IncidenciasModelo {
      */
     public ArrayList<Incidencias> mostrarIncidencias() {
         ArrayList<Incidencias> incidencias = new ArrayList<>();
-        String consulta = "SELECT * FROM incidencias";  // posteriormente añadir JOIN para enlazar con sus foraneas
+        String consulta = "SELECT * FROM incidencias";
         try {
             PreparedStatement preparar = conexion.prepareStatement(consulta);
-            ResultSet rs = preparar.executeQuery(consulta);
+            ResultSet rs = preparar.executeQuery();
 
             while (rs.next()) {
                 incidencias.add(new Incidencias(rs.getString("nombre"),

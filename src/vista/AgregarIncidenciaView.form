@@ -34,17 +34,13 @@
                       <Component id="btn_agregar" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_idIncidencia" max="32767" attributes="0"/>
-                              <Component id="cmb_estadoIncidencia" max="32767" attributes="0"/>
+                              <Component id="cmb_estadoIncidencia" pref="146" max="32767" attributes="0"/>
                               <Component id="cmb_tipoIncidencia" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_idSocioIncidencia" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -58,12 +54,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt_idIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmb_estadoIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -73,14 +64,9 @@
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmb_tipoIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt_idSocioIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="btn_agregar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,11 +80,6 @@
         <Property name="text" type="java.lang.String" value="AGREGAR INCIDENCIA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID Incidencia:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estado Incidencia:"/>
@@ -109,20 +90,15 @@
         <Property name="text" type="java.lang.String" value="Tipo Incidencia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID Socio:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_idIncidencia">
-    </Component>
     <Component class="javax.swing.JComboBox" name="cmb_estadoIncidencia">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="5">
             <StringItem index="0" value="Seleccionar"/>
-            <StringItem index="1" value="True"/>
-            <StringItem index="2" value="False"/>
+            <StringItem index="1" value="Resuelto"/>
+            <StringItem index="2" value="Pendiente"/>
+            <StringItem index="3" value=" "/>
+            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -144,8 +120,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_idSocioIncidencia">
     </Component>
     <Component class="javax.swing.JButton" name="btn_agregar">
       <Properties>
