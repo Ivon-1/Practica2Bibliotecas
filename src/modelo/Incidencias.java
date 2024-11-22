@@ -25,6 +25,12 @@ public class Incidencias {
         this.tipo_incidencia = tipo_incidencia;
         this.idSocio = idSocio;
     }
+    
+    public Incidencias(String estado_incidencia , String tipo_incidencia, int idSocio){
+        this.estado_incidencia = estado_incidencia;
+        this.tipo_incidencia = tipo_incidencia;
+        this.idSocio = idSocio;
+    }
 
     public int getId_incidencia() {
         return id_incidencia;

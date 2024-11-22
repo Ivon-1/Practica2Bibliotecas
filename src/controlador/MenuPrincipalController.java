@@ -84,6 +84,7 @@ public class MenuPrincipalController implements ActionListener {
         //--------------- poner en true sobre la vista principal
         this.vista_menu.setVisible(true);
         this.agregar_libro.setVisible(false);
+        this.loginVista.setVisible(true); //QUITAR
     }
 
     /*
@@ -101,7 +102,15 @@ public class MenuPrincipalController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         Object button = e.getSource();
+        
+        // login
+        
+        
+        if (button == this.vista_menu.getBtn_Administracion()) {
+            
+        }
 
+        
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
