@@ -31,20 +31,20 @@
               <Component id="btn_eliminarIncidencia" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_modificar_incidencia" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="180" max="32767" attributes="0"/>
               <Component id="btn_volver_incidencia" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="txt_espbusquedaIncidencia" min="-2" pref="306" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="cmb_filtro_incidencias" min="-2" pref="151" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="btn_buscarSocios" min="-2" pref="113" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btn_buscarIncidencia" min="-2" pref="113" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,7 +56,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmb_filtro_incidencias" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_espbusquedaIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_buscarSocios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_buscarIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="443" max="-2" attributes="0"/>
@@ -187,7 +187,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_espbusquedaIncidencia">
     </Component>
-    <Component class="javax.swing.JButton" name="btn_buscarSocios">
+    <Component class="javax.swing.JButton" name="btn_buscarIncidencia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>

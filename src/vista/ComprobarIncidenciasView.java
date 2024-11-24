@@ -26,8 +26,8 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         return btn_agregarIncidencia;
     }
 
-    public JButton getBtn_buscarSocios() {
-        return btn_buscarSocios;
+    public JButton getBtn_buscarIncidencia() {
+        return btn_buscarIncidencia;
     }
 
     public JButton getBtn_eliminarIncidencia() {
@@ -73,7 +73,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         table_socios_incidencias = new javax.swing.JTable();
         btn_volver_incidencia = new javax.swing.JButton();
         txt_espbusquedaIncidencia = new javax.swing.JTextField();
-        btn_buscarSocios = new javax.swing.JButton();
+        btn_buscarIncidencia = new javax.swing.JButton();
         btn_modificar_incidencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,7 +130,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
             }
         });
 
-        btn_buscarSocios.setText("Buscar");
+        btn_buscarIncidencia.setText("Buscar");
 
         btn_modificar_incidencia.setText("Modificar");
         btn_modificar_incidencia.addActionListener(new java.awt.event.ActionListener() {
@@ -151,19 +151,19 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
                 .addComponent(btn_eliminarIncidencia)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar_incidencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(btn_volver_incidencia)
                 .addGap(53, 53, 53))
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btn_buscarSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(18, 18, 18)
+                .addComponent(btn_buscarIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +173,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscarSocios))
+                    .addComponent(btn_buscarIncidencia))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -248,7 +248,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarIncidencia;
-    private javax.swing.JButton btn_buscarSocios;
+    private javax.swing.JButton btn_buscarIncidencia;
     private javax.swing.JButton btn_eliminarIncidencia;
     private javax.swing.JButton btn_modificar_incidencia;
     private javax.swing.JButton btn_volver_incidencia;

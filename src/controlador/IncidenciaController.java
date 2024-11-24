@@ -55,7 +55,7 @@ public class IncidenciaController implements ActionListener {
      */
     public void addButtones() {
         this.vista_incidencias.getBtn_agregarIncidencia().addActionListener(this);
-        this.vista_incidencias.getBtn_buscarSocios().addActionListener(this);
+        this.vista_incidencias.getBtn_buscarIncidencia().addActionListener(this);
         this.vista_incidencias.getBtn_eliminarIncidencia().addActionListener(this);
         this.vista_incidencias.getBtn_modificar_incidencia().addActionListener(this);
         this.vista_incidencias.getBtn_volver_incidencia().addActionListener(this);
@@ -76,7 +76,7 @@ public class IncidenciaController implements ActionListener {
             eliminarIncidencia();
         }
 
-        if (e.getSource() == this.vista_incidencias.getBtn_eliminarIncidencia()) { // buscar incidencia -- corregir eliminar
+        if (e.getSource() == this.vista_incidencias.getBtn_buscarIncidencia()) { // buscar incidencia
 
         }
 
@@ -235,4 +235,6 @@ public class IncidenciaController implements ActionListener {
             pintarIncidencias(incidencia_actual);
         }
     }
+    
+    
 }

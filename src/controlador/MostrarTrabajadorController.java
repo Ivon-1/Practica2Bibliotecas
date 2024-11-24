@@ -22,6 +22,7 @@ public class MostrarTrabajadorController implements ActionListener{
     private AdministracionView vista_trabajador;
     private DefaultTableModel datos_tabla_trabajador;
     private MenuView vista_menu;
+    
 
     public MostrarTrabajadorController(TrabajadorModelo modelo_trabajador, AdministracionView vista_trabajador, MenuView vista_menu) {
         this.modelo_trabajador = modelo_trabajador;

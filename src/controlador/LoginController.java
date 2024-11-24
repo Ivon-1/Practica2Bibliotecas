@@ -32,7 +32,7 @@ public class LoginController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.loginVista.getBtn_login()){
-            System.out.println("HOLAAAAAAAAAAA");
+            //System.out.println("HOLAAAAAAAAAAA");
             manejoLogin();
         }
     }
@@ -56,9 +56,14 @@ public class LoginController implements ActionListener{
         // Dependiendo de si las credenciales son válidas o no
         if (isValid) {
             JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso.", "Login", JOptionPane.INFORMATION_MESSAGE);
-            // Aquí podrías redirigir a otra vista o cambiar la ventana
+            this.loginVista.dispose();
+            abrirMenuPrincipal(tipo);
         } else {
             JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas.", "Login", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void abrirMenuPrincipal(int tipoUsuario) {
+        new MenuPrincipalController(tipoUsuario);
     }
 }
