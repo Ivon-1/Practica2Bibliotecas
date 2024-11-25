@@ -50,13 +50,13 @@ public class MostrarTrabajadorController implements ActionListener {
         this.vista_trabajador.getBtn_eliminarTrabajador().addActionListener(this);
         this.vista_trabajador.getBtn_volverTrabajador().addActionListener(this);
         this.vista_trabajador.getBtn_modificarTrabajador().addActionListener(this);
+        this.trabajadorAgregar_view.getBtn_agregarTrabajador2().addActionListener(this); // agregar vista agregar
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.vista_trabajador.getBtn_agregarTrabajador()) {
             trabajadorAgregar_view.setVisible(true);
-            agregarTrabajadores();
         }
 
         if (e.getSource() == this.vista_trabajador.getBtn_eliminarTrabajador()) {
@@ -70,6 +70,10 @@ public class MostrarTrabajadorController implements ActionListener {
         if (e.getSource() == this.vista_trabajador.getBtn_volverTrabajador()) {
             this.vista_trabajador.setVisible(false);
             this.vista_menu.setVisible(true);
+        }
+        
+        if (e.getSource() == this.trabajadorAgregar_view.getBtn_agregarTrabajador2()) {
+            agregarTrabajadores();
         }
     }
 

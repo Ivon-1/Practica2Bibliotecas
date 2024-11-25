@@ -49,11 +49,12 @@ public class TrabajadorModelo {
 
     //Consulta para agregar un trabajador.
     public void insertarTrabajador(Trabajador trabajador) {
-        String consulta = "INSERT INTO trabajadores (nombre , apellido , correo , telefono , id_mobiliario) VALUES (?,?,?,?,?)";
+        String consulta = "INSERT INTO trabajadores (nombre , apellido , correo , telefono) VALUES (?,?,?,?)";
         try {
 
             preparar = conexion.prepareStatement(consulta);
             preparar = conexion.prepareStatement(consulta, PreparedStatement.RETURN_GENERATED_KEYS); // añadir retorno keys
+            preparar.setInt(1, trabajador.getIdTrabajador());
             preparar.setString(1, trabajador.getNombre());
             preparar.setString(2, trabajador.getApellido());
             preparar.setString(3, trabajador.getCorreo());
@@ -101,7 +102,6 @@ public class TrabajadorModelo {
                 String apellido = rs.getString("apellido");
                 String correo = rs.getString("correo");
                 int telefono = rs.getInt("telefono");
-                int id_mobiliario = rs.getInt("id_mobiliario");
 
                 Trabajador trabajador = new Trabajador(nombre, apellido, correo, telefono);
                 trabajador.setIdTrabajador(idTrabajador);

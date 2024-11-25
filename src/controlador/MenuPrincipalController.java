@@ -109,7 +109,6 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_menu.getBtn_consultarBibilioteca().addActionListener(this);
         this.vista_menu.getBtn_ConsultarSocio().addActionListener(this);
         this.vista_menu.getBtn_Administracion().addActionListener(this);
-        this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
         this.vista_menu.getBtn_cerrarSesion().addActionListener(this);
         //this.vista_menu.getBtn_GestionPrincipal().addActionListener(this);
     }

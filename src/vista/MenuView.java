@@ -36,7 +36,6 @@ public class MenuView extends javax.swing.JFrame {
         btn_ConsultarSocio = new javax.swing.JButton();
         btn_Administracion = new javax.swing.JButton();
         btn_cerrarSesion = new javax.swing.JButton();
-        btn_GestionPrincipal = new javax.swing.JButton();
         btn_consultarBibilioteca = new javax.swing.JButton();
 
         btn_consultarBibilioteca1.setText("Consultar biblioteca");
@@ -57,8 +56,6 @@ public class MenuView extends javax.swing.JFrame {
 
         btn_cerrarSesion.setText("Cerrar sesión");
 
-        btn_GestionPrincipal.setText("Gestion");
-
         btn_consultarBibilioteca.setText("Consultar biblioteca");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -75,13 +72,12 @@ public class MenuView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_ConsultarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(btn_Administracion, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(btn_GestionPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(btn_consultarBibilioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                         .addGap(154, 154, 154))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
                 .addComponent(btn_cerrarSesion)
-                .addGap(185, 185, 185))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,11 +90,9 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(btn_ConsultarSocio)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Administracion)
-                .addGap(18, 18, 18)
-                .addComponent(btn_GestionPrincipal)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(btn_cerrarSesion)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,10 +112,6 @@ public class MenuView extends javax.swing.JFrame {
         return btn_ConsultarSocio;
     }
 
-    public JButton getBtn_GestionPrincipal() {
-        return btn_GestionPrincipal;
-    }
-
     public JButton getBtn_cerrarSesion() {
         return btn_cerrarSesion;
     }
@@ -139,7 +129,6 @@ public class MenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Administracion;
     private javax.swing.JButton btn_ConsultarSocio;
-    private javax.swing.JButton btn_GestionPrincipal;
     private javax.swing.JButton btn_cerrarSesion;
     private javax.swing.JButton btn_consultarBibilioteca;
     private javax.swing.JButton btn_consultarBibilioteca1;
