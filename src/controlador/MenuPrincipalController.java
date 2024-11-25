@@ -128,7 +128,6 @@ public class MenuPrincipalController implements ActionListener {
                         vista_menu);
             }
         }
-
         
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
