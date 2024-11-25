@@ -194,7 +194,7 @@ public class LibroModelo {
 
     // insertar libros -- aaron
     public void insertarLibro(Libro libro) {
-        String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial, idAutor, idBiblioteca) values (?,?,?,?,?,?,?,?)";
+        String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial) values (?,?,?,?,?,?)";
         try {
             preparar = conexion.prepareStatement(consulta);
             preparar.setString(1, libro.getIsbn());
@@ -203,8 +203,7 @@ public class LibroModelo {
             preparar.setFloat(4, libro.getPrecio());
             preparar.setString(5, libro.getEstado());
             preparar.setString(6, libro.getEditorial());
-            preparar.setInt(7, libro.getIdAutor());
-            preparar.setInt(8, libro.getIdBiblioteca());
+
             preparar.execute();
             System.out.println("Libro agregado con exito.");
         } catch (Exception e) {

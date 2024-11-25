@@ -70,7 +70,7 @@ public class MostrarLibroController implements ActionListener {
         }
 
         if (e.getSource() == this.libro_agregar.getBtn_agregar()) {
-            agregar_libros();
+            agregarLibros();
         }
 
         if (e.getSource() == this.vista_libros.getBtn_eliminarLibro()) {
@@ -89,7 +89,7 @@ public class MostrarLibroController implements ActionListener {
     }
 
     //Funcion para agregar libros.
-    public void agregar_libros() {
+    public void agregarLibros() {
         if (validarDatos()) {
             if (this.modelo_libro.agregar_libro(this.libro_agregar.getTxt_isbn().getText(),
                     this.libro_agregar.getTxt_titulo().getText(),
