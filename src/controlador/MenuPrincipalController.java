@@ -17,6 +17,7 @@ import modelo.UsuarioModelo;
 import vista.AdministracionView;
 import vista.AgregarIncidenciaView;
 import vista.AgregarLibroView;
+import vista.AgregarTrabajadorView;
 import vista.ComprobarIncidenciasView;
 import vista.LibrosView;
 import vista.LoginView;
@@ -29,6 +30,7 @@ import vista.SociosView;
  * @author IvanA
  */
 public class MenuPrincipalController implements ActionListener {
+
     //login
     private int tipoUsuario;
     // Instancias necesarias para conectar todo
@@ -49,6 +51,7 @@ public class MenuPrincipalController implements ActionListener {
     private DefaultTableModel tabla_incidencias;
     private AgregarIncidenciaView agregar_incidencias;
     private AdministracionView view_administracion;
+    private AgregarTrabajadorView view_agregar_trabajador;
 
     // controladores
     private MostrarLibroController controladorLibros;
@@ -76,14 +79,17 @@ public class MenuPrincipalController implements ActionListener {
         this.socioVista = new SocioAgregarView();
         this.tabla_incidencias = new DefaultTableModel(); // O tu lógica de inicialización
         this.agregar_incidencias = new AgregarIncidenciaView();
-        
-        this.vista_incidencias = new ComprobarIncidenciasView();
+        this.vista_incidencias = new ComprobarIncidenciasView()
+                ;
         this.view_administracion = new AdministracionView();
         this.agregar_libro = new AgregarLibroView();
         this.vista_libros = new LibrosView();
+        
+        this.view_agregar_trabajador = new AgregarTrabajadorView();
+        
 
         this.vista_menu = new MenuView();
-        
+
         this.tipoUsuario = tipoUsuario;
         restriccionUsuario(); //bloquear acceso del btn_administracion
         this.agregar_libro.setVisible(false);
@@ -93,8 +99,7 @@ public class MenuPrincipalController implements ActionListener {
         //--------------- poner en true sobre la vista principal
         this.vista_menu.setVisible(true);
         this.agregar_libro.setVisible(false);
-     
-        
+
     }
 
     /*
@@ -111,24 +116,20 @@ public class MenuPrincipalController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         Object button = e.getSource();
-        
         // login
-        
-        
         if (button == this.vista_menu.getBtn_Administracion()) {
             this.vista_menu.setVisible(false);
             this.view_administracion.setVisible(true);
-            
-            if(controladorTrabajador == null){
-                controladorTrabajador = new MostrarTrabajadorController(
-                        modelo_trabajador, 
-                        view_administracion, 
-                        vista_menu);
+
+            if (controladorTrabajador == null) {
+                controladorTrabajador = new MostrarTrabajadorController(modelo_trabajador,
+                        view_administracion,
+                        view_agregar_trabajador
+                        , vista_menu);
             }
         }
-        
+
         if (button == this.vista_menu.getBtn_consultarBibilioteca()) { // mostrar libros
             this.vista_menu.setVisible(false); // ocultamos
             this.vista_libros.setVisible(true);
@@ -145,8 +146,8 @@ public class MenuPrincipalController implements ActionListener {
 
             if (controladorIncidencia == null) {
                 controladorIncidencia = new IncidenciaController(modelo_incidencias,
-                        vista_principalSocios, 
-                        vista_incidencias, 
+                        vista_principalSocios,
+                        vista_incidencias,
                         tabla_incidencias,
                         agregar_incidencias);
             }
@@ -161,20 +162,20 @@ public class MenuPrincipalController implements ActionListener {
                         controladorIncidencia);
             }
         }
-        
-        if(e.getSource() == this.vista_menu.getBtn_cerrarSesion()){
+
+        if (e.getSource() == this.vista_menu.getBtn_cerrarSesion()) {
             cerrarSesion();
         }
     }
-    
+
     private void restriccionUsuario() {
         if (tipoUsuario == 1) { // Si es "usuario"
             this.vista_menu.getBtn_Administracion().setEnabled(false);
         }
     }
-    
+
     private void cerrarSesion() {
         this.vista_menu.dispose();
         new LoginController(new LoginView(), new UsuarioModelo());
-}
+    }
 }

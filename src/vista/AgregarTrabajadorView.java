@@ -21,7 +21,7 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
     }
 
     public JButton getBtn_agregarTrabajador() {
-        return btn_agregarTrabajador;
+        return btn_agregarTrabajador2;
     }
 
     public JTextField getTxt_apellidoTrabajador() {
@@ -32,9 +32,6 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
         return txt_correoTrabajador;
     }
 
-    public JTextField getTxt_mobiliarioTrabajador() {
-        return txt_mobiliarioTrabajador;
-    }
 
     public JTextField getTxt_nombreTrabajador() {
         return txt_nombreTrabajador;
@@ -43,7 +40,10 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
     public JTextField getTxt_telefonoTrabajador() {
         return txt_telefonoTrabajador;
     }
-    
+
+    public JButton getBtn_agregarTrabajador2() {
+        return btn_agregarTrabajador2;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,13 +59,11 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txt_nombreTrabajador = new javax.swing.JTextField();
         txt_apellidoTrabajador = new javax.swing.JTextField();
         txt_correoTrabajador = new javax.swing.JTextField();
         txt_telefonoTrabajador = new javax.swing.JTextField();
-        txt_mobiliarioTrabajador = new javax.swing.JTextField();
-        btn_agregarTrabajador = new javax.swing.JButton();
+        btn_agregarTrabajador2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,9 +78,7 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
 
         jLabel5.setText("Telefono:");
 
-        jLabel6.setText("Mobiliario:");
-
-        btn_agregarTrabajador.setText("AGREGAR");
+        btn_agregarTrabajador2.setText("AGREGAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +94,7 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_agregarTrabajador)
+                            .addComponent(btn_agregarTrabajador2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,11 +107,7 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txt_telefonoTrabajador))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_mobiliarioTrabajador)))))
+                                    .addComponent(txt_telefonoTrabajador)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel1)))
@@ -142,13 +134,9 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txt_telefonoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_mobiliarioTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_agregarTrabajador)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(btn_agregarTrabajador2)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,16 +178,14 @@ public class AgregarTrabajadorView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregarTrabajador;
+    private javax.swing.JButton btn_agregarTrabajador2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txt_apellidoTrabajador;
     private javax.swing.JTextField txt_correoTrabajador;
-    private javax.swing.JTextField txt_mobiliarioTrabajador;
     private javax.swing.JTextField txt_nombreTrabajador;
     private javax.swing.JTextField txt_telefonoTrabajador;
     // End of variables declaration//GEN-END:variables

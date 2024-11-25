@@ -38,7 +38,7 @@ public class TrabajadorModelo {
                 trabajadores.add(new Trabajador(
                         rs.getInt("idTrabajador"), rs.getString("nombre"),
                         rs.getString("apellido"), rs.getString("correo"),
-                        rs.getInt("telefono"), rs.getInt("id_mobiliario")
+                        rs.getInt("telefono")
                 ));
             }
         } catch (SQLException e) {
@@ -58,7 +58,6 @@ public class TrabajadorModelo {
             preparar.setString(2, trabajador.getApellido());
             preparar.setString(3, trabajador.getCorreo());
             preparar.setInt(4, trabajador.getTelefono());
-            preparar.setInt(5, trabajador.getId_mobiliario());
 
             int filasAfectadas = preparar.executeUpdate();
             if (filasAfectadas > 0) {
@@ -74,8 +73,7 @@ public class TrabajadorModelo {
             ex.printStackTrace();
         }
     }
-    
-    
+
     //Consulta  para eliminar por id
     public void eliminarPorId(int idTrabajador) {
         String consulta = "DELETE FROM trabajadores WHERE idTrabajador = ?";
@@ -89,24 +87,23 @@ public class TrabajadorModelo {
             e.printStackTrace();
         }
     }
-    
+
     //Funcion para buscar por ID.
-    
-    public Trabajador buscarPorId(int idTrabajador){
+    public Trabajador buscarPorId(int idTrabajador) {
         String consulta = "SELECT * FROM trabajadores WHERE idTrabajador= ?";
         try {
             preparar = conexion.prepareStatement(consulta);
             preparar.setInt(1, idTrabajador);
             ResultSet rs = preparar.executeQuery();
-            
+
             if (rs.next()) {
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
                 String correo = rs.getString("correo");
                 int telefono = rs.getInt("telefono");
-                int  id_mobiliario = rs.getInt("id_mobiliario");
-                
-                Trabajador trabajador = new Trabajador(nombre, apellido, correo, telefono, id_mobiliario);
+                int id_mobiliario = rs.getInt("id_mobiliario");
+
+                Trabajador trabajador = new Trabajador(nombre, apellido, correo, telefono);
                 trabajador.setIdTrabajador(idTrabajador);
                 return trabajador;
             }
@@ -115,9 +112,9 @@ public class TrabajadorModelo {
         }
         return null;
     }
-    
-    public boolean agregar_trabajador(String nombre, String apellido, String correo, int telefono, int id_mobiliario){
-        Trabajador agregarTrabajador = new Trabajador(nombre, apellido, correo, telefono, id_mobiliario);
+
+    public boolean agregar_trabajador(String nombre, String apellido, String correo, int telefono) {
+        Trabajador agregarTrabajador = new Trabajador(nombre, apellido, correo, telefono);
         try {
             insertarTrabajador(agregarTrabajador);
             return true;
@@ -126,7 +123,7 @@ public class TrabajadorModelo {
             return false;
         }
     }
-    
+
     public ArrayList<Trabajador> buscarTrabajadores(String filtro, String valor) {
         ArrayList<Trabajador> listaTrabajadores = new ArrayList<>();
         String consulta = "";
@@ -161,8 +158,7 @@ public class TrabajadorModelo {
                         rs.getString("nombre"),
                         rs.getString("apellido"),
                         rs.getString("correo"),
-                        rs.getInt("telefono"),
-                        rs.getInt("id_mobiliario")
+                        rs.getInt("telefono")
                 );
                 listaTrabajadores.add(trabajador);
             }

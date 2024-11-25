@@ -31,7 +31,7 @@ public class MostrarTrabajadorController implements ActionListener {
     private AgregarTrabajadorView trabajadorAgregar_view; // Vista de aaron agregartrabajadorView.
     private MenuView vista_menu;
 
-    public MostrarTrabajadorController(TrabajadorModelo modelo_trabajador, AdministracionView vista_trabajador, AgregarTrabajadorView trabajadorAgregar_view ,MenuView vista_menu) {
+    public MostrarTrabajadorController(TrabajadorModelo modelo_trabajador, AdministracionView vista_trabajador, AgregarTrabajadorView trabajadorAgregar_view, MenuView vista_menu) {
         this.modelo_trabajador = modelo_trabajador;
         this.vista_trabajador = vista_trabajador;
         this.vista_menu = vista_menu;
@@ -55,9 +55,10 @@ public class MostrarTrabajadorController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.vista_trabajador.getBtn_agregarTrabajador()) {
+            trabajadorAgregar_view.setVisible(true);
             agregarTrabajadores();
         }
-        
+
         if (e.getSource() == this.vista_trabajador.getBtn_eliminarTrabajador()) {
             eliminar_trabajador();
         }
@@ -80,8 +81,7 @@ public class MostrarTrabajadorController implements ActionListener {
             if (this.modelo_trabajador.agregar_trabajador(this.trabajadorAgregar_view.getTxt_nombreTrabajador().getText(),
                     this.trabajadorAgregar_view.getTxt_apellidoTrabajador().getText(),
                     this.trabajadorAgregar_view.getTxt_correoTrabajador().getText(),
-                    Integer.parseInt(this.trabajadorAgregar_view.getTxt_telefonoTrabajador().getText()),
-                    Integer.parseInt(this.trabajadorAgregar_view.getTxt_mobiliarioTrabajador().getText()))) {
+                    Integer.parseInt(this.trabajadorAgregar_view.getTxt_telefonoTrabajador().getText()))) {
                 JOptionPane.showMessageDialog(trabajadorAgregar_view, "Agregado correctamente.");
                 this.trabajadorAgregar_view.dispose();
             } else {
@@ -141,11 +141,11 @@ public class MostrarTrabajadorController implements ActionListener {
             mensaje += "Introduzca un teléfono.\n";
             resultado = false;
         }
-        if (this.trabajadorAgregar_view.getTxt_mobiliarioTrabajador().getText().trim().length() == 0) {
+
+        /*if (this.trabajadorAgregar_view.getTxt_mobiliarioTrabajador().getText().trim().length() == 0) {
             mensaje += "Introduzca una id .\n";
             resultado = false;
-        }
-
+        }*/
         if (!resultado) {
             JOptionPane.showMessageDialog(trabajadorAgregar_view, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -174,8 +174,7 @@ public class MostrarTrabajadorController implements ActionListener {
                 trabajador.getNombre(),
                 trabajador.getApellido(),
                 trabajador.getCorreo(),
-                trabajador.getTelefono(),
-                trabajador.getId_mobiliario(),};
+                trabajador.getTelefono()};
             modeloTabla.addRow(fila);
         }
     }
@@ -194,7 +193,7 @@ public class MostrarTrabajadorController implements ActionListener {
             return trabajadores;
         }
 
-        String sql = "SELECT idTrabajador, nombre, apellido, correo, telefono, id_mobiliario FROM trabajadores";
+        String sql = "SELECT idTrabajador, nombre, apellido, correo, telefono  FROM trabajadores";
 
         try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet resultado = stmt.executeQuery()) {
             while (resultado.next()) {
@@ -203,8 +202,7 @@ public class MostrarTrabajadorController implements ActionListener {
                         resultado.getString("nombre"),
                         resultado.getString("apellido"),
                         resultado.getString("correo"),
-                        resultado.getInt("telefono"),
-                        resultado.getInt("id_mobiliario")
+                        resultado.getInt("telefono")
                 );
                 trabajadores.add(trabajador);
             }
@@ -225,8 +223,7 @@ public class MostrarTrabajadorController implements ActionListener {
             trabajador.getNombre(),
             trabajador.getApellido(),
             trabajador.getCorreo(),
-            trabajador.getTelefono(),
-            trabajador.getId_mobiliario()
+            trabajador.getTelefono()
         });
     }
 

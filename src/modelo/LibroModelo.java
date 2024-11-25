@@ -33,33 +33,35 @@ public class LibroModelo {
 
     /**
      * funcion mostrar todos
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Libro> mostrarResultados() {
-    ArrayList<Libro> libros = new ArrayList<>();
-    String consulta = "SELECT * FROM libros";  // Consulta para obtener todos los libros
-    try {
-        PreparedStatement preparar = conexion.prepareStatement(consulta);
-        ResultSet rs = preparar.executeQuery(consulta);
+        ArrayList<Libro> libros = new ArrayList<>();
+        String consulta = "SELECT * FROM libros";  // Consulta para obtener todos los libros
+        try {
+            PreparedStatement preparar = conexion.prepareStatement(consulta);
+            ResultSet rs = preparar.executeQuery(consulta);
 
-        while (rs.next()) {
-            libros.add(new Libro(
-                rs.getString("isbn"), rs.getString("titulo"),
-                rs.getInt("numSerie"), rs.getFloat("precio"),
-                rs.getString("estado"), rs.getInt("idAutor"),
-                rs.getString("editorial"), rs.getInt("idBiblioteca")
-            ));
+            while (rs.next()) {
+                libros.add(new Libro(
+                        rs.getString("isbn"), rs.getString("titulo"),
+                        rs.getInt("numSerie"), rs.getFloat("precio"),
+                        rs.getString("estado"), rs.getInt("idAutor"),
+                        rs.getString("editorial"), rs.getInt("idBiblioteca")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return libros;
     }
-    return libros;
-    }
-    
+
     /**
      * funcion para buscar por ISBN
+     *
      * @param ISBN
-     * @return 
+     * @return
      */
     public Libro buscarPorISBN(String isbn) {
         String consulta = "SELECT * FROM libros WHERE isbn = ?";
@@ -70,9 +72,9 @@ public class LibroModelo {
 
             if (rs.next()) {
                 return new Libro(rs.getString("isbn"), rs.getString("titulo"),
-                                 rs.getInt("numSerie"), rs.getFloat("precio"),
-                                 rs.getString("estado"), rs.getInt("idAutor"),
-                                 rs.getString("editorial"), rs.getInt("idBiblioteca")
+                        rs.getInt("numSerie"), rs.getFloat("precio"),
+                        rs.getString("estado"), rs.getInt("idAutor"),
+                        rs.getString("editorial"), rs.getInt("idBiblioteca")
                 );
             }
         } catch (SQLException e) {
@@ -83,8 +85,9 @@ public class LibroModelo {
 
     /**
      * funcion para buscar por titulo
+     *
      * @param titulo
-     * @return 
+     * @return
      */
     public ArrayList<Libro> buscarPorTitulo(String titulo) {
         String consulta = "SELECT * FROM libros WHERE titulo LIKE ?";
@@ -96,21 +99,22 @@ public class LibroModelo {
 
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
-                                     rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getInt("idAutor"),
-                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
-                                     ));
+                        rs.getInt("numSerie"), rs.getFloat("precio"),
+                        rs.getString("estado"), rs.getInt("idAutor"),
+                        rs.getString("editorial"), rs.getInt("idBiblioteca")
+                ));
             }
-        }catch(SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return libros;
     }
-    
+
     /**
      * funcion buscar por estado
+     *
      * @param estado
-     * @return 
+     * @return
      */
     public ArrayList<Libro> buscarPorEstado(String estado) {
         String consulta = "SELECT * FROM libros WHERE estado LIKE ?";
@@ -122,21 +126,22 @@ public class LibroModelo {
 
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
-                                     rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getInt("idAutor"),
-                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
-                                     ));
+                        rs.getInt("numSerie"), rs.getFloat("precio"),
+                        rs.getString("estado"), rs.getInt("idAutor"),
+                        rs.getString("editorial"), rs.getInt("idBiblioteca")
+                ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return libros;
     }
-    
+
     /**
      * funcion buscar por editorial
+     *
      * @param editorial
-     * @return 
+     * @return
      */
     public ArrayList<Libro> buscarPorEditorial(String editorial) {
         String consulta = "SELECT * FROM libros WHERE editorial LIKE ?";
@@ -148,10 +153,10 @@ public class LibroModelo {
 
             while (rs.next()) {
                 libros.add(new Libro(rs.getString("isbn"), rs.getString("titulo"),
-                                     rs.getInt("numSerie"), rs.getFloat("precio"),
-                                     rs.getString("estado"), rs.getInt("idAutor"),
-                                     rs.getString("editorial"), rs.getInt("idBiblioteca")
-                                     ));
+                        rs.getInt("numSerie"), rs.getFloat("precio"),
+                        rs.getString("estado"), rs.getInt("idAutor"),
+                        rs.getString("editorial"), rs.getInt("idBiblioteca")
+                ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -159,10 +164,8 @@ public class LibroModelo {
         return libros;
     }
 
-    
-
     // funcion para eliminar por isbn.
-    public void eliminarPorIsbn(String isbn){
+    public void eliminarPorIsbn(String isbn) {
         String consulta = "DELETE FROM libros WHERE isbn= ?";
         try {
             preparar = conexion.prepareStatement(consulta);
@@ -172,26 +175,26 @@ public class LibroModelo {
             e.printStackTrace();
         }
     }
-   
+
     /*
     Verifica si el isbn ya existe.
-    */
-    public boolean existeEnPrestamos(String isbn){
+     */
+    public boolean existeEnPrestamos(String isbn) {
         String consulta = "SELECT 1 FROM prestamos WHERE isbn = ?";
         try {
             preparar = conexion.prepareStatement(consulta);
-            preparar.setString(1,isbn);
+            preparar.setString(1, isbn);
             preparar.execute();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-    
+
     // insertar libros -- aaron
     public void insertarLibro(Libro libro) {
-        String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial) values (?,?,?,?,?,?)";
+        String consulta = "INSERT INTO libros (isbn,titulo,numSerie,precio,estado,editorial, idAutor, idBiblioteca) values (?,?,?,?,?,?,?,?)";
         try {
             preparar = conexion.prepareStatement(consulta);
             preparar.setString(1, libro.getIsbn());
@@ -199,8 +202,9 @@ public class LibroModelo {
             preparar.setInt(3, libro.getNumSerie());
             preparar.setFloat(4, libro.getPrecio());
             preparar.setString(5, libro.getEstado());
-            preparar.setString(6, libro.getEditorial());
-
+            preparar.setInt(6, libro.getIdAutor());
+            preparar.setString(7, libro.getEditorial());
+            preparar.setInt(8, libro.getIdBiblioteca());
             preparar.execute();
             System.out.println("Libro agregado con exito.");
         } catch (Exception e) {
