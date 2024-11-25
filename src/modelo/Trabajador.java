@@ -9,20 +9,31 @@ package modelo;
  * @author sergi
  */
 public class Trabajador {
+
     private int idTrabajador;
     private String nombre;
     private String apellido;
     private String correo;
     private int telefono;
-    private int id_mobiliario;
 
-    public Trabajador(int idTrabajador, String nombre, String apellido, String correo, int telefono, int id_mobiliario) {
+    public Trabajador(int idTrabajador, String nombre, String apellido, String correo, int telefono) {
         this.idTrabajador = idTrabajador;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
-        this.id_mobiliario = id_mobiliario;
+    }
+
+    /**
+     * Constructor 2
+     *
+     * @return
+     */
+    public Trabajador(String nombre, String apellido, String correo, int telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
     public int getIdTrabajador() {
@@ -65,15 +76,4 @@ public class Trabajador {
         this.telefono = telefono;
     }
 
-    public int getId_mobiliario() {
-        return id_mobiliario;
-    }
-
-    public void setId_mobiliario(int id_mobiliario) {
-        this.id_mobiliario = id_mobiliario;
-    }
-    
-    
-    
-    
 }

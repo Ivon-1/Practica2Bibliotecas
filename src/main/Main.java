@@ -5,6 +5,8 @@
 package main;
 import controlador.LoginController;
 import controlador.MenuPrincipalController;
+import modelo.UsuarioModelo;
+import vista.LoginView;
 /**
  *
  * @author ivanA
@@ -12,6 +14,11 @@ import controlador.MenuPrincipalController;
 public class Main {
 
     public static void main(String[] args) {
-        new MenuPrincipalController();
+        //new MenuPrincipalController();
+        
+        UsuarioModelo modeloUsuario = new UsuarioModelo();
+        LoginView loginView = new LoginView();
+        
+        new LoginController(loginView, modeloUsuario);
     }
 }

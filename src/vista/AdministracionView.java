@@ -92,23 +92,24 @@ public class AdministracionView extends javax.swing.JFrame {
 
         table_trabajadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "idTrabajador", "Nombre", "Apellidos", "Correo", "Telefono", "idMobiliario"
+                "idTrabajador", "Nombre", "Apellidos", "Correo", "Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        table_trabajadores.setToolTipText("");
         jScrollPane1.setViewportView(table_trabajadores);
 
         btn_agregarTrabajador.setText("Agregar");

@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -21,15 +21,17 @@ public class LoginController implements ActionListener{
     public LoginController(LoginView loginVista, UsuarioModelo modeloUsuario) {
         this.loginVista = loginVista;
         this.modeloUsuario = modeloUsuario;
+        this.loginVista.setVisible(true);
+        
         
         this.loginVista.getBtn_login().addActionListener(this);
-        this.loginVista.setVisible(true);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.loginVista.getBtn_login()){
-            System.out.println("HOLAAAAAAAAAAA");
+            //System.out.println("HOLAAAAAAAAAAA");
             manejoLogin();
         }
     }
@@ -53,31 +55,14 @@ public class LoginController implements ActionListener{
         // Dependiendo de si las credenciales son válidas o no
         if (isValid) {
             JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso.", "Login", JOptionPane.INFORMATION_MESSAGE);
-            // Aquí podrías redirigir a otra vista o cambiar la ventana
+            this.loginVista.dispose();
+            abrirMenuPrincipal(tipo);
         } else {
             JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas.", "Login", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    
-    
-    
-    private void manejo2(){
-        String id_sofa = (String) loginVista.getCmb_login().getSelectedItem();
-        String desc_sofa = new String(loginVista.getTxt_pass().getPassword());
-        int tipo = loginVista.getCmb_login().getSelectedIndex();  // El tipo depende del combobox
-
-                // Verificar credenciales
-        if (id_sofa.equals("seleccione una opción")) {
-            JOptionPane.showMessageDialog(loginVista, "Por favor, selecciona un tipo de usuario.");
-            return;
-        }
-        
-        if (UsuarioModelo.verificarCredenciales(id_sofa, desc_sofa, tipo)) {
-                    JOptionPane.showMessageDialog(loginVista, "Inicio de sesión exitoso!");
-                    // Aquí se puede abrir la siguiente ventana o cambiar la vista
-                } else {
-                    JOptionPane.showMessageDialog(loginVista, "Credenciales incorrectas. Intenta nuevamente.");
-                }
+    private void abrirMenuPrincipal(int tipoUsuario) {
+        new MenuPrincipalController(tipoUsuario);
     }
 }
