@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="group_incidencia">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,7 +27,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
               <Component id="btn_agregarIncidencia" min="-2" max="-2" attributes="0"/>
@@ -31,19 +34,30 @@
               <Component id="btn_eliminarIncidencia" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_modificar_incidencia" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="180" max="32767" attributes="0"/>
+              <EmptySpace pref="205" max="32767" attributes="0"/>
               <Component id="btn_volver_incidencia" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="txt_espbusquedaIncidencia" min="-2" pref="306" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="txt_espbusquedaIncidencia" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="radio_ninguno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="radio_leve" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="radio_grave" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="cmb_filtro_incidencias" min="-2" pref="151" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btn_buscarIncidencia" min="-2" pref="113" max="-2" attributes="0"/>
+              <Component id="btn_buscarIncidencia" min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -51,12 +65,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmb_filtro_incidencias" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_espbusquedaIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_buscarIncidencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_grave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_leve" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_ninguno" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="443" max="-2" attributes="0"/>
@@ -104,9 +121,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Todos"/>
-            <StringItem index="1" value="Leve"/>
-            <StringItem index="2" value="Grave"/>
-            <StringItem index="3" value="Muy grave"/>
+            <StringItem index="1" value="Nombre"/>
+            <StringItem index="2" value="Apellidos"/>
+            <StringItem index="3" value="ID"/>
           </StringArray>
         </Property>
       </Properties>
@@ -199,6 +216,30 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificar_incidenciaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_leve">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="group_incidencia"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Leve"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_grave">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="group_incidencia"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Grave"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_ninguno">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="group_incidencia"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ninguno"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

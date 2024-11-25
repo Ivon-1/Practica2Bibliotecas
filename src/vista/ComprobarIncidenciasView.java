@@ -4,8 +4,10 @@
  */
 package vista;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.View;
@@ -54,6 +56,26 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         return txt_espbusquedaIncidencia;
     }
 
+    public ButtonGroup getGroup_incidencia() {
+        return group_incidencia;
+    }
+
+    public JRadioButton getRadio_grave() {
+        return radio_grave;
+    }
+
+    public JRadioButton getRadio_leve() {
+        return radio_leve;
+    }
+
+    public JRadioButton getRadio_ninguno() {
+        return radio_ninguno;
+    }
+    
+    
+    
+    
+
   
 
     /**
@@ -65,6 +87,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        group_incidencia = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         btn_agregarIncidencia = new javax.swing.JButton();
         btn_eliminarIncidencia = new javax.swing.JButton();
@@ -75,6 +98,9 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
         txt_espbusquedaIncidencia = new javax.swing.JTextField();
         btn_buscarIncidencia = new javax.swing.JButton();
         btn_modificar_incidencia = new javax.swing.JButton();
+        radio_leve = new javax.swing.JRadioButton();
+        radio_grave = new javax.swing.JRadioButton();
+        radio_ninguno = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,7 +121,7 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
             }
         });
 
-        cmb_filtro_incidencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Grave", "Muy grave" }));
+        cmb_filtro_incidencias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Apellidos", "ID" }));
         cmb_filtro_incidencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_filtro_incidenciasActionPerformed(evt);
@@ -139,11 +165,19 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
             }
         });
 
+        group_incidencia.add(radio_leve);
+        radio_leve.setText("Leve");
+
+        group_incidencia.add(radio_grave);
+        radio_grave.setText("Grave");
+
+        group_incidencia.add(radio_ninguno);
+        radio_ninguno.setText("Ninguno");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(280, 280, 280)
                 .addComponent(btn_agregarIncidencia)
@@ -151,29 +185,42 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
                 .addComponent(btn_eliminarIncidencia)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar_incidencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(btn_volver_incidencia)
                 .addGap(53, 53, 53))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(txt_espbusquedaIncidencia)
+                .addGap(18, 18, 18)
+                .addComponent(radio_ninguno)
+                .addGap(18, 18, 18)
+                .addComponent(radio_leve)
+                .addGap(18, 18, 18)
+                .addComponent(radio_grave)
+                .addGap(26, 26, 26)
                 .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_buscarIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_buscarIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(cmb_filtro_incidencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_espbusquedaIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscarIncidencia))
+                    .addComponent(btn_buscarIncidencia)
+                    .addComponent(radio_grave)
+                    .addComponent(radio_leve)
+                    .addComponent(jLabel1)
+                    .addComponent(radio_ninguno))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -253,8 +300,12 @@ public class ComprobarIncidenciasView extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar_incidencia;
     private javax.swing.JButton btn_volver_incidencia;
     private javax.swing.JComboBox<String> cmb_filtro_incidencias;
+    private javax.swing.ButtonGroup group_incidencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton radio_grave;
+    private javax.swing.JRadioButton radio_leve;
+    private javax.swing.JRadioButton radio_ninguno;
     private javax.swing.JTable table_socios_incidencias;
     private javax.swing.JTextField txt_espbusquedaIncidencia;
     // End of variables declaration//GEN-END:variables

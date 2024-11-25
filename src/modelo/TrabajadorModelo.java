@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 /**
  *
@@ -17,10 +18,11 @@ import java.sql.ResultSet;
 public class TrabajadorModelo {
     private Connection conexion;
     private PreparedStatement preparar;
+    private HashMap<String, Trabajador> lista_trabajadores;
 
-    public TrabajadorModelo(Connection conexion, PreparedStatement preparar) {
-        this.conexion = conexion;
-        this.preparar = preparar;
+    public TrabajadorModelo() {
+        this.lista_trabajadores = new HashMap<>();
+        this.conexion = (Connection) ConexionBD.conectar();
     }
     
     public ArrayList<Trabajador> mostrarTodos(){
@@ -48,42 +50,45 @@ public class TrabajadorModelo {
     public ArrayList<Trabajador> buscarTrabajadores(String filtro, String valor){
         ArrayList<Trabajador> listaTrabajadores = new ArrayList<>();
         String consulta = "";
-        
+
         switch (filtro) {
             case "Todos":
                 consulta = "SELECT * FROM trabajadores";
                 break;
             case "Nombre":
-                consulta = "SELECT * FROM socios WHERE nombre LIKE ?";
+                consulta = "SELECT * FROM trabajadores WHERE nombre LIKE ?";
                 break;
             case "Apellido":
-                consulta = "SELECT * FROM socios WHERE apellido LIKE ?";
+                consulta = "SELECT * FROM trabajadores WHERE apellido LIKE ?";
                 break;
             case "ID":
-                consulta = "SELECT * FROM socios WHERE idTrabajador LIKE ?";
+                consulta = "SELECT * FROM trabajadores WHERE idTrabajador LIKE ?";
                 break;
         }
-        
-        try{
+
+        try {
             PreparedStatement ps = conexion.prepareStatement(consulta);
+
             if (!filtro.equals("Todos")) {
                 ps.setString(1, "%" + valor + "%");
             }
-            
+
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+
+            while (rs.next()) {
                 Trabajador trabajador = new Trabajador(
-                                        rs.getInt("idTrabajador"), rs.getString("nombre"),
-                                        rs.getString("apellido"), rs.getString("correo"),
-                                        rs.getInt("telefono"), rs.getInt("id_mobiliario")
+                    rs.getInt("idTrabajador"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getString("correo"),
+                    rs.getInt("telefono"),
+                    rs.getInt("id_mobiliario")
                 );
-                trabajador.setIdTrabajador(rs.getInt("idTrabajador"));
                 listaTrabajadores.add(trabajador);
             }
-            
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return listaTrabajadores; 
+        return listaTrabajadores;
     }
 }

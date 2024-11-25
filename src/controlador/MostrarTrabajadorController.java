@@ -4,10 +4,14 @@
  */
 package controlador;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.ConexionBD;
 import modelo.Trabajador;
 import modelo.TrabajadorModelo;
 import vista.AdministracionView;
@@ -31,6 +35,7 @@ public class MostrarTrabajadorController implements ActionListener{
         
         datos_tabla_trabajador = (DefaultTableModel) this.vista_trabajador.getTable_trabajadores().getModel();
         addButtons();
+        mostrarTrabajadores();
         this.vista_trabajador.setVisible(true);
 
     }
@@ -54,7 +59,7 @@ public class MostrarTrabajadorController implements ActionListener{
         }
         
         if(e.getSource() == this.vista_trabajador.getBtn_buscarTrabajador()){
-            buscarSocios();
+            buscarTrabajadores();
         }
         
         if(e.getSource() == this.vista_trabajador.getBtn_volverTrabajador()){
@@ -67,7 +72,7 @@ public class MostrarTrabajadorController implements ActionListener{
     /**
      * funciones busqueda
      */
-    public void buscarSocios() {
+    public void buscarTrabajadores() {
         String filtro = vista_trabajador.getCmb_trabajador().getSelectedItem().toString();
         String valor = vista_trabajador.getTxt_busquedaTrabajador().getText();
 
@@ -89,6 +94,67 @@ public class MostrarTrabajadorController implements ActionListener{
                 trabajador.getId_mobiliario(),
             };
             modeloTabla.addRow(fila);
+        }
+    }
+    
+    /**
+     * funcion cargar de BD
+     * @return 
+     */
+    public ArrayList<Trabajador> cargarTrabajadoresBBDD() {
+        ArrayList<Trabajador> trabajadores = new ArrayList<>();
+        Connection con = ConexionBD.conectar();
+
+        if (con == null) {
+            System.err.println("Error al conectar a la base de datos");
+            return trabajadores;
+        }
+
+        String sql = "SELECT idTrabajador, nombre, apellido, correo, telefono, id_mobiliario FROM trabajadores";
+
+        try (PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet resultado = stmt.executeQuery()) {
+            while (resultado.next()) {
+                Trabajador trabajador = new Trabajador(
+                    resultado.getInt("idTrabajador"),
+                    resultado.getString("nombre"),
+                    resultado.getString("apellido"),
+                    resultado.getString("correo"),
+                    resultado.getInt("telefono"),
+                    resultado.getInt("id_mobiliario")
+                );
+                trabajadores.add(trabajador);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al realizar la consulta de trabajadores");
+            e.printStackTrace();
+        }
+
+        return trabajadores;
+    }
+    
+    /**
+     * funcion para pintar un trabajador en la tabla
+     */
+    public void pintarTrabajador(Trabajador trabajador) {
+        datos_tabla_trabajador.addRow(new Object[]{
+            trabajador.getIdTrabajador(),
+            trabajador.getNombre(),
+            trabajador.getApellido(),
+            trabajador.getCorreo(),
+            trabajador.getTelefono(),
+            trabajador.getId_mobiliario()
+        });
+    }
+    
+    /**
+     * funcion para mostrar todos los trabajadores en la tabla
+     */
+    public void mostrarTrabajadores() {
+        ArrayList<Trabajador> trabajadores = cargarTrabajadoresBBDD();
+        datos_tabla_trabajador.setRowCount(0);
+        for (Trabajador trabajador : trabajadores) {
+            pintarTrabajador(trabajador);
         }
     }
 }

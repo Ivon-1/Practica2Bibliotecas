@@ -12,6 +12,7 @@ import modelo.ConexionBD;
 import modelo.IncidenciasModelo;
 import modelo.LibroModelo;
 import modelo.SocioModelo;
+import modelo.TrabajadorModelo;
 import modelo.UsuarioModelo;
 import vista.AdministracionView;
 import vista.AgregarIncidenciaView;
@@ -35,6 +36,7 @@ public class MenuPrincipalController implements ActionListener {
     private UsuarioModelo modeloUsuario;
     private LibroModelo modelo_libros;
     private SocioModelo modelo_socio;
+    private TrabajadorModelo modelo_trabajador;
     // vistas
     private LoginView loginVista;
     private SociosView vista_principalSocios;
@@ -67,6 +69,7 @@ public class MenuPrincipalController implements ActionListener {
         this.modelo_libros = new LibroModelo();
         this.modelo_socio = new SocioModelo();
         this.modelo_incidencias = new IncidenciasModelo();
+        this.modelo_trabajador = new TrabajadorModelo();
         // vistas
         this.loginVista = new LoginView();
         this.vista_principalSocios = new SociosView();
@@ -82,7 +85,7 @@ public class MenuPrincipalController implements ActionListener {
         this.vista_menu = new MenuView();
         
         this.tipoUsuario = tipoUsuario;
-        restrccionUsuario(); //bloquear acceso del btn_administracion
+        restriccionUsuario(); //bloquear acceso del btn_administracion
         this.agregar_libro.setVisible(false);
         this.vista_menu.setVisible(true);
         // activacion de botones cuando los haya en la pantalla principal
@@ -117,6 +120,13 @@ public class MenuPrincipalController implements ActionListener {
         if (button == this.vista_menu.getBtn_Administracion()) {
             this.vista_menu.setVisible(false);
             this.view_administracion.setVisible(true);
+            
+            if(controladorTrabajador == null){
+                controladorTrabajador = new MostrarTrabajadorController(
+                        modelo_trabajador, 
+                        view_administracion, 
+                        vista_menu);
+            }
         }
 
         
@@ -158,7 +168,7 @@ public class MenuPrincipalController implements ActionListener {
         }
     }
     
-    private void restrccionUsuario() {
+    private void restriccionUsuario() {
         if (tipoUsuario == 1) { // Si es "usuario"
             this.vista_menu.getBtn_Administracion().setEnabled(false);
         }

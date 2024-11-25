@@ -102,13 +102,14 @@ public class AdministracionView extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        table_trabajadores.setToolTipText("");
         jScrollPane1.setViewportView(table_trabajadores);
 
         btn_agregarTrabajador.setText("Agregar");

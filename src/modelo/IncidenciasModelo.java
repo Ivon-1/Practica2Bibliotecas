@@ -105,7 +105,6 @@ public class IncidenciasModelo {
 
     /**
      * funcion mostrar incidencias
-     *
      * @return
      */
     public ArrayList<Incidencias> mostrarIncidencias() {
@@ -129,4 +128,84 @@ public class IncidenciasModelo {
         }
         return incidencias;
     }
+    
+    /**
+     * funcion buscar incidencia radiobutton y combobox
+     * @param criterio
+     * @param valorBusqueda
+     * @param tipoIncidencia
+     * @return 
+     */
+    
+    public ArrayList<Incidencias> buscarIncidencias(String criterio, String valorBusqueda, String tipoIncidencia) {
+        ArrayList<Incidencias> incidencias = new ArrayList<>();
+        Connection con = ConexionBD.conectar();
+
+        if (con == null) {
+            System.err.println("Error al conectar a la base de datos");
+            return incidencias;
+        }
+
+        String sql = "SELECT s.idSocio, s.nombre, s.apellido, i.id_incidencia, i.estado_incidencia, i.tipo_incidencia "
+                   + "FROM socios s LEFT JOIN incidencias i ON s.idSocio = i.idSocio ";
+
+        if (criterio.equals("ID") && valorBusqueda != null && !valorBusqueda.isEmpty()) {
+            sql += "WHERE s.idSocio = ?";
+        } else if (criterio.equals("Nombre") && valorBusqueda != null && !valorBusqueda.isEmpty()) {
+            sql += "WHERE s.nombre LIKE ?";
+        }
+
+        // Añadir el filtro de tipo de incidencia (Leve o Grave) si se ha seleccionado
+        if (tipoIncidencia != null && !tipoIncidencia.isEmpty()) {
+            if (sql.contains("WHERE")) {
+                sql += " AND i.tipo_incidencia = ?";
+            } else {
+                sql += "WHERE i.tipo_incidencia = ?";
+            }
+        }
+
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            int parameterIndex = 1;
+
+            // Asignar parámetros de búsqueda
+            if (criterio.equals("ID") && valorBusqueda != null && !valorBusqueda.trim().isEmpty()) {
+                // Validar que valorBusqueda es un número válido
+                try {
+                    int idSocio = Integer.parseInt(valorBusqueda.trim());  // Eliminar espacios antes y después y convertir
+                    stmt.setInt(parameterIndex++, idSocio);
+                } catch (NumberFormatException e) {
+                    System.err.println("Error: El valor de ID debe ser un número válido.");
+                    return incidencias;  // Retornar lista vacía si la conversión falla
+                }
+            } else if (criterio.equals("Nombre") && valorBusqueda != null && !valorBusqueda.isEmpty()) {
+                stmt.setString(parameterIndex++, "%" + valorBusqueda + "%");  // Uso de LIKE para la búsqueda por nombre
+            }
+
+            // Filtro de tipo de incidencia
+            if (tipoIncidencia != null && !tipoIncidencia.isEmpty()) {
+                stmt.setString(parameterIndex++, tipoIncidencia);  // Añadimos el tipo de incidencia
+            }
+
+            // Ejecutar la consulta
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                String nombre = resultado.getString("nombre");
+                String apellido = resultado.getString("apellido");
+                int id_incidencia = resultado.getInt("id_incidencia");
+                String estado_incidencia = resultado.getString("estado_incidencia");
+                String tipo_incidencia = resultado.getString("tipo_incidencia");
+                int idSocio = resultado.getInt("idSocio");
+
+                Incidencias incidencia = new Incidencias(nombre, apellido, id_incidencia, estado_incidencia, tipo_incidencia, idSocio);
+                incidencias.add(incidencia);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al realizar la consulta");
+            e.printStackTrace();
+        } finally {
+            // Cerrar conexión si es necesario
+        }
+
+        return incidencias;
+    } 
 }

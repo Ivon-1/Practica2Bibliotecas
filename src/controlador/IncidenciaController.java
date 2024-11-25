@@ -77,12 +77,12 @@ public class IncidenciaController implements ActionListener {
         }
 
         if (e.getSource() == this.vista_incidencias.getBtn_buscarIncidencia()) { // buscar incidencia
-
+            buscarIncidencia();
         }
 
         if (e.getSource() == this.vista_incidencias.getBtn_volver_incidencia()) { // volver menu
             this.vista_socios.setVisible(true);
-            this.vista_incidencias.setVisible(false);
+            this.vista_incidencias.dispose();
         }
     }
 
@@ -237,4 +237,27 @@ public class IncidenciaController implements ActionListener {
     }
     
     
+    public void buscarIncidencia() {
+        String criterioBusqueda = this.vista_incidencias.getCmb_filtro_incidencias().getSelectedItem().toString();
+        String valorBusqueda = this.vista_incidencias.getTxt_espbusquedaIncidencia().getText();
+
+        // Determinar el tipo de incidencia (Leve o Grave)
+        String tipoIncidencia = null;
+        if (this.vista_incidencias.getRadio_leve().isSelected()) {
+            tipoIncidencia = "Leve";
+        } else if (this.vista_incidencias.getRadio_grave().isSelected()) {
+            tipoIncidencia = "Grave";
+        }
+
+        // Llamar al método buscarIncidencias con los parámetros de búsqueda
+        ArrayList<Incidencias> incidencias = this.modelo_incidencias.buscarIncidencias(criterioBusqueda, valorBusqueda, tipoIncidencia);
+
+        // Limpiar la tabla antes de mostrar los resultados
+        this.datos_tabla.setRowCount(0);
+
+        // Pintar los resultados de la búsqueda en la tabla
+        for (Incidencias incidencia : incidencias) {
+            pintarIncidencias(incidencia);
+        }
+    }
 }
