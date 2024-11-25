@@ -202,8 +202,8 @@ public class LibroModelo {
             preparar.setInt(3, libro.getNumSerie());
             preparar.setFloat(4, libro.getPrecio());
             preparar.setString(5, libro.getEstado());
-            preparar.setInt(6, libro.getIdAutor());
-            preparar.setString(7, libro.getEditorial());
+            preparar.setString(6, libro.getEditorial());
+            preparar.setInt(7, libro.getIdAutor());
             preparar.setInt(8, libro.getIdBiblioteca());
             preparar.execute();
             System.out.println("Libro agregado con exito.");
